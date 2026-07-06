@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>About Kabina sa Aplaya – RJFLn Resort in Jala-jala, Rizal</title>
+  <meta name="description" content="The story of Kabina sa Aplaya – RJFLn Resort, an A-frame cabin resort by Laguna de Bay in Brgy. Lubo, Jala-jala, Rizal. Directions and what to expect." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&amp;display=swap" rel="stylesheet" />
+  <script src="image-slot.js"></script>
+  <style>
+    image-slot { transition: transform .35s ease; }
+    image-slot:not([id$="-hero"]):not([id^="home-cabin"]):hover { transform: scale(1.03); }
+    .liftcard { transition: transform .35s ease, box-shadow .35s ease; }
+    .liftcard:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(14,58,45,.15); }
+    .liftcard image-slot:hover { transform: scale(1.05); }
+    .hbg:hover { background: var(--hbg) !important; }
+    .hfg:hover { color: var(--hfg) !important; }
+    .hbc:hover { border-color: var(--hbc) !important; }
+    .hbg, .hfg, .hbc { transition: background .35s ease, color .35s ease, border-color .35s ease, transform .35s ease, box-shadow .35s ease; }
+    .lnk { border-bottom: none !important; padding-bottom: 4px !important; background-image: linear-gradient(#fdb449,#fdb449), linear-gradient(rgba(253,180,73,.4),rgba(253,180,73,.4)); background-repeat: no-repeat; background-size: 0% 2px, 100% 2px; background-position: 0 100%, 0 100%; transition: background-size .35s ease, color .35s ease; }
+    .lnk:hover { background-size: 100% 2px, 100% 2px; }
+    .lnk .arr { display: inline-block; transition: transform .35s ease; }
+    .lnk:hover .arr { transform: translateX(5px); }
+    image-slot[data-filled] { cursor: zoom-in; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-BoldItalic.ttf') format('truetype'); font-weight: 700; font-style: italic; font-display: swap; }
+    .abbox .pav-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; border: none; background: none; color: #fff; font: 200 46px/1 Helvetica, Arial, sans-serif; cursor: pointer; padding: 0 8px; text-shadow: 0 2px 12px rgba(0,0,0,.65); opacity: 0; transition: opacity .35s ease, transform .25s ease; }
+    .abbox:hover .pav-arrow { opacity: .9; }
+    .abbox .pav-arrow:hover { transform: translateY(-50%) scale(1.2); }
+    .ilo, .ilb { transition: color .35s ease; }
+    .ilo:hover { color: #2b3499 !important; }
+    .ilb:hover { color: #fe5c36 !important; }
+    body { animation: pageIn 1s ease both; }
+    @keyframes pageIn { from { opacity: 0 } }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #faf7f0; -webkit-font-smoothing: antialiased; }
+  </style>
+</helmet>
+
+<dc-import name="SiteNav" active="about" hint-size="100%,68px"></dc-import>
+
+<header style="max-width:1200px;margin:0 auto;padding:clamp(48px,7vw,80px) 24px 12px">
+  <p style="margin:0 0 8px;font:italic 400 23px/1.25 'URW Classico',Georgia,serif;color:#fe5c36">Ang kwento namin</p>
+  <h1 style="margin:0 0 16px;font:400 clamp(32px,5vw,52px)/1.1 'URW Classico',Georgia,serif;color:#2b3499"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em">A</span>bout Kabina sa Aplaya</h1>
+</header>
+
+<section style="max-width:1200px;margin:0 auto;padding:16px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,5vw,60px);align-items:center">
+  <div>
+    <p style="margin:0 0 14px;font:16px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong>Kabina</strong> means cabin. <strong>Aplaya</strong> means shore. Put them together and you have exactly what we are: cabins by the shore of Laguna de Bay.</p>
+    <p style="margin:0 0 14px;font:16px/1.8 Helvetica,Arial,sans-serif;color:#33413a">Kabina sa Aplaya – RJFLn Resort is a resort in Brgy. Lubo, Jala-jala, Rizal. Our three A-frame cabins. Makiling, Sembrano, and Banahaw, each named after a mountain that watches over the lake, sit around a pool that looks out to the water and the scenic silhouette of Mt. Banahaw.</p>
+    <p style="margin:0;font:16px/1.8 Helvetica,Arial,sans-serif;color:#33413a">We built this place for slow mornings, long swims, videoke nights, and bonfire kwentuhan. Whether you're here for a day tour, an overnight stay, or you've booked the whole resort for a celebration, welcome. Kita-kits sa aplaya!</p>
+  </div>
+  <div class="abbox" style="position:relative;width:100%;height:clamp(260px,36vw,420px)">
+    <sc-for list="{{ abSlides }}" as="sl" hint-placeholder-count="10">
+      <image-slot id="{{ sl.id }}" data-gallery="about" radius="18" recommend="Best: landscape, 1600px+ wide" placeholder="{{ sl.ph }}" style="position:absolute;inset:0;width:100%;height:100%;opacity:{{ sl.op }};pointer-events:{{ sl.pe }};transition:opacity .6s ease"></image-slot>
+    </sc-for>
+    <button class="pav-arrow" onClick="{{ abPrev }}" aria-label="Previous photo" style="left:8px;display:{{ abArrows }}">‹</button>
+    <button class="pav-arrow" onClick="{{ abNext }}" aria-label="Next photo" style="right:8px;display:{{ abArrows }}">›</button>
+  </div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:clamp(32px,5vw,56px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+  <div style="background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:16px;padding:24px">
+    <p style="margin:0 0 6px;font:italic 400 21px/1.25 'URW Classico',Georgia,serif;color:#6c7d37">The lake</p>
+    <p style="margin:0;font:14px/1.7 Helvetica,Arial,sans-serif;color:#33413a">Laguna de Bay is the Philippines' largest lake, and Jala-jala is a peninsula reaching right into it. The aplaya is literally at our doorstep.</p>
+  </div>
+  <div style="background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:16px;padding:24px">
+    <p style="margin:0 0 6px;font:italic 400 21px/1.25 'URW Classico',Georgia,serif;color:#2b3499">The mountains</p>
+    <p style="margin:0;font:14px/1.7 Helvetica,Arial,sans-serif;color:#33413a">Mt. Banahaw rises across the water to the south, with Mt. Sembrano and Mt. Makiling nearby, the three peaks our kabinas are named after.</p>
+  </div>
+  <div style="background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:16px;padding:24px">
+    <p style="margin:0 0 6px;font:italic 400 21px/1.25 'URW Classico',Georgia,serif;color:#fe5c36">The resort</p>
+    <p style="margin:0;font:14px/1.7 Helvetica,Arial,sans-serif;color:#33413a">Three cabins, one pool, and grounds that never feel crowded. Book one kabina or take the whole place exclusively.</p>
+  </div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:clamp(48px,7vw,80px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,5vw,60px);align-items:center">
+  <div>
+    <h2 style="margin:0 0 16px;font:400 clamp(26px,3.4vw,38px)/1.15 'URW Classico',Georgia,serif;color:#2b3499"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em">H</span>ow to get here</h2>
+    <p style="margin:0 0 12px;font:16px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong>Mabini St., Brgy. Lubo, Jala-jala, Rizal 1990, Philippines</strong></p>
+    <p style="margin:0 0 12px;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">By car:</strong> Take Manila East Road through Antipolo–Teresa–Morong–Tanay–Pililla, then follow the Jala-jala road into the peninsula until Brgy. Lubo. From Metro Manila, plan for roughly 2.5–3 hours depending on traffic.</p>
+    <p style="margin:0 0 12px;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Via Laguna:</strong> Coming from the south, you can route through Calamba–Sta. Cruz–Pakil–Pangil–Siniloan–Famy, then cross to Pililla and into Jala-jala.</p>
+    <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Landmark:</strong> We're along Mabini St. by the lakeshore in Brgy. Lubo. Message us on Facebook if you need turn-by-turn help, locals know us!</p>
+  </div>
+  <div style="border-radius:18px;overflow:hidden;border:1px solid rgba(14,58,45,.12)">
+    <iframe title="Map – Kabina sa Aplaya, Jala-jala, Rizal" src="https://maps.google.com/maps?q=Kabina%20sa%20Aplaya%20Jala-jala%20Rizal&amp;z=12&amp;output=embed" style="width:100%;height:clamp(280px,36vw,400px);border:0;display:block" loading="lazy"></iframe>
+  </div>
+</section>
+
+<section style="max-width:760px;margin:0 auto;padding:0 24px clamp(56px,8vw,90px);text-align:center">
+  <img src="assets/icon-colorway1.png" alt="" style="width:64px;margin:0 auto 16px;display:block" />
+  <h2 style="margin:0 0 14px;font:400 clamp(26px,3.2vw,36px)/1.2 'URW Classico',Georgia,serif;color:#0e3a2d"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em">C</span>ome see the aplaya for yourself</h2>
+  <p style="margin:0 0 22px;font:14px/1.7 Helvetica,Arial,sans-serif;color:#55625b">Book right here, or find us on <a class="ilb" href="https://www.airbnb.com/users/profile/1463934436402879218" target="_blank" rel="noopener" style="color:#2b3499;font-weight:700;text-decoration:none">Airbnb</a> and <a class="ilb" href="https://www.booking.com/Share-l2RHSf" target="_blank" rel="noopener" style="color:#2b3499;font-weight:700;text-decoration:none">Booking.com</a>.</p>
+  <a class="hbg" href="Book Now.dc.html" style="display:inline-block;text-decoration:none;background:#fe5c36;color:#fff;font:700 17px/1 Helvetica,Arial,sans-serif;letter-spacing:.04em;padding:18px 40px;border-radius:999px;transition:transform .35s ease,box-shadow .35s ease,background .35s ease,color .35s ease;--hbg:#e34a27" style-hover="transform:translateY(-3px);box-shadow:0 12px 24px rgba(14,58,45,.22);background:#e34a27">Check availability &amp; book</a>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,380px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { abIdx: 0, tick: 0 };
+
+  componentDidMount() {
+    import('./reveal.js').then(m => m.initReveal());
+    import('./lightbox.js').then(m => m.initLightbox());
+    this._t = setInterval(() => {
+      const filled = this._filled();
+      if (filled.length > 1 && filled.includes(this.state.abIdx)) {
+        const i = filled.indexOf(this.state.abIdx);
+        this.setState({ abIdx: filled[(i + 1) % filled.length] });
+      } else {
+        this.setState(s => ({ tick: s.tick + 1 }));
+      }
+    }, 5000);
+    setTimeout(() => this.setState(s => ({ tick: s.tick + 1 })), 500);
+  }
+
+  componentWillUnmount() { clearInterval(this._t); }
+
+  _ids() {
+    return ['about-main','about-main-2','about-main-3','about-main-4','about-main-5','about-main-6','about-main-7','about-main-8','about-main-9','about-main-10'];
+  }
+
+  _filled() {
+    const out = [];
+    this._ids().forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (el && el.hasAttribute('data-filled')) out.push(i);
+    });
+    return out;
+  }
+
+  _nav() {
+    const editable = !!(window.omelette && window.omelette.writeFile);
+    if (editable) return this._ids().map((_, i) => i);
+    const f = this._filled();
+    return f.length ? f : [0];
+  }
+
+  renderVals() {
+    const idx = this.state.abIdx;
+    const nav = this._nav();
+    const step = (d) => () => {
+      const n = this._nav();
+      const i = Math.max(0, n.indexOf(this.state.abIdx));
+      this.setState({ abIdx: n[(i + d + n.length) % n.length] });
+    };
+    return {
+      abSlides: this._ids().map((id, i) => ({
+        key: id, id,
+        ph: 'Resort photo ' + (i + 1) + ' (optional), cabins, pool, the lake',
+        op: idx === i ? '1' : '0',
+        pe: idx === i ? 'auto' : 'none'
+      })),
+      abPrev: step(-1),
+      abNext: step(1),
+      abArrows: nav.length > 1 ? 'block' : 'none'
+    };
+  }
+}
+</script>
+
+</body>
+</html>

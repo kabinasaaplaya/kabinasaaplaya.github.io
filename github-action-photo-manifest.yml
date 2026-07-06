@@ -1,0 +1,46 @@
+# Rebuilds assets/photos/manifest.json whenever you add, rename, or remove a
+# photo in assets/photos/. Copy this file into your repo at:
+#   .github/workflows/photo-manifest.yml
+# (Create it via GitHub: Add file -> Create new file -> type that exact path,
+#  paste this in, Commit.) After that, adding a photo is just: upload the file
+# into assets/photos named after the slot (e.g. makiling-hero.jpg) and commit.
+
+name: Build photo manifest
+
+on:
+  push:
+    paths:
+      - 'assets/photos/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate manifest.json
+        run: |
+          cd assets/photos
+          python3 - <<'PY'
+          import json, os
+          exts = ('.jpg', '.jpeg', '.png', '.webp')
+          m = {}
+          for f in sorted(os.listdir('.')):
+              low = f.lower()
+              if low.endswith(exts):
+                  key = os.path.splitext(f)[0]
+                  m[key] = f
+          with open('manifest.json', 'w') as fh:
+              json.dump(m, fh, indent=2)
+          print('Indexed', len(m), 'photos')
+          PY
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add assets/photos/manifest.json
+          git commit -m "Rebuild photo manifest" || echo "No changes"
+          git push

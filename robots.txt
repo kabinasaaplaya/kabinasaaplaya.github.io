@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /Admin%20Guide.dc.html
+
+Sitemap: https://kabinasaaplaya.github.io/sitemap.xml

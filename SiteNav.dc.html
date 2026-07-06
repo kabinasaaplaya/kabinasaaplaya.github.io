@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    .navkab { position: relative; }
+    .navkab .navdd { position: absolute; top: 100%; left: 50%; transform: translate(-50%, 10px); opacity: 0; pointer-events: none; transition: opacity .3s ease, transform .3s ease; padding-top: 12px; }
+    .navkab:hover .navdd { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
+    .navdd .ddi { transition: background .25s ease, color .25s ease; }
+    .navdd .ddi:hover { background: rgba(43,52,153,.07); }
+    .bxwrap { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 7px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 0; }
+    .bxwrap .bx { display: block; width: 24px; height: 2.2px; border-radius: 2px; background: #0e3a2d; transition: transform .35s ease; }
+    .bxwrap.open .bx1 { transform: translateY(4.6px) rotate(45deg); }
+    .bxwrap.open .bx2 { transform: translateY(-4.6px) rotate(-45deg); }
+  </style>
+</helmet>
+<div style="height:67px"></div>
+<div style="position:fixed;top:0;left:0;right:0;z-index:80;background:rgba(250,247,240,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(14,58,45,.14)">
+  <div style="max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <a href="index.html" style="display:block;flex:none">
+      <img src="assets/wordmark-text-colored.png" alt="Kabina sa Aplaya - RJFLn Resort, Jala-jala Rizal" style="height:42px;display:block" />
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Main" style="display:flex;align-items:center;gap:24px">
+        <a class="hfg" href="index.html" style="text-decoration:none;font:{{ homeWeight }} 14px/1 Helvetica,Arial,sans-serif;letter-spacing:.04em;color:{{ homeColor }};padding:6px 2px;border-bottom:2px solid {{ homeUnderline }};--hfg:#fe5c36">Home</a>
+        <div class="navkab">
+          <a class="hfg" href="The Kabinas.dc.html" style="display:inline-block;text-decoration:none;font:{{ kabWeight }} 14px/1 Helvetica,Arial,sans-serif;letter-spacing:.04em;color:{{ kabColor }};padding:6px 2px;border-bottom:2px solid {{ kabUnderline }};--hfg:#fe5c36">The Kabinas <span style="font-size:10px;vertical-align:1px">▾</span></a>
+          <div class="navdd">
+            <div style="background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:14px;box-shadow:0 14px 34px rgba(14,58,45,.16);padding:8px;display:flex;flex-direction:column;min-width:230px">
+              <a class="ddi" href="Makiling.dc.html" style="text-decoration:none;border-radius:9px;padding:11px 14px;display:flex;flex-direction:column;gap:2px"><span style="font:700 14px/1 Helvetica,Arial,sans-serif;color:#2b3499">Makiling</span><span style="font:12px/1.4 Helvetica,Arial,sans-serif;color:#55625b">Poolside · 6 pax · Mt. Banahaw view</span></a>
+              <a class="ddi" href="Sembrano.dc.html" style="text-decoration:none;border-radius:9px;padding:11px 14px;display:flex;flex-direction:column;gap:2px"><span style="font:700 14px/1 Helvetica,Arial,sans-serif;color:#2b3499">Sembrano</span><span style="font:12px/1.4 Helvetica,Arial,sans-serif;color:#55625b">Poolside · 6 pax · pool view</span></a>
+              <a class="ddi" href="Banahaw.dc.html" style="text-decoration:none;border-radius:9px;padding:11px 14px;display:flex;flex-direction:column;gap:2px"><span style="font:700 14px/1 Helvetica,Arial,sans-serif;color:#2b3499">Banahaw</span><span style="font:12px/1.4 Helvetica,Arial,sans-serif;color:#55625b">12 pax · balcony + billiards</span></a>
+              <a class="ddi" href="The Kabinas.dc.html" style="text-decoration:none;border-radius:9px;padding:11px 14px;font:700 13px/1 Helvetica,Arial,sans-serif;color:#fe5c36">Compare all three →</a>
+            </div>
+          </div>
+        </div>
+        <sc-for list="{{ linksRight }}" as="l" hint-placeholder-count="4">
+          <a class="hfg" href="{{ l.href }}" style="text-decoration:none;font:{{ l.weight }} 14px/1 Helvetica,Arial,sans-serif;letter-spacing:.04em;color:{{ l.color }};padding:6px 2px;border-bottom:2px solid {{ l.underline }};--hfg:#fe5c36">{{ l.label }}</a>
+        </sc-for>
+        <a class="hbg" href="Book Now.dc.html" style="text-decoration:none;background:#fe5c36;color:#fff;font:700 14px/1 Helvetica,Arial,sans-serif;letter-spacing:.05em;padding:12px 22px;border-radius:999px;flex:none;--hbg:#e34a27" style-hover="background:#e34a27;transform:translateY(-3px);box-shadow:0 12px 24px rgba(14,58,45,.22)">Book Now</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button class="bxwrap {{ burgerCls }}" onClick="{{ toggleMenu }}" aria-label="Menu">
+        <span class="bx bx1"></span>
+        <span class="bx bx2"></span>
+      </button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <nav aria-label="Mobile" style="display:flex;flex-direction:column;background:#faf7f0;border-top:1px solid rgba(14,58,45,.1);padding:8px 20px 20px;max-height:calc(100vh - 80px);overflow-y:auto">
+      <sc-for list="{{ menuLinks }}" as="l" hint-placeholder-count="9">
+        <a href="{{ l.href }}" style="text-decoration:none;font:{{ l.weight }} {{ l.size }}/1 Helvetica,Arial,sans-serif;color:{{ l.color }};padding:{{ l.pad }};border-bottom:1px solid rgba(14,58,45,.08)">{{ l.label }}</a>
+      </sc-for>
+      <a href="Book Now.dc.html" style="text-decoration:none;text-align:center;background:#fe5c36;color:#fff;font:700 16px/1 Helvetica,Arial,sans-serif;letter-spacing:.05em;padding:16px 22px;border-radius:999px;margin-top:16px">Book Now</a>
+    </nav>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { isMobile: false, menuOpen: false };
+
+  componentDidMount() {
+    this.mq = window.matchMedia('(max-width: 880px)');
+    this.onMq = () => this.setState({ isMobile: this.mq.matches, menuOpen: false });
+    this.mq.addEventListener('change', this.onMq);
+    this.setState({ isMobile: this.mq.matches });
+  }
+
+  componentWillUnmount() {
+    if (this.mq) this.mq.removeEventListener('change', this.onMq);
+  }
+
+  renderVals() {
+    const active = (this.props.active || '').toLowerCase();
+    const st = (key) => ({
+      color: key === active ? '#2b3499' : '#0e3a2d',
+      weight: key === active ? '700' : '500',
+      underline: key === active ? '#fdb449' : 'transparent'
+    });
+    const rightDefs = [
+      ['amenities', 'Amenities', 'Amenities.dc.html'],
+      ['events', 'Events', 'Events.dc.html'],
+      ['about', 'About', 'About.dc.html'],
+      ['inquiries', 'Inquiries', 'Inquiries.dc.html']
+    ];
+    const linksRight = rightDefs.map(([key, label, href]) => ({ key, label, href, ...st(key) }));
+
+    const home = st('home');
+    const kab = st('kabinas');
+
+    const menuDefs = [
+      ['home', 'Home', 'Home.dc.html', false],
+      ['kabinas', 'The Kabinas', 'The Kabinas.dc.html', false],
+      ['kabinas', 'Makiling', 'Makiling.dc.html', true],
+      ['kabinas', 'Sembrano', 'Sembrano.dc.html', true],
+      ['kabinas', 'Banahaw', 'Banahaw.dc.html', true],
+      ['amenities', 'Amenities', 'Amenities.dc.html', false],
+      ['events', 'Events', 'Events.dc.html', false],
+      ['about', 'About', 'About.dc.html', false],
+      ['inquiries', 'Inquiries', 'Inquiries.dc.html', false]
+    ];
+    const menuLinks = menuDefs.map(([key, label, href, sub], i) => ({
+      key: key + '-' + i,
+      label, href,
+      color: sub ? '#55625b' : (key === active ? '#2b3499' : '#0e3a2d'),
+      weight: !sub && key === active ? '700' : '500',
+      size: sub ? '15px' : '17px',
+      pad: sub ? '12px 4px 12px 22px' : '15px 4px'
+    }));
+
+    return {
+      linksRight,
+      menuLinks,
+      homeColor: home.color, homeWeight: home.weight, homeUnderline: home.underline,
+      kabColor: kab.color, kabWeight: kab.weight, kabUnderline: kab.underline,
+      isMobile: this.state.isMobile,
+      isDesktop: !this.state.isMobile,
+      menuOpen: this.state.isMobile && this.state.menuOpen,
+      burgerCls: this.state.menuOpen ? 'open' : '',
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen }))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Banahaw Cabin – A-Frame for 12 pax with Billiards | Kabina sa Aplaya, Jala-jala Rizal</title>
+  <meta name="description" content="Banahaw is our biggest A-frame cabin for up to 12 guests at Kabina sa Aplaya, Jala-jala, Rizal, with a balcony view of Mt. Banahaw and direct billiards access. ₱11,500 per 21-hour stay, ₱9,500 day tour." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&amp;display=swap" rel="stylesheet" />
+  <script src="image-slot.js"></script>
+  <style>
+    image-slot { transition: transform .35s ease; }
+    image-slot[data-filled] { cursor: zoom-in; }
+    image-slot[data-filled]:hover { transform: scale(1.015); }
+    .hbg:hover { background: var(--hbg) !important; }
+    .hfg:hover { color: var(--hfg) !important; }
+    .hbc:hover { border-color: var(--hbc) !important; }
+    .hbg, .hfg, .hbc { transition: background .35s ease, color .35s ease, border-color .35s ease, transform .35s ease, box-shadow .35s ease; }
+    .liftbtn { transition: background .3s ease, border-color .3s ease, transform .3s ease, box-shadow .3s ease; }
+    .liftbtn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(14,58,45,.12); }
+    .lnk { border-bottom: none !important; padding-bottom: 4px !important; background-image: linear-gradient(#fdb449,#fdb449), linear-gradient(rgba(253,180,73,.4),rgba(253,180,73,.4)); background-repeat: no-repeat; background-size: 0% 2px, 100% 2px; background-position: 0 100%, 0 100%; transition: background-size .35s ease, color .35s ease; }
+    .lnk:hover { background-size: 100% 2px, 100% 2px; }
+    .lnk .arr { display: inline-block; transition: transform .35s ease; }
+    .lnk:hover .arr { transform: translateX(5px); }
+    .ilo, .ilb { transition: color .35s ease; }
+    .ilo:hover { color: #2b3499 !important; }
+    .ilb:hover { color: #fe5c36 !important; }
+    .bento { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: repeat(3, 1fr); gap: 12px; height: clamp(380px, 46vw, 560px); }
+    .bigbox { grid-row: 1 / span 3; position: relative; border-radius: 20px; }
+    .bigbox .pav-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 4; border: none; background: none; color: #fff; font: 200 46px/1 Helvetica, Arial, sans-serif; cursor: pointer; padding: 0 8px; text-shadow: 0 2px 12px rgba(0,0,0,.65); opacity: 0; transition: opacity .35s ease, transform .25s ease; }
+    .bigbox:hover .pav-arrow { opacity: .9; }
+    .bigbox .pav-arrow:hover { transform: translateY(-50%) scale(1.2); }
+    @media (max-width: 720px) {
+      .bento { grid-template-columns: repeat(3, 1fr); grid-template-rows: clamp(240px, 55vw, 340px) 92px; height: auto; }
+      .bigbox { grid-row: 1; grid-column: 1 / span 3; }
+      .bigbox .pav-arrow { opacity: .9; }
+    }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-BoldItalic.ttf') format('truetype'); font-weight: 700; font-style: italic; font-display: swap; }
+    body { animation: pageIn 1s ease both; }
+    @keyframes pageIn { from { opacity: 0 } }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #faf7f0; -webkit-font-smoothing: antialiased; }
+  </style>
+</helmet>
+
+<dc-import name="SiteNav" active="kabinas" hint-size="100%,68px"></dc-import>
+
+<header style="max-width:1200px;margin:0 auto;padding:clamp(36px,5vw,56px) 24px 20px">
+  <p style="margin:0 0 12px;font:13px/1 Helvetica,Arial,sans-serif;color:#8a958e"><a class="hfg" href="index.html" style="color:#8a958e;text-decoration:none;--hfg:#2b3499">Home</a> &nbsp;/&nbsp; <a class="hfg" href="The Kabinas.dc.html" style="color:#8a958e;text-decoration:none;--hfg:#2b3499">The Kabinas</a> &nbsp;/&nbsp; <span style="color:#2b3499;font-weight:700">Banahaw</span></p>
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+    <h1 style="margin:0;font:400 clamp(34px,5vw,54px)/1 'URW Classico',Georgia,serif;color:#2b3499"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em">B</span>anahaw</h1>
+  </div>
+  <p style="margin:10px 0 0;font:16px/1.6 Helvetica,Arial,sans-serif;color:#55625b">Balcony view of Mt. Banahaw · direct access to the billiards table</p>
+</header>
+
+<section style="max-width:1200px;margin:0 auto;padding:0 24px">
+  <div style="display:flex;justify-content:flex-end;margin:0 0 10px">
+    <a class="lnk" href="Banahaw Photos.dc.html" style="font:700 14px/1 Helvetica,Arial,sans-serif;color:#2b3499;text-decoration:none">See all photos <span class="arr">→</span></a>
+  </div>
+  <div class="bento">
+    <div class="bigbox">
+      <image-slot id="banahaw-hero" data-gallery="banahaw-hero-gal" radius="20" recommend="Best: landscape, 1600px+ wide" placeholder="Banahaw hero photo, balcony facing Mt. Banahaw" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      {{ heroOverlayEl }}
+      <sc-if value="{{ heroArrows }}" hint-placeholder-val="{{ false }}">
+        <button class="pav-arrow" onClick="{{ heroPrev }}" aria-label="Previous photo" style="left:8px">‹</button>
+        <button class="pav-arrow" onClick="{{ heroNext }}" aria-label="Next photo" style="right:8px">›</button>
+      </sc-if>
+    </div>
+    <div style="position:relative;min-height:0">
+      <image-slot id="banahaw-hero-2" data-gallery="banahaw-hero-gal" radius="14" recommend="Best: 1200px+ wide" placeholder="Photo 2" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      {{ smallOverlay1 }}
+    </div>
+    <div style="position:relative;min-height:0">
+      <image-slot id="banahaw-hero-3" data-gallery="banahaw-hero-gal" radius="14" recommend="Best: 1200px+ wide" placeholder="Photo 3" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      {{ smallOverlay2 }}
+    </div>
+    <div style="position:relative;min-height:0">
+      <image-slot id="banahaw-hero-4" data-gallery="banahaw-hero-gal" radius="14" recommend="Best: 1200px+ wide" placeholder="Photo 4" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      {{ smallOverlay3 }}
+    </div>
+  </div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:clamp(32px,5vw,56px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,48px);align-items:start">
+  <div style="display:flex;flex-direction:column;gap:26px">
+    <div>
+      <h2 style="margin:0 0 12px;font:400 clamp(24px,3vw,32px)/1.15 'URW Classico',Georgia,serif;color:#0e3a2d"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em">T</span>he big kabina for the whole pamilya</h2>
+      <p style="margin:0 0 12px;font:16px/1.75 Helvetica,Arial,sans-serif;color:#33413a">Banahaw is our largest kabina, made for reunions and big barkadas. It sleeps up to 12 guests, with a balcony that faces its namesake mountain and the billiards table waiting right downstairs.</p>
+      <p style="margin:0;font:16px/1.75 Helvetica,Arial,sans-serif;color:#33413a">Every stay includes access to the pool, the fully equipped kitchen, nipa huts, and all resort amenities.</p>
+    </div>
+    <div>
+      <h3 style="margin:0 0 12px;font:400 20px/1.2 'URW Classico',Georgia,serif;color:#2b3499">Cabin features</h3>
+      <ul style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px">
+        <li style="font:14px/1.6 Helvetica,Arial,sans-serif;color:#33413a;background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:10px;padding:12px 14px">Sleeps up to 12 guests</li>
+        <li style="font:14px/1.6 Helvetica,Arial,sans-serif;color:#33413a;background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:10px;padding:12px 14px">Balcony facing Mt. Banahaw</li>
+        <li style="font:14px/1.6 Helvetica,Arial,sans-serif;color:#33413a;background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:10px;padding:12px 14px">Direct access to the billiards table</li>
+        <li style="font:14px/1.6 Helvetica,Arial,sans-serif;color:#33413a;background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:10px;padding:12px 14px">Air-conditioned</li>
+        <li style="font:14px/1.6 Helvetica,Arial,sans-serif;color:#33413a;background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:10px;padding:12px 14px">Hot &amp; cold shower</li>
+        <li style="font:14px/1.6 Helvetica,Arial,sans-serif;color:#33413a;background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:10px;padding:12px 14px">Reliable Wi-Fi</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <aside style="display:flex;flex-direction:column;gap:20px">
+    <div style="background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:20px;padding:24px;box-shadow:0 4px 18px rgba(14,58,45,.07);display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;border-bottom:1px dashed rgba(14,58,45,.15);padding-bottom:14px">
+        <p style="margin:0;font:400 26px/1 'URW Classico',Georgia,serif;color:#fe5c36">₱11,500 <span style="font:400 13px/1 Helvetica,Arial,sans-serif;color:#8a958e">/ 21-hr stay</span></p>
+        <p style="margin:0;font:400 20px/1 'URW Classico',Georgia,serif;color:#0e3a2d">₱9,500 <span style="font:400 13px/1 Helvetica,Arial,sans-serif;color:#8a958e">/ day tour</span></p>
+      </div>
+
+      <div>
+        <p style="margin:0 0 8px;font:700 12px/1 Helvetica,Arial,sans-serif;letter-spacing:.05em;color:#2b3499">1 · DATES &amp; GUESTS</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <span style="font:700 12px/1 Helvetica,Arial,sans-serif;color:#55625b">{{ dateLabel }}</span>
+            <button onClick="{{ toggleCalIn }}" style="cursor:pointer;text-align:left;font:13px/1.4 Helvetica,Arial,sans-serif;color:{{ checkInColor }};padding:11px 8px;border:1px solid rgba(14,58,45,.2);border-radius:9px;background:#faf7f0;width:100%;box-sizing:border-box">{{ checkInLabel }}</button>
+          </div>
+          <sc-if value="{{ isOvernight }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;flex-direction:column;gap:5px">
+              <span style="font:700 12px/1 Helvetica,Arial,sans-serif;color:#55625b">Check-out</span>
+              <button onClick="{{ toggleCalOut }}" style="cursor:pointer;text-align:left;font:13px/1.4 Helvetica,Arial,sans-serif;color:{{ checkOutColor }};padding:11px 8px;border:1px solid rgba(14,58,45,.2);border-radius:9px;background:#faf7f0;width:100%;box-sizing:border-box">{{ checkOutLabel }}</button>
+            </div>
+          </sc-if>
+          <label style="display:flex;flex-direction:column;gap:5px;font:700 12px/1 Helvetica,Arial,sans-serif;color:#55625b">Guests (pax)
+            <input type="number" min="1" max="24" value="{{ pax }}" onChange="{{ setPax }}" style="font:14px/1.4 Helvetica,Arial,sans-serif;color:#0e3a2d;padding:11px 8px;border:1px solid rgba(14,58,45,.2);border-radius:9px;background:#faf7f0;width:100%;box-sizing:border-box" />
+          </label>
+        </div>
+        <sc-if value="{{ showNights }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:8px 0 0;font:11px/1.5 Helvetica,Arial,sans-serif;color:#8a958e">{{ nightsSummary }}</p>
+        </sc-if>
+        <sc-if value="{{ calOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:10px;background:#fff;border:1px solid rgba(14,58,45,.15);border-radius:14px;box-shadow:0 12px 30px rgba(14,58,45,.12);padding:14px">
+            <p style="margin:0 0 8px;font:700 12px/1 Helvetica,Arial,sans-serif;color:#2b3499">{{ calTitle }}</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px">
+              <button onClick="{{ calPrev }}" aria-label="Previous month" style="border:none;background:none;cursor:pointer;font:200 22px/1 Helvetica,Arial,sans-serif;color:#2b3499;padding:2px 8px">‹</button>
+              <p style="margin:0;font:400 15px/1 'URW Classico',Georgia,serif;color:#2b3499">{{ monthLabel }}</p>
+              <button onClick="{{ calNext }}" aria-label="Next month" style="border:none;background:none;cursor:pointer;font:200 22px/1 Helvetica,Arial,sans-serif;color:#2b3499;padding:2px 8px">›</button>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:2px">
+              <sc-for list="{{ dow }}" as="d" hint-placeholder-count="7">
+                <p style="margin:0;text-align:center;font:700 9px/1 Helvetica,Arial,sans-serif;letter-spacing:.05em;color:#8a958e;padding:3px 0">{{ d }}</p>
+              </sc-for>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px">
+              <sc-for list="{{ calCells }}" as="c" hint-placeholder-count="35">
+                <button onClick="{{ c.pick }}" style="min-height:30px;display:grid;place-items:center;border-radius:6px;background:{{ c.bg }};border:1px solid {{ c.bd }};color:{{ c.fg }};font:600 11px/1 Helvetica,Arial,sans-serif;text-decoration:{{ c.deco }};cursor:{{ c.cursor }};padding:0">{{ c.day }}</button>
+              </sc-for>
+            </div>
+            <p style="margin:10px 0 0;font:10px/1.5 Helvetica,Arial,sans-serif;color:#8a958e">Crossed-out dates are booked. Synced with our Airbnb &amp; Booking.com calendars · updated {{ updated }}</p>
+          </div>
+        </sc-if>
+      </div>
+
+      <div>
+        <p style="margin:0 0 8px;font:700 12px/1 Helvetica,Arial,sans-serif;letter-spacing:.05em;color:#2b3499">2 · STAY TYPE</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <button class="liftbtn" onClick="{{ pickOvernight }}" style="cursor:pointer;background:{{ ovBg }};border:2px solid {{ ovBd }};border-radius:11px;padding:12px 10px;text-align:left">
+            <span style="display:block;font:700 13px/1.3 Helvetica,Arial,sans-serif;color:#0e3a2d">21-Hour Stay</span>
+            <span style="display:block;font:11px/1.4 Helvetica,Arial,sans-serif;color:#55625b">2:00 PM – 11:00 AM</span>
+          </button>
+          <button class="liftbtn" onClick="{{ pickDaytour }}" style="cursor:pointer;background:{{ dtBg }};border:2px solid {{ dtBd }};border-radius:11px;padding:12px 10px;text-align:left">
+            <span style="display:block;font:700 13px/1.3 Helvetica,Arial,sans-serif;color:#0e3a2d">Day Tour</span>
+            <span style="display:block;font:11px/1.4 Helvetica,Arial,sans-serif;color:#55625b">8:00 AM – 5:00 PM</span>
+          </button>
+        </div>
+      </div>
+
+      <sc-if value="{{ showKabinaPick }}" hint-placeholder-val="{{ false }}">
+        <div>
+          <p style="margin:0 0 8px;font:700 12px/1 Helvetica,Arial,sans-serif;letter-spacing:.05em;color:#2b3499">3 · CHOOSE YOUR KABINA(S)</p>
+          <p style="margin:0 0 10px;font:12px/1.5 Helvetica,Arial,sans-serif;color:#b07514;background:rgba(253,180,73,.14);border:1px solid rgba(253,180,73,.4);border-radius:9px;padding:9px 12px">{{ paxNote }}</p>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <sc-for list="{{ cabinCards }}" as="cb" hint-placeholder-count="3">
+              <button class="liftbtn" onClick="{{ cb.pick }}" style="cursor:{{ cb.cursor }};text-align:left;background:{{ cb.bg }};border:2px solid {{ cb.bd }};border-radius:11px;padding:11px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px">
+                <span style="display:flex;flex-direction:column;gap:2px">
+                  <span style="font:400 17px/1 'URW Classico',Georgia,serif;color:#2b3499">{{ cb.name }}</span>
+                  <span style="font:11px/1.4 Helvetica,Arial,sans-serif;color:#55625b">{{ cb.sub }}</span>
+                </span>
+                <span style="font:700 10px/1 Helvetica,Arial,sans-serif;letter-spacing:.05em;color:{{ cb.tickFg }};background:{{ cb.tickBg }};padding:5px 8px;border-radius:999px;flex:none">{{ cb.tick }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showAvail }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;font:700 13px/1.5 Helvetica,Arial,sans-serif;color:{{ availColor }};background:{{ availBg }};border:1px solid {{ availBd }};border-radius:9px;padding:10px 12px">{{ availMsg }}</p>
+      </sc-if>
+
+      <div style="border-top:1px dashed rgba(14,58,45,.15);padding-top:14px;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
+          <p style="margin:0;font:700 11px/1 Helvetica,Arial,sans-serif;letter-spacing:.06em;color:#8a958e">ESTIMATED TOTAL</p>
+          <p style="margin:0;font:400 26px/1 'URW Classico',Georgia,serif;color:#0e3a2d">{{ totalLabel }}</p>
+        </div>
+        <a class="hbg" href="Book Now.dc.html" onClick="{{ saveDraft }}" style="text-decoration:none;text-align:center;background:#fe5c36;color:#fff;font:700 15px/1 Helvetica,Arial,sans-serif;letter-spacing:.04em;padding:16px 18px;border-radius:999px;--hbg:#e34a27" style-hover="background:#e34a27;transform:translateY(-3px);box-shadow:0 12px 24px rgba(14,58,45,.22)">Book now</a>
+        <p style="margin:0;text-align:center;font:11px/1.6 Helvetica,Arial,sans-serif;color:#8a958e">Your choices carry over, you'll only add your contact details on the next page.</p>
+      </div>
+    </div>
+
+    <div style="background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:16px;padding:16px 18px">
+      <ul style="margin:0;padding:0 0 0 16px;font:12px/1.8 Helvetica,Arial,sans-serif;color:#55625b">
+        <li>Extra guest: ₱500/head</li>
+        <li>Corkage: ₱100/bottle (alcoholic drinks)</li>
+        <li>1 small pet allowed: ₱300 (diaper required)</li>
+      </ul>
+    </div>
+  </aside>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,380px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  CABIN = { key: 'banahaw', name: 'Banahaw', pax: 12, overnight: 11500, daytour: 9500 };
+
+  state = {
+    calY: new Date().getFullYear(),
+    calM: new Date().getMonth(),
+    booked: null,
+    updated: '…',
+    calOpen: '',
+    stay: 'overnight',
+    checkIn: '',
+    checkOut: '',
+    pax: '4',
+    extraCabins: [],
+    heroPos: 0,
+    heroTick: 0
+  };
+
+  async componentDidMount() {
+    import('./reveal.js').then(m => m.initReveal());
+    import('./lightbox.js').then(m => m.initLightbox());
+    this._heroPoll = setInterval(() => this._scanHero(), 1200);
+    setTimeout(() => this._scanHero(), 400);
+    this.avail = await import('./avail.js');
+    const { booked, updated } = await this.avail.loadAvailability();
+    this.setState({ booked, updated: updated || '-' });
+  }
+
+  componentWillUnmount() { clearInterval(this._heroPoll); }
+
+  _heroIds() { return ['banahaw-hero', 'banahaw-hero-2', 'banahaw-hero-3', 'banahaw-hero-4']; }
+
+  _scanHero() {
+    const items = [];
+    for (const id of this._heroIds()) {
+      const el = document.getElementById(id);
+      if (!el || !el.hasAttribute('data-filled')) continue;
+      const im = el.shadowRoot && el.shadowRoot.querySelector('.frame img');
+      const src = im && im.getAttribute('src');
+      if (src) items.push({ id, src });
+    }
+    const sig = items.map(i => i.id + ':' + i.src.length).join('|');
+    if (sig !== this._heroSig) {
+      this._heroSig = sig;
+      this._heroItems = items;
+      this.setState(st => ({ heroTick: st.heroTick + 1, heroPos: Math.min(st.heroPos, Math.max(0, items.length - 1)) }));
+    }
+  }
+
+  _bookedSet() {
+    const s = this.state;
+    return (s.booked && s.booked[this.CABIN.key]) || new Set();
+  }
+
+  _spanFree(startIso, endIso, set) {
+    const av = this.avail;
+    if (!av || !startIso || !endIso) return false;
+    let d = av.parseISO(startIso);
+    const end = av.parseISO(endIso);
+    if (end <= d) return false;
+    while (d < end) {
+      if (set.has(av.toISO(d))) return false;
+      d = av.addDays(d, 1);
+    }
+    return true;
+  }
+
+  _pickDate(iso) {
+    const set = this._bookedSet();
+    if (this.state.calOpen === 'out') {
+      this.setState({ checkOut: iso, calOpen: '' });
+    } else {
+      const keepOut = this.state.checkOut ? this._spanFree(iso, this.state.checkOut, set) : false;
+      this.setState({
+        checkIn: iso,
+        checkOut: keepOut ? this.state.checkOut : '',
+        calOpen: (this.state.stay === 'overnight' && !keepOut) ? 'out' : ''
+      });
+    }
+  }
+
+  renderVals() {
+    const ALL = [
+      { key: 'makiling', name: 'Makiling', pax: 6, sub: 'Poolside · up to 6 pax · Banahaw view', overnight: 5500, daytour: 4500 },
+      { key: 'sembrano', name: 'Sembrano', pax: 6, sub: 'Poolside · up to 6 pax · pool view', overnight: 5500, daytour: 4500 },
+      { key: 'banahaw', name: 'Banahaw', pax: 12, sub: 'Up to 12 pax · balcony + billiards', overnight: 11500, daytour: 9500 }
+    ];
+    const ME = this.CABIN;
+    const peso = n => '\u20B1' + n.toLocaleString('en-PH');
+    const s = this.state;
+    const av = this.avail;
+    const isOvernight = s.stay === 'overnight';
+    const nights = (isOvernight && s.checkIn && s.checkOut && av)
+      ? Math.max(1, Math.round((av.parseISO(s.checkOut) - av.parseISO(s.checkIn)) / 86400000))
+      : 1;
+    const pax = Math.max(1, parseInt(s.pax, 10) || 1);
+    const selKeys = [ME.key, ...s.extraCabins];
+    const selected = ALL.filter(c => selKeys.includes(c.key));
+    const capacity = selected.reduce((t, c) => t + c.pax, 0);
+    const namesLabel = selected.map(c => c.name).join(' + ');
+    const showKabinaPick = pax > ME.pax;
+
+    const cabinCards = ALL.map(c => {
+      const isMe = c.key === ME.key;
+      const on = selKeys.includes(c.key);
+      return {
+        key: c.key, name: c.name, sub: c.sub,
+        cursor: isMe ? 'default' : 'pointer',
+        bg: on ? 'rgba(43,52,153,.06)' : '#faf7f0',
+        bd: on ? '#2b3499' : 'rgba(14,58,45,.14)',
+        tick: isMe ? 'THIS CABIN' : (on ? 'ADDED ✓' : '+ ADD'),
+        tickFg: on ? '#fff' : '#55625b',
+        tickBg: on ? '#2b3499' : 'rgba(14,58,45,.08)',
+        pick: () => {
+          if (isMe) return;
+          this.setState(st => ({
+            extraCabins: st.extraCabins.includes(c.key)
+              ? st.extraCabins.filter(k => k !== c.key)
+              : [...st.extraCabins, c.key]
+          }));
+        }
+      };
+    });
+
+    // availability check across selected kabinas
+    let showAvail = false, availOk = true, availMsg = '';
+    if (s.checkIn && av && s.booked) {
+      showAvail = true;
+      const nNights = isOvernight ? nights : 1;
+      const problems = [];
+      for (const c of selected) {
+        const bad = this.avail.conflicts(s.checkIn, nNights, s.booked[c.key] || new Set());
+        if (bad.length) problems.push(c.name + ' (' + bad.join(', ') + ')');
+      }
+      availOk = problems.length === 0;
+      availMsg = availOk
+        ? '✓ ' + namesLabel + (selected.length > 1 ? ' look' : ' looks') + ' available for your dates!'
+        : '✕ Already booked: ' + problems.join(' · ') + '. Try other dates.';
+    }
+
+    const perStay = selected.reduce((t, c) => t + (isOvernight ? c.overnight : c.daytour), 0);
+    const base = isOvernight ? perStay * nights : perStay;
+    const extras = Math.max(0, pax - capacity) * 500 * (isOvernight ? nights : 1);
+    const paxNote = 'Your group is bigger than ' + ME.name + '\u2019s max of ' + ME.pax + '. Add another kabina, or extra guests are \u20B1500/head' + (isOvernight && nights > 1 ? ' per night' : '') + '.';
+
+    // date-picker calendar
+    const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const set = this._bookedSet();
+    let calCells = [];
+    if (av && s.calOpen) {
+      calCells = av.monthGrid(s.calY, s.calM, set).map(c => {
+        if (c.blank) return { key: c.key, day: '', bg: 'transparent', fg: 'transparent', bd: 'transparent', deco: 'none', cursor: 'default', pick: () => {} };
+        const isOut = s.calOpen === 'out';
+        const ok = isOut ? this._spanFree(s.checkIn, c.iso, set) : (!c.isPast && !c.booked);
+        const sel = isOut ? s.checkOut === c.iso : s.checkIn === c.iso;
+        const dim = c.isPast || (isOut && !ok);
+        return {
+          key: c.key, day: String(c.day),
+          bg: sel ? 'rgba(43,52,153,.12)' : (c.booked ? 'rgba(254,92,54,.14)' : (dim ? 'transparent' : '#fff')),
+          fg: c.booked ? '#c23a1b' : (dim ? '#c2c9c4' : (sel ? '#2b3499' : '#0e3a2d')),
+          bd: sel ? '#2b3499' : (c.booked ? 'rgba(254,92,54,.35)' : (dim ? 'rgba(14,58,45,.06)' : 'rgba(14,58,45,.18)')),
+          deco: c.booked ? 'line-through' : 'none',
+          cursor: ok ? 'pointer' : 'default',
+          pick: ok ? (() => this._pickDate(c.iso)) : (() => {})
+        };
+      });
+    }
+    const calNow = new Date();
+    const calAtMin = s.calY === calNow.getFullYear() && s.calM === calNow.getMonth();
+
+    // hero bento carousel
+    const editable = !!(window.omelette && window.omelette.writeFile);
+    const heroItems = this._heroItems || [];
+    const heroPos = Math.min(s.heroPos, Math.max(0, heroItems.length - 1));
+    const cur = heroItems[heroPos] || null;
+    const heroStep = (d) => () => {
+      const n = (this._heroItems || []).length;
+      if (n < 2) return;
+      this.setState(st => ({ heroPos: (st.heroPos + d + n) % n }));
+    };
+    const openGalAt = (i) => {
+      const f = window.__ksaOpenGallery;
+      if (f && heroItems.length) f(heroItems.map(x => ({ src: x.src, credit: '' })), i);
+    };
+    // While the hero is cycled, the three small boxes rotate along with it
+    // so the grid always shows the next photos in the set.
+    const mkSmall = (i) => {
+      if (!(heroItems.length > 1 && heroPos > 0)) return null;
+      const k = (heroPos + i) % heroItems.length;
+      const it = heroItems[k];
+      if (!it) return null;
+      return React.createElement('img', {
+        src: it.src, alt: 'Cabin photo',
+        onClick: () => openGalAt(k),
+        style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', borderRadius: 14, zIndex: 2, cursor: 'zoom-in', pointerEvents: editable ? 'none' : 'auto' }
+      });
+    };
+
+    return {
+      isOvernight,
+      pickOvernight: () => this.setState({ stay: 'overnight' }),
+      pickDaytour: () => this.setState({ stay: 'daytour', checkOut: '', calOpen: this.state.calOpen === 'out' ? '' : this.state.calOpen }),
+      ovBg: isOvernight ? 'rgba(43,52,153,.06)' : '#faf7f0',
+      ovBd: isOvernight ? '#2b3499' : 'rgba(14,58,45,.14)',
+      dtBg: !isOvernight ? 'rgba(43,52,153,.06)' : '#faf7f0',
+      dtBd: !isOvernight ? '#2b3499' : 'rgba(14,58,45,.14)',
+      dateLabel: isOvernight ? 'Check-in' : 'Day tour date',
+      pax: s.pax,
+      setPax: e => this.setState({ pax: e.target.value }),
+      showKabinaPick, paxNote, cabinCards,
+      showAvail, availMsg,
+      availColor: availOk ? '#1f6b3a' : '#c23a1b',
+      availBg: availOk ? 'rgba(108,125,55,.1)' : 'rgba(254,92,54,.1)',
+      availBd: availOk ? 'rgba(108,125,55,.35)' : 'rgba(254,92,54,.35)',
+      totalLabel: peso(base + extras),
+      saveDraft: () => {
+        try {
+          localStorage.setItem('ksaBookingDraft', JSON.stringify({
+            cabins: selKeys, stay: s.stay, checkIn: s.checkIn, checkOut: s.checkOut, pax: s.pax
+          }));
+        } catch (e) {}
+      },
+      updated: s.updated,
+      calOpen: !!s.calOpen,
+      calTitle: s.calOpen === 'out' ? 'Pick your check-out date' : (isOvernight ? 'Pick your check-in date' : 'Pick your day tour date'),
+      toggleCalIn: () => this.setState(st => ({ calOpen: st.calOpen === 'in' ? '' : 'in' })),
+      toggleCalOut: () => this.setState(st => ({ calOpen: st.calOpen === 'out' ? '' : (st.checkIn ? 'out' : 'in') })),
+      checkInLabel: s.checkIn || 'Pick a date',
+      checkInColor: s.checkIn ? '#0e3a2d' : '#8a958e',
+      checkOutLabel: s.checkOut || 'Pick a date',
+      checkOutColor: s.checkOut ? '#0e3a2d' : '#8a958e',
+      showNights: !!(isOvernight && s.checkIn && s.checkOut),
+      nightsSummary: nights + (nights > 1 ? ' nights' : ' night') + ' · check-out 11:00 AM',
+      monthLabel: MONTHS[s.calM] + ' ' + s.calY,
+      dow: ['Su','Mo','Tu','We','Th','Fr','Sa'],
+      calCells,
+      calPrev: () => {
+        if (calAtMin) return;
+        this.setState(st => (st.calM === 0 ? { calM: 11, calY: st.calY - 1 } : { calM: st.calM - 1 }));
+      },
+      calNext: () => this.setState(st => (st.calM === 11 ? { calM: 0, calY: st.calY + 1 } : { calM: st.calM + 1 })),
+      heroArrows: heroItems.length > 1,
+      heroOverlayEl: (cur && cur.id !== this._heroIds()[0]) ? React.createElement('img', {
+        src: cur.src,
+        alt: 'Cabin photo',
+        onClick: () => {
+          const f = window.__ksaOpenGallery;
+          if (f && heroItems.length) f(heroItems.map(i => ({ src: i.src, credit: '' })), heroPos);
+        },
+        style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', borderRadius: 20, zIndex: 2, cursor: 'zoom-in', pointerEvents: editable ? 'none' : 'auto' }
+      }) : null,
+      smallOverlay1: mkSmall(1),
+      smallOverlay2: mkSmall(2),
+      smallOverlay3: mkSmall(3),
+      heroPrev: heroStep(-1),
+      heroNext: heroStep(1)
+    };
+  }
+}
+</script>
+</body>
+</html>

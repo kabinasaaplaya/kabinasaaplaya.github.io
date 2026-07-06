@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>The Kabinas – A-Frame Cabins in Jala-jala, Rizal | Kabina sa Aplaya</title>
+  <meta name="description" content="Three A-frame cabins by Laguna de Bay: Makiling and Sembrano (up to 6 pax, poolside) and Banahaw (up to 12 pax, billiards access). 21-hour stays from ₱5,500, day tours from ₱4,500." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&amp;display=swap" rel="stylesheet" />
+  <script src="image-slot.js"></script>
+  <style>
+    image-slot { transition: transform .35s ease; }
+    image-slot:not([id$="-hero"]):not([id^="home-cabin"]):hover { transform: scale(1.03); }
+    .liftcard { transition: transform .35s ease, box-shadow .35s ease; }
+    .liftcard:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(14,58,45,.15); }
+    .liftcard image-slot:hover { transform: scale(1.05); }
+    .hbg:hover { background: var(--hbg) !important; }
+    .hfg:hover { color: var(--hfg) !important; }
+    .hbc:hover { border-color: var(--hbc) !important; }
+    .hbg, .hfg, .hbc { transition: background .35s ease, color .35s ease, border-color .35s ease, transform .35s ease, box-shadow .35s ease; }
+    .lnk { border-bottom: none !important; padding-bottom: 4px !important; background-image: linear-gradient(#fdb449,#fdb449), linear-gradient(rgba(253,180,73,.4),rgba(253,180,73,.4)); background-repeat: no-repeat; background-size: 0% 2px, 100% 2px; background-position: 0 100%, 0 100%; transition: background-size .35s ease, color .35s ease; }
+    .lnk:hover { background-size: 100% 2px, 100% 2px; }
+    .lnk .arr { display: inline-block; transition: transform .35s ease; }
+    .lnk:hover .arr { transform: translateX(5px); }
+    image-slot[data-filled] { cursor: zoom-in; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-BoldItalic.ttf') format('truetype'); font-weight: 700; font-style: italic; font-display: swap; }
+    .ilo, .ilb { transition: color .35s ease; }
+    .ilo:hover { color: #2b3499 !important; }
+    .ilb:hover { color: #fe5c36 !important; }
+    body { animation: pageIn 1s ease both; }
+    @keyframes pageIn { from { opacity: 0 } }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #faf7f0; -webkit-font-smoothing: antialiased; }
+  </style>
+</helmet>
+
+<dc-import name="SiteNav" active="kabinas" hint-size="100%,68px"></dc-import>
+
+<header style="max-width:1200px;margin:0 auto;padding:clamp(48px,7vw,80px) 24px 12px">
+  <p style="margin:0 0 8px;font:italic 400 23px/1.25 'URW Classico',Georgia,serif;color:#fe5c36">Pili ka na</p>
+  <h1 style="margin:0 0 16px;font:400 clamp(32px,5vw,52px)/1.1 'URW Classico',Georgia,serif;color:#2b3499"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em">T</span>he Kabinas</h1>
+  <p style="margin:0;font:16px/1.75 Helvetica,Arial,sans-serif;color:#33413a;max-width:640px">Three A-frame cabins, each with its own personality, named after the mountains that watch over Laguna de Bay. All stays include access to the pool, kitchen, and resort amenities. Booking for more than your cabin's max? You can book multiple kabinas.</p>
+</header>
+
+<section style="max-width:1200px;margin:0 auto;padding:28px 24px 8px;display:flex;flex-direction:column;gap:32px">
+
+  <article class="liftcard" style="background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:20px;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));box-shadow:0 2px 12px rgba(14,58,45,.06)">
+    <image-slot recommend="Best: 1200px+ wide" id="makiling-hero" shape="rect" placeholder="Makiling, poolside cabin + Mt. Banahaw deck view" style="width:100%;height:100%;min-height:300px"></image-slot>
+    <div style="padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px">
+        <h2 style="margin:0;font:400 clamp(28px,3vw,36px)/1 'URW Classico',Georgia,serif;color:#2b3499"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em">M</span>akiling</h2>
+      </div>
+      <p style="margin:0;font:15px/1.7 Helvetica,Arial,sans-serif;color:#33413a">Poolside A-frame for up to 6 guests, with a private deck that looks straight out to Mt. Banahaw. Mornings here start with the mountain in gold light and coffee on the deck.</p>
+      <ul style="margin:0;padding:0 0 0 18px;font:14px/1.9 Helvetica,Arial,sans-serif;color:#55625b">
+        <li>Deck view directly of Mt. Banahaw</li>
+        <li>Steps from the pool</li>
+        <li>Air-conditioned, hot &amp; cold shower</li>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;border-top:1px dashed rgba(14,58,45,.18);padding-top:16px;margin-top:4px">
+        <div><p style="margin:0;font:700 12px/1 Helvetica,Arial,sans-serif;letter-spacing:.06em;color:#8a958e">21-HOUR STAY</p><p style="margin:4px 0 0;font:400 24px/1 'URW Classico',Georgia,serif;color:#fe5c36">₱5,500</p></div>
+        <div><p style="margin:0;font:700 12px/1 Helvetica,Arial,sans-serif;letter-spacing:.06em;color:#8a958e">DAY TOUR</p><p style="margin:4px 0 0;font:400 24px/1 'URW Classico',Georgia,serif;color:#0e3a2d">₱4,500</p></div>
+        <a class="hbg" href="Makiling.dc.html" style="margin-left:auto;text-decoration:none;background:#2b3499;color:#fff;font:700 14px/1 Helvetica,Arial,sans-serif;padding:14px 24px;border-radius:999px;flex:none;transition:transform .35s ease,box-shadow .35s ease,background .35s ease,color .35s ease;--hbg:#fe5c36" style-hover="transform:translateY(-3px);box-shadow:0 12px 24px rgba(14,58,45,.22);background:#fe5c36">Details &amp; availability</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="liftcard" style="background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:20px;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));box-shadow:0 2px 12px rgba(14,58,45,.06)">
+    <image-slot recommend="Best: 1200px+ wide" id="sembrano-hero" shape="rect" placeholder="Sembrano, poolside cabin, pool deck view" style="width:100%;height:100%;min-height:300px"></image-slot>
+    <div style="padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px">
+        <h2 style="margin:0;font:400 clamp(28px,3vw,36px)/1 'URW Classico',Georgia,serif;color:#2b3499"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em">S</span>embrano</h2>
+      </div>
+      <p style="margin:0;font:15px/1.7 Helvetica,Arial,sans-serif;color:#33413a">Named after the peak across the lake, Sembrano is our other 6-pax poolside cabin, its deck opens straight onto the water, so the pool is basically an extension of your room.</p>
+      <ul style="margin:0;padding:0 0 0 18px;font:14px/1.9 Helvetica,Arial,sans-serif;color:#55625b">
+        <li>Deck view of the pool</li>
+        <li>Deck opens right onto the pool</li>
+        <li>Air-conditioned, hot &amp; cold shower</li>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;border-top:1px dashed rgba(14,58,45,.18);padding-top:16px;margin-top:4px">
+        <div><p style="margin:0;font:700 12px/1 Helvetica,Arial,sans-serif;letter-spacing:.06em;color:#8a958e">21-HOUR STAY</p><p style="margin:4px 0 0;font:400 24px/1 'URW Classico',Georgia,serif;color:#fe5c36">₱5,500</p></div>
+        <div><p style="margin:0;font:700 12px/1 Helvetica,Arial,sans-serif;letter-spacing:.06em;color:#8a958e">DAY TOUR</p><p style="margin:4px 0 0;font:400 24px/1 'URW Classico',Georgia,serif;color:#0e3a2d">₱4,500</p></div>
+        <a class="hbg" href="Sembrano.dc.html" style="margin-left:auto;text-decoration:none;background:#2b3499;color:#fff;font:700 14px/1 Helvetica,Arial,sans-serif;padding:14px 24px;border-radius:999px;flex:none;transition:transform .35s ease,box-shadow .35s ease,background .35s ease,color .35s ease;--hbg:#fe5c36" style-hover="transform:translateY(-3px);box-shadow:0 12px 24px rgba(14,58,45,.22);background:#fe5c36">Details &amp; availability</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="liftcard" style="background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:20px;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));box-shadow:0 2px 12px rgba(14,58,45,.06)">
+    <image-slot recommend="Best: 1200px+ wide" id="banahaw-hero" shape="rect" placeholder="Banahaw. 12-pax cabin, balcony + billiards" style="width:100%;height:100%;min-height:300px"></image-slot>
+    <div style="padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px">
+        <h2 style="margin:0;font:400 clamp(28px,3vw,36px)/1 'URW Classico',Georgia,serif;color:#2b3499"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em">B</span>anahaw</h2>
+      </div>
+      <p style="margin:0;font:15px/1.7 Helvetica,Arial,sans-serif;color:#33413a">Our biggest kabina, made for the whole pamilya. Sleeps up to 12, with a balcony facing its namesake mountain and direct access to the billiards table downstairs.</p>
+      <ul style="margin:0;padding:0 0 0 18px;font:14px/1.9 Helvetica,Arial,sans-serif;color:#55625b">
+        <li>Balcony view of Mt. Banahaw</li>
+        <li>Direct access to the billiards table</li>
+        <li>Air-conditioned, hot &amp; cold shower</li>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;border-top:1px dashed rgba(14,58,45,.18);padding-top:16px;margin-top:4px">
+        <div><p style="margin:0;font:700 12px/1 Helvetica,Arial,sans-serif;letter-spacing:.06em;color:#8a958e">21-HOUR STAY</p><p style="margin:4px 0 0;font:400 24px/1 'URW Classico',Georgia,serif;color:#fe5c36">₱11,500</p></div>
+        <div><p style="margin:0;font:700 12px/1 Helvetica,Arial,sans-serif;letter-spacing:.06em;color:#8a958e">DAY TOUR</p><p style="margin:4px 0 0;font:400 24px/1 'URW Classico',Georgia,serif;color:#0e3a2d">₱9,500</p></div>
+        <a class="hbg" href="Banahaw.dc.html" style="margin-left:auto;text-decoration:none;background:#2b3499;color:#fff;font:700 14px/1 Helvetica,Arial,sans-serif;padding:14px 24px;border-radius:999px;flex:none;transition:transform .35s ease,box-shadow .35s ease,background .35s ease,color .35s ease;--hbg:#fe5c36" style-hover="transform:translateY(-3px);box-shadow:0 12px 24px rgba(14,58,45,.22);background:#fe5c36">Details &amp; availability</a>
+      </div>
+    </div>
+  </article>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:clamp(40px,6vw,64px) 24px">
+  <div style="background:#f2ecdd;border:1px solid rgba(14,58,45,.1);border-radius:20px;padding:clamp(24px,4vw,40px)">
+    <h2 style="margin:0 0 18px;font:400 clamp(24px,3vw,32px)/1.15 'URW Classico',Georgia,serif;color:#0e3a2d"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em">G</span>ood to know before you book</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
+      <div><p style="margin:0 0 4px;font:700 14px/1.4 Helvetica,Arial,sans-serif;color:#2b3499">Extra guests</p><p style="margin:0;font:14px/1.7 Helvetica,Arial,sans-serif;color:#33413a">₱500 per extra head. If your group exceeds a cabin's max, you can book multiple kabinas.</p></div>
+      <div><p style="margin:0 0 4px;font:700 14px/1.4 Helvetica,Arial,sans-serif;color:#2b3499">Corkage</p><p style="margin:0;font:14px/1.7 Helvetica,Arial,sans-serif;color:#33413a">₱100 per bottle applies to all alcoholic beverages brought in.</p></div>
+      <div><p style="margin:0 0 4px;font:700 14px/1.4 Helvetica,Arial,sans-serif;color:#2b3499">Pets</p><p style="margin:0;font:14px/1.7 Helvetica,Arial,sans-serif;color:#33413a">1 small pet per cabin, ₱300 pet fee. Diaper required at all times.</p></div>
+      <div><p style="margin:0 0 4px;font:700 14px/1.4 Helvetica,Arial,sans-serif;color:#2b3499">Exclusive booking</p><p style="margin:0;font:14px/1.7 Helvetica,Arial,sans-serif;color:#33413a">Want the whole resort to yourselves? <a class="ilo" href="Inquiries.dc.html" style="color:#fe5c36;font-weight:700;text-decoration:none">Request a quote</a> for exclusive rates.</p></div>
+    </div>
+    <p style="margin:18px 0 0;font:13px/1.6 Helvetica,Arial,sans-serif;color:#55625b">Full house rules and pool rules are on the <a class="ilb" href="About.dc.html" style="color:#2b3499;font-weight:700;text-decoration:none">About page</a>.</p>
+  </div>
+</section>
+
+<section style="max-width:760px;margin:0 auto;padding:0 24px clamp(56px,8vw,90px);text-align:center">
+  <h2 style="margin:0 0 14px;font:400 clamp(26px,3.2vw,36px)/1.2 'URW Classico',Georgia,serif;color:#2b3499"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em">F</span>ound your kabina?</h2>
+  <a class="hbg" href="Book Now.dc.html" style="display:inline-block;text-decoration:none;background:#fe5c36;color:#fff;font:700 17px/1 Helvetica,Arial,sans-serif;letter-spacing:.04em;padding:18px 40px;border-radius:999px;transition:transform .35s ease,box-shadow .35s ease,background .35s ease,color .35s ease;--hbg:#e34a27" style-hover="transform:translateY(-3px);box-shadow:0 12px 24px rgba(14,58,45,.22);background:#e34a27">Check availability &amp; book</a>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,380px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    import('./reveal.js').then(m => m.initReveal());
+    import('./lightbox.js').then(m => m.initLightbox());
+  }
+  renderVals() { return {}; }
+}
+</script>
+
+</body>
+</html>

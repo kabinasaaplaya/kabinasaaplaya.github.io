@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Banahaw Cabin Photo Tour | Kabina sa Aplaya, Jala-jala Rizal</title>
+  <meta name="description" content="Photo tour of the Banahaw cabin at Kabina sa Aplaya, Jala-jala, Rizal: deck, bedroom, living space, bathroom, pool and grounds." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&amp;display=swap" rel="stylesheet" />
+  <script src="image-slot.js"></script>
+  <style>
+    image-slot { transition: transform .35s ease; }
+    image-slot[data-filled] { cursor: zoom-in; }
+    image-slot[data-filled]:hover { transform: scale(1.015); }
+    .secphotos image-slot:not([data-editable]):not([data-filled]) { display: none; }
+    .sec-hide { display: none !important; }
+    .hbg:hover { background: var(--hbg) !important; }
+    .hfg:hover { color: var(--hfg) !important; }
+    .hbg, .hfg { transition: background .35s ease, color .35s ease, transform .35s ease, box-shadow .35s ease; }
+    .lnk { border-bottom: none !important; padding-bottom: 4px !important; background-image: linear-gradient(#fdb449,#fdb449), linear-gradient(rgba(253,180,73,.4),rgba(253,180,73,.4)); background-repeat: no-repeat; background-size: 0% 2px, 100% 2px; background-position: 0 100%, 0 100%; transition: background-size .35s ease, color .35s ease; }
+    .lnk:hover { background-size: 100% 2px, 100% 2px; }
+    .lnk .arr { display: inline-block; transition: transform .35s ease; }
+    .lnk:hover .arr { transform: translateX(-5px); }
+    .mchips { display: none; }
+    .secphotos { display: grid; grid-template-columns: 1.8fr 1fr; grid-template-rows: 1fr 1fr auto; gap: 12px; }
+    .secphotos > image-slot { grid-column: 1; grid-row: 1 / span 2; }
+    .scrollzone > image-slot:nth-of-type(1) { grid-column: 2; grid-row: 1; }
+    .scrollzone > image-slot:nth-of-type(2) { grid-column: 2; grid-row: 2; }
+    .scrollwrap { display: contents; }
+    .secphotos { min-width: 0; }
+    .secphotos > image-slot, .scrollzone { min-width: 0; }
+    .scrollzone { display: contents; }
+    .secphotos .txwrap { grid-column: 1 / -1; grid-row: 3; position: relative; }
+    .txwrap .tx { display: flex; gap: 12px; overflow-x: auto; scrollbar-width: none; scroll-behavior: smooth; }
+    .mfade { display: none !important; }
+    @media (max-width: 940px) {
+      .tourpage { grid-template-columns: 1fr !important; }
+      .mchips { display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; position: sticky; top: 67px; z-index: 40; background: #faf7f0; margin: 12px -24px 0; padding: 12px 24px; border-bottom: 1px solid rgba(14,58,45,.1); }
+      .secphotos { display: block; }
+      .secphotos > image-slot { grid-column: auto !important; grid-row: auto !important; width: 100% !important; height: clamp(220px, 56vw, 340px) !important; margin-bottom: 12px; }
+      .scrollwrap { display: block; position: relative; }
+      .scrollzone { display: flex; gap: 10px; overflow-x: auto; scroll-behavior: smooth; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+      .txwrap { display: contents; }
+      .tx { display: contents; }
+      .scrollzone image-slot { flex: none !important; width: 200px !important; height: 150px !important; min-height: 0 !important; }
+      .dfade { display: none !important; }
+      .xfade.mfade { display: block !important; }
+      .xarrow.mfade { display: grid !important; }
+    }
+    .tocwrap { position: sticky; top: 100px; }
+    .toci { display: flex; align-items: center; text-decoration: none; padding: 9px 0 9px 16px; border-left: 2px solid rgba(14,58,45,.15); transition: border-color .3s ease, box-shadow .3s ease; }
+    .toci.on { border-left-color: #6c7d37; box-shadow: inset 1.5px 0 0 #6c7d37; }
+    .toci .rail { display: none; }
+    .toci span.lb { font: 500 14px/1.3 Helvetica, Arial, sans-serif; color: #77837c; transition: color .3s ease, font-weight .3s ease; }
+    .toci.on span.lb { color: #0e3a2d; font-weight: 700; }
+    .toci:hover span.lb { color: #6c7d37; }
+    .xarrow { position: absolute; right: 2px; top: 50%; transform: translateY(-50%); z-index: 3; border: none; background: none; cursor: pointer; padding: 0 4px; color: #0e3a2d; font: 200 40px/1 Helvetica, Arial, sans-serif; text-shadow: 0 1px 6px rgba(250,247,240,.9); transition: transform .25s ease; }
+    .xarrow:hover { transform: translateY(-50%) scale(1.2); }
+    .xfade { position: absolute; right: 0; top: 0; bottom: 0; width: 90px; pointer-events: none; background: linear-gradient(90deg, rgba(250,247,240,0), #faf7f0); z-index: 2; }
+    .xfade.xleft { right: auto; left: 0; background: linear-gradient(270deg, rgba(250,247,240,0), #faf7f0); }
+    .xarrow.xleft { right: auto; left: 2px; }
+    @media (max-width: 940px) { .toccol { display: none !important; } }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
+    body { animation: pageIn 1s ease both; }
+    @keyframes pageIn { from { opacity: 0 } }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #faf7f0; -webkit-font-smoothing: antialiased; }
+  </style>
+</helmet>
+
+<dc-import name="SiteNav" active="kabinas" hint-size="100%,68px"></dc-import>
+
+<div style="max-width:1200px;margin:0 auto;padding:clamp(32px,4.5vw,52px) 24px clamp(56px,8vw,90px)">
+  <a class="lnk" href="Banahaw.dc.html" style="font:700 14px/1 Helvetica,Arial,sans-serif;color:#2b3499;text-decoration:none"><span class="arr">←</span> Back to Banahaw</a>
+
+  <div class="tourpage" style="display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:clamp(28px,4vw,56px);margin-top:18px">
+
+    <div style="display:flex;flex-direction:column;gap:clamp(40px,5vw,64px);min-width:0">
+      <div>
+        <h1 style="margin:0 0 8px;font:400 clamp(30px,4.5vw,46px)/1.1 'URW Classico',Georgia,serif;color:#2b3499"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em">B</span>anahaw photo tour</h1>
+        <p style="margin:0;font:15px/1.7 Helvetica,Arial,sans-serif;color:#55625b">Tap any photo to view it full size.</p>
+      </div>
+
+      <div class="mchips">
+        <sc-for list="{{ sections }}" as="sec" hint-placeholder-count="6">
+          <a href="{{ sec.anchor }}" class="{{ sec.hideCls }}" style="flex:none;text-decoration:none;font:700 12px/1 Helvetica,Arial,sans-serif;color:#0e3a2d;background:#fff;border:1px solid rgba(14,58,45,.18);border-radius:999px;padding:9px 14px">{{ sec.title }}</a>
+        </sc-for>
+      </div>
+
+      <sc-for list="{{ sections }}" as="sec" hint-placeholder-count="6">
+        <section id="{{ sec.id }}" class="{{ sec.hideCls }}" style="scroll-margin-top:100px;display:flex;flex-direction:column;gap:16px">
+          <div>
+            <h2 style="margin:0 0 6px;font:400 clamp(24px,3vw,32px)/1.15 'URW Classico',Georgia,serif;color:#0e3a2d">{{ sec.title }}</h2>
+            <p style="margin:0;font:14px/1.7 Helvetica,Arial,sans-serif;color:#55625b">{{ sec.blurb }}</p>
+          </div>
+          <div class="secphotos">
+            <image-slot class="tbig" id="{{ sec.slot1 }}" data-gallery="{{ sec.gal }}" radius="14" recommend="Best: 1600px+ wide" placeholder="{{ sec.ph1 }}" style="width:100%;height:clamp(300px,38vw,460px)"></image-slot>
+            <div class="scrollwrap">
+              <div class="scrollzone" id="{{ sec.rowId }}">
+                <image-slot class="ts-a" id="{{ sec.slot2 }}" data-gallery="{{ sec.gal }}" radius="14" recommend="Best: 1200px+ wide" placeholder="{{ sec.ph2 }}" style="width:100%;height:100%;min-height:140px"></image-slot>
+                <image-slot class="ts-b" id="{{ sec.slot3 }}" data-gallery="{{ sec.gal }}" radius="14" recommend="Best: 1200px+ wide" placeholder="{{ sec.ph3 }}" style="width:100%;height:100%;min-height:140px"></image-slot>
+                <div class="txwrap">
+                  <div class="tx" id="{{ sec.txId }}">
+                    <image-slot id="{{ sec.slot4 }}" data-gallery="{{ sec.gal }}" radius="12" recommend="Best: 1200px+ wide" placeholder="More photos (optional)" style="flex:none;width:220px;height:150px"></image-slot>
+                    <image-slot id="{{ sec.slot5 }}" data-gallery="{{ sec.gal }}" radius="12" recommend="Best: 1200px+ wide" placeholder="More photos (optional)" style="flex:none;width:220px;height:150px"></image-slot>
+                    <image-slot id="{{ sec.slot6 }}" data-gallery="{{ sec.gal }}" radius="12" recommend="Best: 1200px+ wide" placeholder="More photos (optional)" style="flex:none;width:220px;height:150px"></image-slot>
+                    <image-slot id="{{ sec.slot7 }}" data-gallery="{{ sec.gal }}" radius="12" recommend="Best: 1200px+ wide" placeholder="More photos (optional)" style="flex:none;width:220px;height:150px"></image-slot>
+                    <image-slot id="{{ sec.slot8 }}" data-gallery="{{ sec.gal }}" radius="12" recommend="Best: 1200px+ wide" placeholder="More photos (optional)" style="flex:none;width:220px;height:150px"></image-slot>
+                  </div>
+                  <sc-if value="{{ sec.overflow }}" hint-placeholder-val="{{ false }}">
+                    <div class="xfade xleft dfade"></div>
+                    <button class="xarrow xleft dfade" onClick="{{ sec.scrollRowL }}" aria-label="Previous photos">‹</button>
+                    <div class="xfade dfade"></div>
+                    <button class="xarrow dfade" onClick="{{ sec.scrollRow }}" aria-label="More photos">›</button>
+                  </sc-if>
+                </div>
+              </div>
+              <sc-if value="{{ sec.overflow }}" hint-placeholder-val="{{ false }}">
+                <div class="xfade xleft mfade"></div>
+                <button class="xarrow xleft mfade" onClick="{{ sec.scrollRowL }}" aria-label="Previous photos">‹</button>
+                <div class="xfade mfade"></div>
+                <button class="xarrow mfade" onClick="{{ sec.scrollRow }}" aria-label="More photos">›</button>
+              </sc-if>
+            </div>
+          </div>
+        </section>
+      </sc-for>
+
+      <section style="text-align:center;border-top:1px dashed rgba(14,58,45,.2);padding-top:clamp(32px,5vw,48px)">
+        <h2 style="margin:0 0 16px;font:400 clamp(24px,3vw,32px)/1.2 'URW Classico',Georgia,serif;color:#2b3499">Like what you see?</h2>
+        <a class="hbg" href="Book Now.dc.html?cabin=banahaw" style="display:inline-block;text-decoration:none;background:#fe5c36;color:#fff;font:700 16px/1 Helvetica,Arial,sans-serif;letter-spacing:.04em;padding:17px 34px;border-radius:999px;--hbg:#e34a27" style-hover="background:#e34a27;transform:translateY(-3px);box-shadow:0 12px 24px rgba(14,58,45,.22)">Book Banahaw</a>
+      </section>
+    </div>
+
+    <aside class="toccol" aria-label="Photo sections">
+      <div class="tocwrap">
+        <p style="margin:0 0 10px;font:700 11px/1 Helvetica,Arial,sans-serif;letter-spacing:.12em;color:#8a958e">ON THIS PAGE</p>
+        <nav style="display:flex;flex-direction:column">
+          <sc-for list="{{ sections }}" as="sec" hint-placeholder-count="6">
+            <a class="toci {{ sec.onCls }} {{ sec.hideCls }}" href="{{ sec.anchor }}"><span class="rail"></span><span class="lb">{{ sec.title }}</span></a>
+          </sc-for>
+        </nav>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<dc-import name="SiteFooter" hint-size="100%,380px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { active: 'sec-exterior', filled: {} };
+
+  componentDidMount() {
+    import('./reveal.js').then(m => m.initReveal());
+    import('./lightbox.js').then(m => m.initLightbox());
+
+    // scroll-spy for the side rail
+    this._onScroll = () => {
+      const secs = this._defs().map(d => document.getElementById('sec-' + d[0])).filter(Boolean);
+      let cur = secs.length ? secs[0].id : null;
+      for (const el of secs) {
+        if (el.getBoundingClientRect().top <= 180) cur = el.id;
+      }
+      if (cur && cur !== this.state.active) this.setState({ active: cur });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+
+    // count filled photos per section (fade + arrow only when more than 3)
+    this._poll = setInterval(() => this._countFilled(), 1500);
+    setTimeout(() => this._countFilled(), 400);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+    clearInterval(this._poll);
+  }
+
+  _countFilled() {
+    const filled = {};
+    for (const d of this._defs()) {
+      let n = 0;
+      for (let i = 1; i <= 8; i++) {
+        const el = document.getElementById(this._cabin() + '-tour-' + d[0] + '-' + i);
+        if (el && el.hasAttribute('data-filled')) n++;
+      }
+      filled[d[0]] = n;
+    }
+    if (JSON.stringify(filled) !== JSON.stringify(this.state.filled)) this.setState({ filled });
+  }
+
+  _cabin() { return 'banahaw'; }
+
+  _defs() {
+    return [
+      ['exterior', 'Exterior & balcony', 'The big kabina from outside, and the balcony facing Mt. Banahaw.', 'Cabin exterior', 'Balcony seating', 'View from the balcony'],
+      ['bedroom', 'Bedroom', 'Where you wake up. Beds, linens, and the loft space.', 'Beds / loft', 'Bed close-up', 'Loft detail'],
+      ['living', 'Living area', 'The shared space inside the kabina.', 'Living area', 'Seating detail', 'Interior angle'],
+      ['bathroom', 'Bathroom', 'Hot and cold shower, fresh and clean.', 'Bathroom', 'Shower', 'Sink / fixtures'],
+      ['grounds', 'Pool & grounds', 'The pool at your doorstep and the resort around it.', 'Pool by the cabin', 'Nipa huts / grounds', 'Sunrise / lake view']
+    ];
+  }
+
+  renderVals() {
+    const cabin = this._cabin();
+    const editable = !!(window.omelette && window.omelette.writeFile);
+    return {
+      sections: this._defs().map(([id, title, blurb, ph1, ph2, ph3]) => {
+        const mk = (i) => cabin + '-tour-' + id + '-' + i;
+        return {
+          key: id,
+          // on the live site, a section with zero photos disappears
+          // entirely (heading, chip, and TOC link included)
+          hideCls: (!editable && this.state.filled[id] === 0) ? 'sec-hide' : '',
+          id: 'sec-' + id,
+          anchor: '#sec-' + id,
+          gal: cabin + '-' + id,
+          rowId: 'xrow-' + id,
+          txId: 'tx-' + id,
+          title, blurb, ph1, ph2, ph3,
+          slot1: mk(1), slot2: mk(2), slot3: mk(3), slot4: mk(4),
+          slot5: mk(5), slot6: mk(6), slot7: mk(7), slot8: mk(8),
+          overflow: (this.state.filled[id] || 0) > 3,
+          onCls: this.state.active === 'sec-' + id ? 'on' : '',
+          scrollRow: () => {
+            const mob = window.matchMedia && window.matchMedia('(max-width: 940px)').matches;
+            const el = document.getElementById((mob ? 'xrow-' : 'tx-') + id);
+            if (el) el.scrollBy({ left: 240, behavior: 'smooth' });
+          },
+          scrollRowL: () => {
+            const mob = window.matchMedia && window.matchMedia('(max-width: 940px)').matches;
+            const el = document.getElementById((mob ? 'xrow-' : 'tx-') + id);
+            if (el) el.scrollBy({ left: -240, behavior: 'smooth' });
+          }
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

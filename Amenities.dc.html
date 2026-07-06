@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Amenities – Pool, Nipa Huts, Karaoke &amp; More | Kabina sa Aplaya, Jala-jala Rizal</title>
+  <meta name="description" content="Kabina sa Aplaya amenities: swimming pool, four nipa huts including a floating hut, full kitchen, billiards, karaoke, bonfire &amp; BBQ, fishing pond, koi ponds, two-storey pavilion, Wi-Fi, CCTV, and hybrid solar power." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&amp;display=swap" rel="stylesheet" />
+  <script src="image-slot.js"></script>
+  <style>
+    image-slot { transition: transform .35s ease; }
+    image-slot:not([id$="-hero"]):not([id^="home-cabin"]):hover { transform: scale(1.03); }
+    .liftcard { transition: transform .35s ease, box-shadow .35s ease; }
+    .liftcard:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(14,58,45,.15); }
+    .liftcard image-slot:hover { transform: scale(1.05); }
+    .hbg:hover { background: var(--hbg) !important; }
+    .hfg:hover { color: var(--hfg) !important; }
+    .hbc:hover { border-color: var(--hbc) !important; }
+    .hbg, .hfg, .hbc { transition: background .35s ease, color .35s ease, border-color .35s ease, transform .35s ease, box-shadow .35s ease; }
+    .lnk { border-bottom: none !important; padding-bottom: 4px !important; background-image: linear-gradient(#fdb449,#fdb449), linear-gradient(rgba(253,180,73,.4),rgba(253,180,73,.4)); background-repeat: no-repeat; background-size: 0% 2px, 100% 2px; background-position: 0 100%, 0 100%; transition: background-size .35s ease, color .35s ease; }
+    .lnk:hover { background-size: 100% 2px, 100% 2px; }
+    .lnk .arr { display: inline-block; transition: transform .35s ease; }
+    .lnk:hover .arr { transform: translateX(5px); }
+    image-slot[data-filled] { cursor: zoom-in; }
+    .amxrow { display: flex; gap: 6px; padding: 10px 14px 0; }
+    .amxrow image-slot { flex: 1; height: 52px; }
+    .amxrow:not(:has(image-slot[data-editable])) { display: none; }
+    .amxlbl { margin: 8px 14px 0; font: 700 10px/1 Helvetica, Arial, sans-serif; letter-spacing: .08em; color: #8a958e; }
+    .amcard:not(:has(.amxrow image-slot[data-editable])) .amxlbl { display: none; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-BoldItalic.ttf') format('truetype'); font-weight: 700; font-style: italic; font-display: swap; }
+    .ilo, .ilb { transition: color .35s ease; }
+    .ilo:hover { color: #2b3499 !important; }
+    .ilb:hover { color: #fe5c36 !important; }
+    body { animation: pageIn 1s ease both; }
+    @keyframes pageIn { from { opacity: 0 } }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #faf7f0; -webkit-font-smoothing: antialiased; }
+  </style>
+</helmet>
+
+<dc-import name="SiteNav" active="amenities" hint-size="100%,68px"></dc-import>
+
+<header style="max-width:1200px;margin:0 auto;padding:clamp(48px,7vw,80px) 24px 12px">
+  <p style="margin:0 0 8px;font:italic 400 23px/1.25 'URW Classico',Georgia,serif;color:#6c7d37">Sulit ang bawat oras</p>
+  <h1 style="margin:0 0 16px;font:400 clamp(32px,5vw,52px)/1.1 'URW Classico',Georgia,serif;color:#2b3499"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em">A</span>menities</h1>
+  <p style="margin:0;font:16px/1.75 Helvetica,Arial,sans-serif;color:#33413a;max-width:640px">Thirteen reasons the hours fly by at the aplaya. All amenities are included with every stay, cabin, day tour, or exclusive booking.</p>
+</header>
+
+<section style="max-width:1200px;margin:0 auto;padding:28px 24px clamp(56px,8vw,90px);display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
+  <div class="amcard" style="background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:16px;overflow:hidden"><image-slot recommend="Best: 1200px+ wide" id="am-pool" data-gallery="am-pool" shape="rect" placeholder="Swimming pool photo" style="width:100%;height:170px"></image-slot><p class="amxlbl">MORE PHOTOS (SHOWN WHEN ENLARGED)</p><div class="amxrow"><image-slot id="am-pool-2" data-gallery="am-pool" radius="8" placeholder="+"></image-slot><image-slot id="am-pool-3" data-gallery="am-pool" radius="8" placeholder="+"></image-slot><image-slot id="am-pool-4" data-gallery="am-pool" radius="8" placeholder="+"></image-slot><image-slot id="am-pool-5" data-gallery="am-pool" radius="8" placeholder="+"></image-slot></div><div style="padding:18px 20px 20px"><h2 style="margin:0 0 6px;font:400 20px/1.2 'URW Classico',Georgia,serif;color:#2b3499">Swimming pool</h2><p style="margin:0;font:14px/1.6 Helvetica,Arial,sans-serif;color:#55625b">A 4-ft pool set between the cabins and the lake, sunset swims with Mt. Banahaw on the horizon.</p></div></div>
+  <div class="amcard" style="background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:16px;overflow:hidden"><image-slot recommend="Best: 1200px+ wide" id="am-huts" data-gallery="am-huts" shape="rect" placeholder="Nipa huts photo" style="width:100%;height:170px"></image-slot><p class="amxlbl">MORE PHOTOS (SHOWN WHEN ENLARGED)</p><div class="amxrow"><image-slot id="am-huts-2" data-gallery="am-huts" radius="8" placeholder="+"></image-slot><image-slot id="am-huts-3" data-gallery="am-huts" radius="8" placeholder="+"></image-slot><image-slot id="am-huts-4" data-gallery="am-huts" radius="8" placeholder="+"></image-slot><image-slot id="am-huts-5" data-gallery="am-huts" radius="8" placeholder="+"></image-slot></div><div style="padding:18px 20px 20px"><h2 style="margin:0 0 6px;font:400 20px/1.2 'URW Classico',Georgia,serif;color:#2b3499">Four nipa huts</h2><p style="margin:0;font:14px/1.6 Helvetica,Arial,sans-serif;color:#55625b">Charming huts for lounging and merienda, including one floating hut on the pond.</p></div></div>
+  <div class="amcard" style="background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:16px;overflow:hidden"><image-slot recommend="Best: 1200px+ wide" id="am-kitchen" data-gallery="am-kitchen" shape="rect" placeholder="Kitchen photo" style="width:100%;height:170px"></image-slot><p class="amxlbl">MORE PHOTOS (SHOWN WHEN ENLARGED)</p><div class="amxrow"><image-slot id="am-kitchen-2" data-gallery="am-kitchen" radius="8" placeholder="+"></image-slot><image-slot id="am-kitchen-3" data-gallery="am-kitchen" radius="8" placeholder="+"></image-slot><image-slot id="am-kitchen-4" data-gallery="am-kitchen" radius="8" placeholder="+"></image-slot><image-slot id="am-kitchen-5" data-gallery="am-kitchen" radius="8" placeholder="+"></image-slot></div><div style="padding:18px 20px 20px"><h2 style="margin:0 0 6px;font:400 20px/1.2 'URW Classico',Georgia,serif;color:#2b3499">Fully equipped kitchen</h2><p style="margin:0;font:14px/1.6 Helvetica,Arial,sans-serif;color:#55625b">Complete utensils and cookware, bring your ulam plans, we have the rest.</p></div></div>
+  <div class="amcard" style="background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:16px;overflow:hidden"><image-slot recommend="Best: 1200px+ wide" id="am-pavilion" data-gallery="am-pavilion" shape="rect" placeholder="Two-storey pavilion photo" style="width:100%;height:170px"></image-slot><p class="amxlbl">MORE PHOTOS (SHOWN WHEN ENLARGED)</p><div class="amxrow"><image-slot id="am-pavilion-2" data-gallery="am-pavilion" radius="8" placeholder="+"></image-slot><image-slot id="am-pavilion-3" data-gallery="am-pavilion" radius="8" placeholder="+"></image-slot><image-slot id="am-pavilion-4" data-gallery="am-pavilion" radius="8" placeholder="+"></image-slot><image-slot id="am-pavilion-5" data-gallery="am-pavilion" radius="8" placeholder="+"></image-slot></div><div style="padding:18px 20px 20px"><h2 style="margin:0 0 6px;font:400 20px/1.2 'URW Classico',Georgia,serif;color:#2b3499">Two-storey pavilion</h2><p style="margin:0;font:14px/1.6 Helvetica,Arial,sans-serif;color:#55625b">150 guests on the first floor, 100 on the second, built for celebrations. <a class="ilo" href="Events.dc.html" style="color:#fe5c36;font-weight:700;text-decoration:none">See events →</a></p></div></div>
+  <div class="amcard" style="background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:16px;overflow:hidden"><image-slot recommend="Best: 1200px+ wide" id="am-billiards" data-gallery="am-billiards" shape="rect" placeholder="Billiard table photo" style="width:100%;height:170px"></image-slot><p class="amxlbl">MORE PHOTOS (SHOWN WHEN ENLARGED)</p><div class="amxrow"><image-slot id="am-billiards-2" data-gallery="am-billiards" radius="8" placeholder="+"></image-slot><image-slot id="am-billiards-3" data-gallery="am-billiards" radius="8" placeholder="+"></image-slot><image-slot id="am-billiards-4" data-gallery="am-billiards" radius="8" placeholder="+"></image-slot><image-slot id="am-billiards-5" data-gallery="am-billiards" radius="8" placeholder="+"></image-slot></div><div style="padding:18px 20px 20px"><h2 style="margin:0 0 6px;font:400 20px/1.2 'URW Classico',Georgia,serif;color:#2b3499">Billiards</h2><p style="margin:0;font:14px/1.6 Helvetica,Arial,sans-serif;color:#55625b">A spacious billiard table. Banahaw cabin has direct access.</p></div></div>
+  <div class="amcard" style="background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:16px;overflow:hidden"><image-slot recommend="Best: 1200px+ wide" id="am-karaoke" data-gallery="am-karaoke" shape="rect" placeholder="Karaoke corner photo" style="width:100%;height:170px"></image-slot><p class="amxlbl">MORE PHOTOS (SHOWN WHEN ENLARGED)</p><div class="amxrow"><image-slot id="am-karaoke-2" data-gallery="am-karaoke" radius="8" placeholder="+"></image-slot><image-slot id="am-karaoke-3" data-gallery="am-karaoke" radius="8" placeholder="+"></image-slot><image-slot id="am-karaoke-4" data-gallery="am-karaoke" radius="8" placeholder="+"></image-slot><image-slot id="am-karaoke-5" data-gallery="am-karaoke" radius="8" placeholder="+"></image-slot></div><div style="padding:18px 20px 20px"><h2 style="margin:0 0 6px;font:400 20px/1.2 'URW Classico',Georgia,serif;color:#2b3499">Karaoke</h2><p style="margin:0;font:14px/1.6 Helvetica,Arial,sans-serif;color:#55625b">Videoke nights are a tradition here. Quiet hours start at 11 PM.</p></div></div>
+  <div class="amcard" style="background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:16px;overflow:hidden"><image-slot recommend="Best: 1200px+ wide" id="am-bonfire" data-gallery="am-bonfire" shape="rect" placeholder="Bonfire / BBQ photo" style="width:100%;height:170px"></image-slot><p class="amxlbl">MORE PHOTOS (SHOWN WHEN ENLARGED)</p><div class="amxrow"><image-slot id="am-bonfire-2" data-gallery="am-bonfire" radius="8" placeholder="+"></image-slot><image-slot id="am-bonfire-3" data-gallery="am-bonfire" radius="8" placeholder="+"></image-slot><image-slot id="am-bonfire-4" data-gallery="am-bonfire" radius="8" placeholder="+"></image-slot><image-slot id="am-bonfire-5" data-gallery="am-bonfire" radius="8" placeholder="+"></image-slot></div><div style="padding:18px 20px 20px"><h2 style="margin:0 0 6px;font:400 20px/1.2 'URW Classico',Georgia,serif;color:#2b3499">Bonfire area &amp; BBQ grill</h2><p style="margin:0;font:14px/1.6 Helvetica,Arial,sans-serif;color:#55625b">Grill dinner then gather around the fire under the stars.</p></div></div>
+  <div class="amcard" style="background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:16px;overflow:hidden"><image-slot recommend="Best: 1200px+ wide" id="am-fishing" data-gallery="am-fishing" shape="rect" placeholder="Fishing pond photo" style="width:100%;height:170px"></image-slot><p class="amxlbl">MORE PHOTOS (SHOWN WHEN ENLARGED)</p><div class="amxrow"><image-slot id="am-fishing-2" data-gallery="am-fishing" radius="8" placeholder="+"></image-slot><image-slot id="am-fishing-3" data-gallery="am-fishing" radius="8" placeholder="+"></image-slot><image-slot id="am-fishing-4" data-gallery="am-fishing" radius="8" placeholder="+"></image-slot><image-slot id="am-fishing-5" data-gallery="am-fishing" radius="8" placeholder="+"></image-slot></div><div style="padding:18px 20px 20px"><h2 style="margin:0 0 6px;font:400 20px/1.2 'URW Classico',Georgia,serif;color:#2b3499">Fishing pond</h2><p style="margin:0;font:14px/1.6 Helvetica,Arial,sans-serif;color:#55625b">Cast a line at your own pace, a favorite of early risers.</p></div></div>
+  <div class="amcard" style="background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:16px;overflow:hidden"><image-slot recommend="Best: 1200px+ wide" id="am-koi" data-gallery="am-koi" shape="rect" placeholder="Koi pond photo" style="width:100%;height:170px"></image-slot><p class="amxlbl">MORE PHOTOS (SHOWN WHEN ENLARGED)</p><div class="amxrow"><image-slot id="am-koi-2" data-gallery="am-koi" radius="8" placeholder="+"></image-slot><image-slot id="am-koi-3" data-gallery="am-koi" radius="8" placeholder="+"></image-slot><image-slot id="am-koi-4" data-gallery="am-koi" radius="8" placeholder="+"></image-slot><image-slot id="am-koi-5" data-gallery="am-koi" radius="8" placeholder="+"></image-slot></div><div style="padding:18px 20px 20px"><h2 style="margin:0 0 6px;font:400 20px/1.2 'URW Classico',Georgia,serif;color:#2b3499">Scenic koi ponds</h2><p style="margin:0;font:14px/1.6 Helvetica,Arial,sans-serif;color:#55625b">Winding ponds full of koi, kids love feeding time.</p></div></div>
+  <div class="amcard" style="background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:16px;overflow:hidden"><image-slot recommend="Best: 1200px+ wide" id="am-shower" data-gallery="am-shower" shape="rect" placeholder="Bathroom / shower photo" style="width:100%;height:170px"></image-slot><p class="amxlbl">MORE PHOTOS (SHOWN WHEN ENLARGED)</p><div class="amxrow"><image-slot id="am-shower-2" data-gallery="am-shower" radius="8" placeholder="+"></image-slot><image-slot id="am-shower-3" data-gallery="am-shower" radius="8" placeholder="+"></image-slot><image-slot id="am-shower-4" data-gallery="am-shower" radius="8" placeholder="+"></image-slot><image-slot id="am-shower-5" data-gallery="am-shower" radius="8" placeholder="+"></image-slot></div><div style="padding:18px 20px 20px"><h2 style="margin:0 0 6px;font:400 20px/1.2 'URW Classico',Georgia,serif;color:#2b3499">Hot &amp; cold showers</h2><p style="margin:0;font:14px/1.6 Helvetica,Arial,sans-serif;color:#55625b">Warm showers after a swim, in every cabin.</p></div></div>
+  <div class="amcard" style="background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:16px;overflow:hidden"><image-slot recommend="Best: 1200px+ wide" id="am-wifi" data-gallery="am-wifi" shape="rect" placeholder="Cabin work / lounge photo" style="width:100%;height:170px"></image-slot><p class="amxlbl">MORE PHOTOS (SHOWN WHEN ENLARGED)</p><div class="amxrow"><image-slot id="am-wifi-2" data-gallery="am-wifi" radius="8" placeholder="+"></image-slot><image-slot id="am-wifi-3" data-gallery="am-wifi" radius="8" placeholder="+"></image-slot><image-slot id="am-wifi-4" data-gallery="am-wifi" radius="8" placeholder="+"></image-slot><image-slot id="am-wifi-5" data-gallery="am-wifi" radius="8" placeholder="+"></image-slot></div><div style="padding:18px 20px 20px"><h2 style="margin:0 0 6px;font:400 20px/1.2 'URW Classico',Georgia,serif;color:#2b3499">Reliable Wi-Fi</h2><p style="margin:0;font:14px/1.6 Helvetica,Arial,sans-serif;color:#55625b">Strong connection across the resort, for sharing, streaming, or a workation.</p></div></div>
+  <div class="amcard" style="background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:16px;overflow:hidden"><image-slot recommend="Best: 1200px+ wide" id="am-secure" data-gallery="am-secure" shape="rect" placeholder="Resort grounds / solar photo" style="width:100%;height:170px"></image-slot><p class="amxlbl">MORE PHOTOS (SHOWN WHEN ENLARGED)</p><div class="amxrow"><image-slot id="am-secure-2" data-gallery="am-secure" radius="8" placeholder="+"></image-slot><image-slot id="am-secure-3" data-gallery="am-secure" radius="8" placeholder="+"></image-slot><image-slot id="am-secure-4" data-gallery="am-secure" radius="8" placeholder="+"></image-slot><image-slot id="am-secure-5" data-gallery="am-secure" radius="8" placeholder="+"></image-slot></div><div style="padding:18px 20px 20px"><h2 style="margin:0 0 6px;font:400 20px/1.2 'URW Classico',Georgia,serif;color:#2b3499">CCTV &amp; hybrid solar</h2><p style="margin:0;font:14px/1.6 Helvetica,Arial,sans-serif;color:#55625b">Perimeter CCTV security, with facilities running on hybrid solar power.</p></div></div>
+</section>
+
+
+
+<dc-import name="SiteFooter" hint-size="100%,380px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    import('./reveal.js').then(m => m.initReveal());
+    import('./lightbox.js').then(m => m.initLightbox());
+  }
+  renderVals() { return {}; }
+}
+</script>
+
+</body>
+</html>

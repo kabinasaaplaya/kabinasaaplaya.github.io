@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Book Now – Check Availability | Kabina sa Aplaya, Jala-jala Rizal</title>
+  <meta name="description" content="Book a 21-hour stay or day tour at Kabina sa Aplaya, Jala-jala, Rizal. Pick your dates, guests, and kabina, availability is checked live against our calendar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&amp;display=swap" rel="stylesheet" />
+  <style>
+    image-slot { transition: transform .35s ease; }
+    image-slot:not([id$="-hero"]):not([id^="home-cabin"]):hover { transform: scale(1.03); }
+    .liftcard { transition: transform .35s ease, box-shadow .35s ease; }
+    .liftcard:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(14,58,45,.15); }
+    button.liftcard:hover { transform: translateY(-5px); box-shadow: 0 14px 28px rgba(14,58,45,.14); }
+    .liftcard image-slot:hover { transform: scale(1.05); }
+    .hbg:hover { background: var(--hbg) !important; }
+    .hfg:hover { color: var(--hfg) !important; }
+    .hbc:hover { border-color: var(--hbc) !important; }
+    .hbg, .hfg, .hbc { transition: background .35s ease, color .35s ease, border-color .35s ease, transform .35s ease, box-shadow .35s ease; }
+    .lnk { border-bottom: none !important; padding-bottom: 4px !important; background-image: linear-gradient(#fdb449,#fdb449), linear-gradient(rgba(253,180,73,.4),rgba(253,180,73,.4)); background-repeat: no-repeat; background-size: 0% 2px, 100% 2px; background-position: 0 100%, 0 100%; transition: background-size .35s ease, color .35s ease; }
+    .lnk:hover { background-size: 100% 2px, 100% 2px; }
+    .lnk .arr { display: inline-block; transition: transform .35s ease; }
+    .lnk:hover .arr { transform: translateX(5px); }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-BoldItalic.ttf') format('truetype'); font-weight: 700; font-style: italic; font-display: swap; }
+    .ilo, .ilb { transition: color .35s ease; }
+    .ilo:hover { color: #2b3499 !important; }
+    .ilb:hover { color: #fe5c36 !important; }
+    body { animation: pageIn 1s ease both; }
+    @keyframes pageIn { from { opacity: 0 } }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #faf7f0; -webkit-font-smoothing: antialiased; }
+  </style>
+</helmet>
+
+<dc-import name="SiteNav" active="book" hint-size="100%,68px"></dc-import>
+
+<header style="max-width:860px;margin:0 auto;padding:clamp(44px,6vw,72px) 24px 8px;text-align:center">
+  <p style="margin:0 0 8px;font:italic 400 23px/1.25 'URW Classico',Georgia,serif;color:#fe5c36">Tara, book na!</p>
+  <h1 style="margin:0 0 14px;font:400 clamp(32px,5vw,50px)/1.1 'URW Classico',Georgia,serif;color:#2b3499"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em">B</span>ook your stay</h1>
+  <p style="margin:0;font:16px/1.7 Helvetica,Arial,sans-serif;color:#33413a">Pick your dates, guests, and kabina, you can select more than one kabina for bigger groups. We check the dates against our live calendar, then your request goes straight to our inbox, we confirm within the day.</p>
+</header>
+
+<section style="max-width:860px;margin:0 auto;padding:28px 24px clamp(56px,8vw,90px)">
+  <div style="background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:22px;padding:clamp(22px,4vw,40px);box-shadow:0 4px 20px rgba(14,58,45,.07);display:flex;flex-direction:column;gap:22px">
+
+    <div>
+      <p style="margin:0 0 10px;font:700 14px/1 Helvetica,Arial,sans-serif;letter-spacing:.05em;color:#2b3499">1 · DATES &amp; GUESTS</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font:700 13px/1 Helvetica,Arial,sans-serif;color:#55625b">{{ dateLabel }}</span>
+          <button onClick="{{ toggleCalIn }}" style="cursor:pointer;text-align:left;font:15px/1.4 Helvetica,Arial,sans-serif;color:{{ checkInColor }};padding:12px 10px;border:1px solid rgba(14,58,45,.2);border-radius:10px;background:#faf7f0">{{ checkInLabel }}</button>
+        </div>
+        <sc-if value="{{ isOvernight }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font:700 13px/1 Helvetica,Arial,sans-serif;color:#55625b">Check-out date</span>
+            <button onClick="{{ toggleCalOut }}" style="cursor:pointer;text-align:left;font:15px/1.4 Helvetica,Arial,sans-serif;color:{{ checkOutColor }};padding:12px 10px;border:1px solid rgba(14,58,45,.2);border-radius:10px;background:#faf7f0">{{ checkOutLabel }}</button>
+          </div>
+        </sc-if>
+        <label style="display:flex;flex-direction:column;gap:6px;font:700 13px/1 Helvetica,Arial,sans-serif;color:#55625b">Guests (pax)
+          <input type="number" min="1" max="24" value="{{ pax }}" onChange="{{ setPax }}" style="font:15px/1.4 Helvetica,Arial,sans-serif;color:#0e3a2d;padding:12px 10px;border:1px solid rgba(14,58,45,.2);border-radius:10px;background:#faf7f0" />
+        </label>
+      </div>
+      <p style="margin:8px 0 0;font:12px/1.5 Helvetica,Arial,sans-serif;color:#8a958e">{{ nightsSummary }}The calendar shows availability for your selected kabina(s). Adjust the selection in step 3 if needed.</p>
+      <sc-if value="{{ calOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:10px;max-width:320px;background:#fff;border:1px solid rgba(14,58,45,.15);border-radius:14px;box-shadow:0 12px 30px rgba(14,58,45,.12);padding:14px">
+          <p style="margin:0 0 8px;font:700 12px/1 Helvetica,Arial,sans-serif;color:#2b3499">{{ calTitle }}</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px">
+            <button onClick="{{ calPrev }}" aria-label="Previous month" style="border:none;background:none;cursor:pointer;font:200 22px/1 Helvetica,Arial,sans-serif;color:#2b3499;padding:2px 8px">‹</button>
+            <p style="margin:0;font:400 15px/1 'URW Classico',Georgia,serif;color:#2b3499">{{ monthLabel }}</p>
+            <button onClick="{{ calNext }}" aria-label="Next month" style="border:none;background:none;cursor:pointer;font:200 22px/1 Helvetica,Arial,sans-serif;color:#2b3499;padding:2px 8px">›</button>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:2px">
+            <sc-for list="{{ dow }}" as="d" hint-placeholder-count="7">
+              <p style="margin:0;text-align:center;font:700 9px/1 Helvetica,Arial,sans-serif;letter-spacing:.05em;color:#8a958e;padding:3px 0">{{ d }}</p>
+            </sc-for>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px">
+            <sc-for list="{{ calCells }}" as="c" hint-placeholder-count="35">
+              <button onClick="{{ c.pick }}" style="min-height:30px;display:grid;place-items:center;border-radius:6px;background:{{ c.bg }};border:1px solid {{ c.bd }};color:{{ c.fg }};font:600 11px/1 Helvetica,Arial,sans-serif;text-decoration:{{ c.deco }};cursor:{{ c.cursor }};padding:0">{{ c.day }}</button>
+            </sc-for>
+          </div>
+          <p style="margin:10px 0 0;font:10px/1.5 Helvetica,Arial,sans-serif;color:#8a958e">Crossed-out dates are booked for the selected kabina(s). Synced with our Airbnb &amp; Booking.com calendars.</p>
+        </div>
+      </sc-if>
+    </div>
+
+    <div>
+      <p style="margin:0 0 10px;font:700 14px/1 Helvetica,Arial,sans-serif;letter-spacing:.05em;color:#2b3499">2 · STAY TYPE</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button class="liftcard" onClick="{{ pickOvernight }}" style="cursor:pointer;flex:1;min-width:200px;background:{{ ovBg }};border:2px solid {{ ovBd }};border-radius:14px;padding:16px;text-align:left">
+          <span style="display:block;font:700 15px/1.3 Helvetica,Arial,sans-serif;color:#0e3a2d">21-Hour Stay</span>
+          <span style="display:block;font:13px/1.5 Helvetica,Arial,sans-serif;color:#55625b">Check-in 2:00 PM · check-out 11:00 AM</span>
+        </button>
+        <button class="liftcard" onClick="{{ pickDaytour }}" style="cursor:pointer;flex:1;min-width:200px;background:{{ dtBg }};border:2px solid {{ dtBd }};border-radius:14px;padding:16px;text-align:left">
+          <span style="display:block;font:700 15px/1.3 Helvetica,Arial,sans-serif;color:#0e3a2d">Day Tour</span>
+          <span style="display:block;font:13px/1.5 Helvetica,Arial,sans-serif;color:#55625b">8:00 AM – 5:00 PM</span>
+        </button>
+      </div>
+    </div>
+
+    <div>
+      <p style="margin:0 0 10px;font:700 14px/1 Helvetica,Arial,sans-serif;letter-spacing:.05em;color:#2b3499">3 · CHOOSE YOUR KABINA(S)</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+        <sc-for list="{{ cabinCards }}" as="cb" hint-placeholder-count="3">
+          <button class="liftcard" onClick="{{ cb.pick }}" style="cursor:pointer;text-align:left;background:{{ cb.bg }};border:2px solid {{ cb.bd }};border-radius:14px;padding:16px 16px 14px;display:flex;flex-direction:column;gap:6px">
+            <span style="display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%">
+              <span style="font:400 21px/1 'URW Classico',Georgia,serif;color:#2b3499">{{ cb.name }}</span>
+              <span style="font:700 11px/1 Helvetica,Arial,sans-serif;letter-spacing:.05em;color:{{ cb.tickFg }};background:{{ cb.tickBg }};padding:5px 9px;border-radius:999px;flex:none">{{ cb.tick }}</span>
+            </span>
+            <span style="font:12px/1.4 Helvetica,Arial,sans-serif;color:#55625b">{{ cb.sub }}</span>
+            <span style="font:700 13px/1.4 Helvetica,Arial,sans-serif;color:#fe5c36">{{ cb.price }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <p style="margin:10px 0 0;font:12px/1.5 Helvetica,Arial,sans-serif;color:#8a958e">Tap to add or remove kabinas, pick two or more if your group won't fit in one.</p>
+      <sc-if value="{{ showPaxNote }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:10px 0 0;font:13px/1.6 Helvetica,Arial,sans-serif;color:#b07514;background:rgba(253,180,73,.14);border:1px solid rgba(253,180,73,.4);border-radius:10px;padding:10px 14px">{{ paxNote }}</p>
+      </sc-if>
+      <sc-if value="{{ showAvail }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:10px 0 0;font:700 14px/1.6 Helvetica,Arial,sans-serif;color:{{ availColor }};background:{{ availBg }};border:1px solid {{ availBd }};border-radius:10px;padding:12px 14px">{{ availMsg }}</p>
+      </sc-if>
+    </div>
+
+    <div>
+      <p style="margin:0 0 10px;font:700 14px/1 Helvetica,Arial,sans-serif;letter-spacing:.05em;color:#2b3499">4 · YOUR DETAILS</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+        <label style="display:flex;flex-direction:column;gap:6px;font:700 13px/1 Helvetica,Arial,sans-serif;color:#55625b">Full name
+          <input value="{{ name }}" onChange="{{ setName }}" placeholder="Juan dela Cruz" style="font:15px/1.4 Helvetica,Arial,sans-serif;color:#0e3a2d;padding:12px 14px;border:1px solid rgba(14,58,45,.2);border-radius:10px;background:#faf7f0" />
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;font:700 13px/1 Helvetica,Arial,sans-serif;color:#55625b">Mobile number (11 digits)
+          <input type="tel" inputMode="numeric" maxLength="{{ 11 }}" value="{{ phone }}" onChange="{{ setPhone }}" placeholder="09XXXXXXXXX" style="font:15px/1.4 Helvetica,Arial,sans-serif;color:#0e3a2d;padding:12px 14px;border:1px solid rgba(14,58,45,.2);border-radius:10px;background:#faf7f0" />
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;font:700 13px/1 Helvetica,Arial,sans-serif;color:#55625b">Email address
+          <input type="email" value="{{ email }}" onChange="{{ setEmail }}" placeholder="you@email.com" style="font:15px/1.4 Helvetica,Arial,sans-serif;color:#0e3a2d;padding:12px 14px;border:1px solid rgba(14,58,45,.2);border-radius:10px;background:#faf7f0" />
+        </label>
+      </div>
+      <label style="display:flex;flex-direction:column;gap:6px;font:700 13px/1 Helvetica,Arial,sans-serif;color:#55625b;margin-top:12px">Notes (optional)
+        <textarea value="{{ notes }}" onChange="{{ setNotes }}" rows="3" placeholder="Pets, celebration, questions…" style="font:15px/1.5 Helvetica,Arial,sans-serif;color:#0e3a2d;padding:12px 14px;border:1px solid rgba(14,58,45,.2);border-radius:10px;background:#faf7f0;resize:vertical"></textarea>
+      </label>
+    </div>
+
+    <div style="border-top:1px dashed rgba(14,58,45,.18);padding-top:20px;display:flex;flex-wrap:wrap;align-items:center;gap:18px">
+      <div style="flex:1;min-width:200px">
+        <p style="margin:0;font:700 12px/1 Helvetica,Arial,sans-serif;letter-spacing:.06em;color:#8a958e">ESTIMATED TOTAL</p>
+        <p style="margin:6px 0 0;font:400 32px/1 'URW Classico',Georgia,serif;color:#0e3a2d">{{ totalLabel }}</p>
+        <p style="margin:6px 0 0;font:12px/1.5 Helvetica,Arial,sans-serif;color:#8a958e">{{ totalNote }}</p>
+      </div>
+      <button class="hbg" onClick="{{ submit }}" style="cursor:pointer;border:none;text-align:center;background:{{ sendBg }};color:#fff;font:700 17px/1 Helvetica,Arial,sans-serif;letter-spacing:.04em;padding:19px 36px;border-radius:999px;flex:none;transition:transform .35s ease,box-shadow .35s ease,background .35s ease,color .35s ease;--hbg:#e34a27" style-hover="transform:translateY(-3px);box-shadow:0 12px 24px rgba(14,58,45,.22);background:#e34a27">{{ sendLabel }}</button>
+    </div>
+    <sc-if value="{{ showSent }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:-8px 0 0;font:700 14px/1.6 Helvetica,Arial,sans-serif;color:#1f6b3a;background:rgba(108,125,55,.1);border:1px solid rgba(108,125,55,.35);border-radius:10px;padding:12px 14px">✓ Salamat, {{ sentName }}! Your booking request is in our inbox, we'll reply within the day to confirm. No need to do anything else.</p>
+    </sc-if>
+    <sc-if value="{{ showSendError }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:-8px 0 0;font:700 13px/1.6 Helvetica,Arial,sans-serif;color:#c23a1b;background:rgba(254,92,54,.1);border:1px solid rgba(254,92,54,.35);border-radius:10px;padding:12px 14px">{{ sendErrorMsg }} <a href="{{ mailtoHref }}" style="color:#2b3499;text-decoration:underline">Send via your email app instead</a> or message us on <a href="https://facebook.com/kabinasaaplaya" target="_blank" rel="noopener" style="color:#2b3499;text-decoration:underline">Facebook</a>.</p>
+    </sc-if>
+    <p style="margin:-8px 0 0;font:12px/1.7 Helvetica,Arial,sans-serif;color:#8a958e">Your request is sent straight to us, no email app needed. Prefer to chat? Message us on <a class="ilb" href="https://facebook.com/kabinasaaplaya" target="_blank" rel="noopener" style="color:#2b3499;font-weight:700;text-decoration:none">Facebook</a> or call <a class="ilb" href="tel:+639273291529" style="color:#2b3499;font-weight:700;text-decoration:none">+63 927 329 1529</a>. A booking is confirmed only once we reply.</p>
+  </div>
+
+  <div style="margin-top:22px;background:rgba(108,125,55,.08);border:1px solid rgba(108,125,55,.25);border-radius:14px;padding:16px 18px"><p style="margin:0;font:13px/1.7 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#6c7d37">Fees to expect:</strong> extra guest ₱500/head · corkage ₱100/bottle (alcohol) · pet ₱300 (1 small pet per cabin, diaper required)</p></div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,380px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    cabins: ['makiling'], stay: 'overnight', checkIn: '', checkOut: '', calOpen: '', calY: new Date().getFullYear(), calM: new Date().getMonth(), pax: '4',
+    name: '', phone: '', email: '', notes: '', booked: null,
+    sendState: 'idle', sendErrorMsg: '', sentName: ''
+  };
+
+  async componentDidMount() {
+    import('./reveal.js').then(m => m.initReveal());
+    this.avail = await import('./avail.js');
+    // Prefill from a cabin page's booking widget (choices carry over so
+    // only Your Details is left to complete).
+    try {
+      const draft = JSON.parse(localStorage.getItem('ksaBookingDraft') || 'null');
+      if (draft && Array.isArray(draft.cabins) && draft.cabins.length) {
+        this.setState({
+          cabins: draft.cabins.filter(k => ['makiling', 'sembrano', 'banahaw'].includes(k)),
+          stay: draft.stay === 'daytour' ? 'daytour' : 'overnight',
+          checkIn: typeof draft.checkIn === 'string' ? draft.checkIn : '',
+          checkOut: typeof draft.checkOut === 'string' ? draft.checkOut : '',
+          pax: String(parseInt(draft.pax, 10) || 4)
+        });
+        localStorage.removeItem('ksaBookingDraft');
+      }
+    } catch (e) {}
+    const params = new URLSearchParams(location.search);
+    const c = (params.get('cabin') || '').toLowerCase();
+    if (['makiling', 'sembrano', 'banahaw'].includes(c)) this.setState({ cabins: [c] });
+    const { booked } = await this.avail.loadAvailability();
+    this.setState({ booked });
+  }
+
+  renderVals() {
+    const CABINS = [
+      { key: 'makiling', name: 'Makiling', pax: 6, sub: 'Poolside · up to 6 pax · Banahaw view', overnight: 5500, daytour: 4500 },
+      { key: 'sembrano', name: 'Sembrano', pax: 6, sub: 'Poolside · up to 6 pax · pool view', overnight: 5500, daytour: 4500 },
+      { key: 'banahaw', name: 'Banahaw', pax: 12, sub: 'Up to 12 pax · balcony + billiards', overnight: 11500, daytour: 9500 }
+    ];
+    const peso = n => '\u20B1' + n.toLocaleString('en-PH');
+    const s = this.state;
+    const selected = CABINS.filter(c => s.cabins.includes(c.key));
+    const isOvernight = s.stay === 'overnight';
+    const nights = (isOvernight && s.checkIn && s.checkOut && this.avail)
+      ? Math.max(1, Math.round((this.avail.parseISO(s.checkOut) - this.avail.parseISO(s.checkIn)) / 86400000))
+      : 1;
+    const pax = Math.max(1, parseInt(s.pax, 10) || 1);
+    const capacity = selected.reduce((t, c) => t + c.pax, 0);
+    const namesLabel = selected.map(c => c.name).join(' + ');
+
+    const cabinCards = CABINS.map(c => {
+      const on = s.cabins.includes(c.key);
+      return {
+        key: c.key, name: c.name, sub: c.sub,
+        price: peso(isOvernight ? c.overnight : c.daytour) + (isOvernight ? ' / 21-hr stay' : ' / day tour'),
+        bg: on ? 'rgba(43,52,153,.06)' : '#faf7f0',
+        bd: on ? '#2b3499' : 'rgba(14,58,45,.14)',
+        tick: on ? 'ADDED ✓' : '+ ADD',
+        tickFg: on ? '#fff' : '#55625b',
+        tickBg: on ? '#2b3499' : 'rgba(14,58,45,.08)',
+        pick: () => this.setState(st => ({
+          cabins: st.cabins.includes(c.key)
+            ? st.cabins.filter(k => k !== c.key)
+            : [...st.cabins, c.key]
+        }))
+      };
+    });
+
+    const noneSelected = selected.length === 0;
+
+    // availability check across all selected kabinas
+    let showAvail = false, availOk = true, availMsg = '';
+    if (noneSelected) {
+      showAvail = true; availOk = false;
+      availMsg = 'Pick at least one kabina to continue.';
+    } else if (s.checkIn && this.avail && s.booked) {
+      showAvail = true;
+      const nNights = isOvernight ? nights : 1;
+      const problems = [];
+      for (const c of selected) {
+        const bad = this.avail.conflicts(s.checkIn, nNights, s.booked[c.key] || new Set());
+        if (bad.length) problems.push(c.name + ' (' + bad.join(', ') + ')');
+      }
+      availOk = problems.length === 0;
+      availMsg = availOk
+        ? '✓ ' + namesLabel + (selected.length > 1 ? ' look' : ' looks') + ' available for your dates, send your request to confirm!'
+        : '✕ Sorry, already booked: ' + problems.join(' · ') + '. Try other dates or another kabina.';
+    }
+
+    // pricing
+    const perStay = selected.reduce((t, c) => t + (isOvernight ? c.overnight : c.daytour), 0);
+    const base = isOvernight ? perStay * nights : perStay;
+    const extras = Math.max(0, pax - capacity) * 500 * (isOvernight ? nights : 1);
+    const showPaxNote = !noneSelected && pax > capacity;
+    const paxNote = namesLabel + (selected.length > 1 ? ' fit' : ' fits') + ' up to ' + capacity + ' pax total. Extra guests are \u20B1500/head' + (isOvernight && nights > 1 ? ' per night' : '') + ', or add another kabina above.';
+
+    const stayLabel = isOvernight
+      ? '21-Hour Stay (2:00 PM – 11:00 AM), ' + nights + (nights > 1 ? ' nights' : ' night')
+      : 'Day Tour (8:00 AM – 5:00 PM)';
+    const subject = 'Booking Request: ' + (namesLabel || 'Kabina') + (s.checkIn ? ', ' + s.checkIn : '') + ' (' + pax + ' pax)';
+    const body = [
+      'Hello Kabina sa Aplaya!',
+      '',
+      'I would like to book:',
+      '',
+      'Kabina(s): ' + (namesLabel || '-'),
+      'Stay type: ' + stayLabel,
+      (isOvernight ? 'Check-in date: ' : 'Day tour date: ') + (s.checkIn || '-'),
+      isOvernight ? 'Check-out date: ' + (s.checkOut || '-') : 'Hours: 8:00 AM to 5:00 PM',
+      'Guests: ' + pax + ' pax',
+      'Name: ' + (s.name || '-'),
+      'Mobile: ' + (s.phone || '-'),
+      'Email: ' + (s.email || '-'),
+      'Estimated total: ' + peso(base + extras),
+      '',
+      'Notes: ' + (s.notes || '-'),
+      '',
+      'Please confirm availability and payment details. Thank you!'
+    ].join('\n');
+
+    // date-picker calendar (union of the selected kabinas' booked nights)
+    const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const uset = new Set();
+    for (const c of selected) {
+      const bs = s.booked && s.booked[c.key];
+      if (bs) bs.forEach(d => uset.add(d));
+    }
+    const spanFree = (startIso, endIso) => {
+      const av = this.avail;
+      if (!av || !startIso || !endIso) return false;
+      let d = av.parseISO(startIso);
+      const end = av.parseISO(endIso);
+      if (end <= d) return false;
+      while (d < end) {
+        if (uset.has(av.toISO(d))) return false;
+        d = av.addDays(d, 1);
+      }
+      return true;
+    };
+    let calCells = [];
+    if (this.avail && s.calOpen) {
+      calCells = this.avail.monthGrid(s.calY, s.calM, uset).map(c => {
+        if (c.blank) return { key: c.key, day: '', bg: 'transparent', fg: 'transparent', bd: 'transparent', deco: 'none', cursor: 'default', pick: () => {} };
+        const isOut = s.calOpen === 'out';
+        const ok = isOut ? spanFree(s.checkIn, c.iso) : (!c.isPast && !c.booked);
+        const sel = isOut ? s.checkOut === c.iso : s.checkIn === c.iso;
+        const dim = c.isPast || (isOut && !ok);
+        return {
+          key: c.key, day: String(c.day),
+          bg: sel ? 'rgba(43,52,153,.12)' : (c.booked ? 'rgba(254,92,54,.14)' : (dim ? 'transparent' : '#fff')),
+          fg: c.booked ? '#c23a1b' : (dim ? '#c2c9c4' : (sel ? '#2b3499' : '#0e3a2d')),
+          bd: sel ? '#2b3499' : (c.booked ? 'rgba(254,92,54,.35)' : (dim ? 'rgba(14,58,45,.06)' : 'rgba(14,58,45,.18)')),
+          deco: c.booked ? 'line-through' : 'none',
+          cursor: ok ? 'pointer' : 'default',
+          pick: ok ? (() => {
+            if (this.state.calOpen === 'out') this.setState({ checkOut: c.iso, calOpen: '' });
+            else {
+              const keepOut = this.state.checkOut ? spanFree(c.iso, this.state.checkOut) : false;
+              this.setState({ checkIn: c.iso, checkOut: keepOut ? this.state.checkOut : '', calOpen: (this.state.stay === 'overnight' && !keepOut) ? 'out' : '' });
+            }
+          }) : (() => {})
+        };
+      });
+    }
+    const calNow = new Date();
+    const calAtMin = s.calY === calNow.getFullYear() && s.calM === calNow.getMonth();
+
+    const submit = async () => {
+      if (this.state.sendState === 'sending' || this.state.sendState === 'sent') return;
+      const missing = [];
+      if (noneSelected) missing.push('a kabina');
+      if (!s.checkIn) missing.push('your date');
+      if (isOvernight && !s.checkOut) missing.push('your check-out date');
+      if (!s.name.trim()) missing.push('your name');
+      if (!/^\d{11}$/.test(s.phone)) missing.push('your 11-digit mobile number');
+      if (!/^\S+@\S+\.\S+$/.test(s.email)) missing.push('a valid email address');
+      if (missing.length) {
+        this.setState({ sendState: 'error', sendErrorMsg: 'Please fill in ' + missing.join(', ') + ' first.' });
+        return;
+      }
+      this.setState({ sendState: 'sending', sendErrorMsg: '' });
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/kabinasaaplaya@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            _subject: subject,
+            _template: 'table',
+            _captcha: 'false',
+            _replyto: s.email,
+            'Kabina(s)': namesLabel,
+            'Stay type': stayLabel,
+            [isOvernight ? 'Check-in date' : 'Day tour date']: s.checkIn,
+            'Check-out date': isOvernight ? s.checkOut : undefined,
+            'Guests': pax + ' pax',
+            'Name': s.name,
+            'Mobile': s.phone,
+            'Email': s.email,
+            'Estimated total': peso(base + extras),
+            'Notes': s.notes || '-'
+          })
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && String(data.success) !== 'false') {
+          this.setState({ sendState: 'sent', sentName: s.name.split(' ')[0] });
+        } else {
+          throw new Error(data.message || 'Send failed');
+        }
+      } catch (e) {
+        this.setState({ sendState: 'error', sendErrorMsg: 'Hmm, the request didn\u2019t go through.' });
+      }
+    };
+
+    return {
+      cabinCards,
+      isOvernight,
+      submit,
+      sendLabel: this.state.sendState === 'sending' ? 'Sending…' : (this.state.sendState === 'sent' ? 'Request sent ✓' : 'Send booking request'),
+      sendBg: this.state.sendState === 'sent' ? '#1f6b3a' : '#fe5c36',
+      showSent: this.state.sendState === 'sent',
+      showSendError: this.state.sendState === 'error',
+      sendErrorMsg: this.state.sendErrorMsg,
+      sentName: this.state.sentName,
+      pickOvernight: () => this.setState({ stay: 'overnight' }),
+      pickDaytour: () => this.setState({ stay: 'daytour' }),
+      ovBg: isOvernight ? 'rgba(43,52,153,.06)' : '#faf7f0',
+      ovBd: isOvernight ? '#2b3499' : 'rgba(14,58,45,.14)',
+      dtBg: !isOvernight ? 'rgba(43,52,153,.06)' : '#faf7f0',
+      dtBd: !isOvernight ? '#2b3499' : 'rgba(14,58,45,.14)',
+      dateLabel: isOvernight ? 'Check-in date' : 'Day tour date',
+      todayISO: this.avail ? this.avail.toISO(new Date()) : '',
+      checkIn: s.checkIn, pax: s.pax,
+      name: s.name, phone: s.phone, email: s.email, notes: s.notes,
+      calOpen: !!s.calOpen,
+      calTitle: s.calOpen === 'out' ? 'Pick your check-out date' : (isOvernight ? 'Pick your check-in date' : 'Pick your day tour date'),
+      toggleCalIn: () => this.setState(st => ({ calOpen: st.calOpen === 'in' ? '' : 'in' })),
+      toggleCalOut: () => this.setState(st => ({ calOpen: st.calOpen === 'out' ? '' : (st.checkIn ? 'out' : 'in') })),
+      checkInLabel: s.checkIn || 'Pick a date',
+      checkInColor: s.checkIn ? '#0e3a2d' : '#8a958e',
+      checkOutLabel: s.checkOut || 'Pick a date',
+      checkOutColor: s.checkOut ? '#0e3a2d' : '#8a958e',
+      nightsSummary: (isOvernight && s.checkIn && s.checkOut) ? nights + (nights > 1 ? ' nights' : ' night') + ' selected. ' : '',
+      monthLabel: MONTHS[s.calM] + ' ' + s.calY,
+      dow: ['Su','Mo','Tu','We','Th','Fr','Sa'],
+      calCells,
+      calPrev: () => {
+        if (calAtMin) return;
+        this.setState(st => (st.calM === 0 ? { calM: 11, calY: st.calY - 1 } : { calM: st.calM - 1 }));
+      },
+      calNext: () => this.setState(st => (st.calM === 11 ? { calM: 0, calY: st.calY + 1 } : { calM: st.calM + 1 })),
+      setPax: e => this.setState({ pax: e.target.value }),
+      setName: e => this.setState({ name: e.target.value }),
+      setPhone: e => this.setState({ phone: e.target.value.replace(/\D/g, '').slice(0, 11) }),
+      setEmail: e => this.setState({ email: e.target.value }),
+      setNotes: e => this.setState({ notes: e.target.value }),
+      showPaxNote, paxNote,
+      showAvail,
+      availMsg,
+      availColor: availOk ? '#1f6b3a' : '#c23a1b',
+      availBg: availOk ? 'rgba(108,125,55,.1)' : 'rgba(254,92,54,.1)',
+      availBd: availOk ? 'rgba(108,125,55,.35)' : 'rgba(254,92,54,.35)',
+      totalLabel: noneSelected ? '-' : peso(base + extras),
+      totalNote: noneSelected
+        ? 'Pick at least one kabina above'
+        : (isOvernight ? nights + (nights > 1 ? ' nights' : ' night') + ' × ' + peso(perStay) : 'Day tour ' + peso(perStay)) + ' (' + namesLabel + ')' + (extras ? ' + ' + peso(extras) + ' extra guests' : '') + ' · excludes corkage/pet fees',
+      mailtoHref: 'mailto:kabinasaaplaya@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body)
+    };
+  }
+}
+</script>
+</body>
+</html>

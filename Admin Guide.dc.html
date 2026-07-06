@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Admin &amp; Launch Guide. Kabina sa Aplaya (internal)</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <style>
+    .hbg:hover { background: var(--hbg) !important; }
+    .hfg:hover { color: var(--hfg) !important; }
+    .hbc:hover { border-color: var(--hbc) !important; }
+    .hbg, .hfg, .hbc { transition: background .35s ease, color .35s ease, border-color .35s ease, transform .35s ease, box-shadow .35s ease; }
+    .lnk { border-bottom: none !important; padding-bottom: 4px !important; background-image: linear-gradient(#fdb449,#fdb449), linear-gradient(rgba(253,180,73,.4),rgba(253,180,73,.4)); background-repeat: no-repeat; background-size: 0% 2px, 100% 2px; background-position: 0 100%, 0 100%; transition: background-size .35s ease, color .35s ease; }
+    .lnk:hover { background-size: 100% 2px, 100% 2px; }
+    .lnk .arr { display: inline-block; transition: transform .35s ease; }
+    .lnk:hover .arr { transform: translateX(5px); }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-BoldItalic.ttf') format('truetype'); font-weight: 700; font-style: italic; font-display: swap; }
+    .ilo, .ilb { transition: color .35s ease; }
+    .ilo:hover { color: #2b3499 !important; }
+    .ilb:hover { color: #fe5c36 !important; }
+    body { animation: pageIn 1s ease both; }
+    @keyframes pageIn { from { opacity: 0 } }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #faf7f0; -webkit-font-smoothing: antialiased; }
+  </style>
+</helmet>
+
+<div style="background:#0e3a2d;padding:14px 24px">
+  <p style="max-width:900px;margin:0 auto;font:700 13px/1.5 Helvetica,Arial,sans-serif;letter-spacing:.06em;color:#fdb449">INTERNAL. ADMIN &amp; LAUNCH GUIDE · not linked from the public site</p>
+</div>
+
+<div style="max-width:900px;margin:0 auto;padding:clamp(36px,5vw,56px) 24px 80px;display:flex;flex-direction:column;gap:40px">
+
+  <div>
+    <h1 style="margin:0 0 10px;font:400 clamp(30px,4vw,44px)/1.1 'URW Classico',Georgia,serif;color:#2b3499">Running the Kabina sa Aplaya website</h1>
+    <p style="margin:0;font:16px/1.7 Helvetica,Arial,sans-serif;color:#33413a">Everything is free: hosting on <strong>GitHub Pages</strong>, availability synced from <strong>Airbnb/Booking.com iCal</strong>, booking requests delivered <strong>straight to your Gmail inbox</strong>. No website builder, no subscription, no third-party dashboard. You edit plain files; GitHub publishes them.</p>
+    <div style="margin-top:16px;background:rgba(254,92,54,.07);border:1px solid rgba(254,92,54,.3);border-radius:12px;padding:16px 20px">
+      <p style="margin:0;font:14px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#fe5c36">⚠ One-time activation needed:</strong> the Book Now form sends requests to kabinasaaplaya@gmail.com through <strong>FormSubmit.co</strong> (free, no account). The very first time someone presses &ldquo;Send booking request&rdquo; on the live site, FormSubmit emails you an <strong>activation link</strong>, open that email and click <strong>Activate</strong> once. Every request after that lands in your inbox automatically as a neat table. If requests ever stop arriving, check your Spam folder and mark FormSubmit as &ldquo;Not spam&rdquo;.</p>
+    </div>
+  </div>
+
+  <nav style="background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:16px;padding:22px 26px">
+    <p style="margin:0 0 10px;font:700 13px/1 Helvetica,Arial,sans-serif;letter-spacing:.06em;color:#8a958e">ON THIS PAGE</p>
+    <ol style="margin:0;padding:0 0 0 20px;font:15px/2.1 Helvetica,Arial,sans-serif;color:#2b3499">
+      <li><a class="hfg" href="#launch" style="color:#2b3499;text-decoration:none;--hfg:#fe5c36" style-hover="color:#fe5c36">Launch the site on GitHub Pages (one-time, ~20 min)</a></li>
+      <li><a class="hfg" href="#avail" style="color:#2b3499;text-decoration:none;--hfg:#fe5c36" style-hover="color:#fe5c36">Update availability by hand (2 minutes)</a></li>
+      <li><a class="hfg" href="#ical" style="color:#2b3499;text-decoration:none;--hfg:#fe5c36" style-hover="color:#fe5c36">Automatic sync from Airbnb &amp; Booking.com (optional, one-time)</a></li>
+      <li><a class="hfg" href="#photos" style="color:#2b3499;text-decoration:none;--hfg:#fe5c36" style-hover="color:#fe5c36">Adding your photos</a></li>
+      <li><a class="hfg" href="#seo" style="color:#2b3499;text-decoration:none;--hfg:#fe5c36" style-hover="color:#fe5c36">Getting found on Google (free SEO)</a></li>
+      <li><a class="hfg" href="#edits" style="color:#2b3499;text-decoration:none;--hfg:#fe5c36" style-hover="color:#fe5c36">Changing prices, rules, or text later</a></li>
+    </ol>
+  </nav>
+
+  <section id="launch" style="display:flex;flex-direction:column;gap:14px">
+    <h2 style="margin:0;font:400 clamp(24px,3vw,32px)/1.15 'URW Classico',Georgia,serif;color:#0e3a2d">1 · Launch on GitHub Pages <span style="font:400 16px/1 Helvetica,Arial,sans-serif;color:#8a958e">(one-time, ~20 min, free forever)</span></h2>
+    <div style="background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:16px;padding:24px 26px;display:flex;flex-direction:column;gap:14px">
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Step 1.</strong> Go to <strong>github.com</strong> → Sign up (free) using kabinasaaplaya@gmail.com so the whole team can share the login.</p>
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Step 2.</strong> Click the <strong>+</strong> (top right) → <strong>New repository</strong>. Name it exactly: <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">kabinasaaplaya.github.io</code>, wait, use your username: if your username is <em>kabinasaaplaya</em>, the repo name <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">kabinasaaplaya.github.io</code> makes your site live at <strong>https://kabinasaaplaya.github.io</strong>. Set it to <strong>Public</strong>, then Create.</p>
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Step 3.</strong> Download this whole project as a ZIP (ask Claude: “give me the site as a download”), unzip it on your computer.</p>
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Step 4.</strong> In your new repo, click <strong>uploading an existing file</strong> (or Add file → Upload files), drag ALL the site files in (including the <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">assets</code> folder), then click <strong>Commit changes</strong>.</p>
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Step 5.</strong> Repo → <strong>Settings → Pages</strong>. Under “Build and deployment”, Source = <strong>Deploy from a branch</strong>, Branch = <strong>main</strong>, folder = <strong>/ (root)</strong>. Save. In 1–2 minutes your site is live at <strong>https://&lt;username&gt;.github.io</strong>.</p>
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Step 6.</strong> Already done for you: in this download the homepage is named <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">index.html</code> and every link points to it — nothing to rename.</p>
+      <div style="background:rgba(253,180,73,.14);border:1px solid rgba(253,180,73,.4);border-radius:12px;padding:14px 18px">
+        <p style="margin:0;font:14px/1.7 Helvetica,Arial,sans-serif;color:#33413a"><strong>Why GitHub Pages over Framer free:</strong> no “Made in Framer” badge, no page limits, you keep full control of the HTML (which is what makes the free SEO below possible), and editing availability is just editing one small file, no builder needed. Later, a custom domain (₱600–900/yr from Namecheap/Porkbun) plugs straight in under Settings → Pages → Custom domain.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="avail" style="display:flex;flex-direction:column;gap:14px">
+    <h2 style="margin:0;font:400 clamp(24px,3vw,32px)/1.15 'URW Classico',Georgia,serif;color:#0e3a2d">2 · Update availability by hand <span style="font:400 16px/1 Helvetica,Arial,sans-serif;color:#8a958e">(2 minutes, from any phone)</span></h2>
+    <div style="background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:16px;padding:24px 26px;display:flex;flex-direction:column;gap:14px">
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a">All booked dates live in one small file: <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">availability.json</code>. The calendars on the three cabin pages and the Book Now checker all read from it.</p>
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">To block dates:</strong> open the repo on github.com → click <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">availability.json</code> → pencil icon → add a line like this inside the right cabin's list → <strong>Commit changes</strong>. Live in ~1 minute.</p>
+      <pre style="margin:0;background:#0e3a2d;color:#f2ecdd;border-radius:12px;padding:18px 20px;font:13px/1.7 Menlo,Consolas,monospace;overflow-x:auto">"makiling": [
+  { "start": "2026-08-15", "end": "2026-08-16", "note": "Dela Cruz family" }
+]</pre>
+      <ul style="margin:0;padding:0 0 0 20px;font:14px/1.9 Helvetica,Arial,sans-serif;color:#33413a">
+        <li><code style="background:#f2ecdd;padding:1px 6px;border-radius:5px;font-size:13px">start</code> = check-in date, <code style="background:#f2ecdd;padding:1px 6px;border-radius:5px;font-size:13px">end</code> = check-out date (the check-out day itself stays FREE, same rule as Airbnb).</li>
+        <li>A one-night stay on Aug 15: start 2026-08-15, end 2026-08-16. A day tour blocks one day: start = that day, end = the next day.</li>
+        <li>Dates are always <strong>YYYY-MM-DD</strong>. Keep the commas between entries. <code style="background:#f2ecdd;padding:1px 6px;border-radius:5px;font-size:13px">note</code> is only for you, it never shows on the site.</li>
+        <li>To free dates up, delete that line and commit.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="ical" style="display:flex;flex-direction:column;gap:14px">
+    <h2 style="margin:0;font:400 clamp(24px,3vw,32px)/1.15 'URW Classico',Georgia,serif;color:#0e3a2d">3 · Automatic sync from Airbnb &amp; Booking.com <span style="font:400 16px/1 Helvetica,Arial,sans-serif;color:#8a958e">(optional, one-time setup)</span></h2>
+    <div style="background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:16px;padding:24px 26px;display:flex;flex-direction:column;gap:14px">
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a">Since you keep Airbnb/Booking.com accurate, the site can copy them automatically every 6 hours using a free <strong>GitHub Action</strong>. Once set up, you never touch <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">availability.json</code> again.</p>
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Get your iCal links (each cabin has one):</strong></p>
+      <ul style="margin:0;padding:0 0 0 20px;font:14px/1.9 Helvetica,Arial,sans-serif;color:#33413a">
+        <li><strong>Airbnb:</strong> Host dashboard → Calendar → pick the listing → <strong>Availability</strong> settings → <strong>Connect to another website / Export calendar</strong> → copy the link ending in <code style="background:#f2ecdd;padding:1px 6px;border-radius:5px;font-size:13px">.ics</code>.</li>
+        <li><strong>Booking.com:</strong> Extranet → <strong>Rates &amp; Availability → Sync calendars</strong> → <strong>Export calendar</strong> → copy the <code style="background:#f2ecdd;padding:1px 6px;border-radius:5px;font-size:13px">.ics</code> link.</li>
+      </ul>
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Install the sync:</strong> the file <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">github-action-ical-sync.yml</code> is already in this project. In your repo: <strong>Add file → Create new file</strong>, name it exactly <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">.github/workflows/ical-sync.yml</code>, paste that file's contents, replace the placeholder URLs at the top with your real iCal links, and commit. Check it works under the repo's <strong>Actions</strong> tab (you can also press “Run workflow” to test immediately).</p>
+      <div style="background:rgba(108,125,55,.08);border:1px solid rgba(108,125,55,.25);border-radius:12px;padding:14px 18px">
+        <p style="margin:0;font:14px/1.7 Helvetica,Arial,sans-serif;color:#33413a"><strong>Tip:</strong> also import each platform's iCal into the other (Airbnb ⇆ Booking.com sync) so you never get a double booking between the two, same Export/Import screens.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="photos" style="display:flex;flex-direction:column;gap:14px">
+    <h2 style="margin:0;font:400 clamp(24px,3vw,32px)/1.15 'URW Classico',Georgia,serif;color:#0e3a2d">4 · Adding your photos</h2>
+    <div style="background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:16px;padding:24px 26px;display:flex;flex-direction:column;gap:14px">
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a">Photos are ordinary image files kept in one folder: <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">assets/photos/</code>. Each empty photo box on the site shows the <strong>exact filename</strong> it is waiting for. Give your image that name, put it in that folder, and it appears, on every page that uses it (a cabin's hero photo shows on the Home card, The Kabinas card, and the cabin page all at once, because they share one file).</p>
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">To add or change a photo (on GitHub, after launch):</strong> open your repo, then the <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">assets/photos</code> folder, then <strong>Add file &rarr; Upload files</strong>, drag your image in named to match the box (for example <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">makiling-hero.jpg</code>), then <strong>Commit changes</strong>. To replace a photo, upload a new file with the same name. To remove one, delete the file. Changes are live in about a minute.</p>
+      <div style="background:rgba(253,180,73,.14);border:1px solid rgba(253,180,73,.4);border-radius:12px;padding:14px 18px">
+        <p style="margin:0;font:14px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong>Filenames must match exactly</strong> (all lowercase, no spaces), for example <code style="background:#fff;padding:1px 6px;border-radius:5px;font-size:13px">sembrano-hero.jpg</code>, <code style="background:#fff;padding:1px 6px;border-radius:5px;font-size:13px">makiling-tour-bedroom-1.jpg</code>, <code style="background:#fff;padding:1px 6px;border-radius:5px;font-size:13px">am-pool.jpg</code>. Open a page in this workspace to read the filename printed inside each empty box. <code style="background:#fff;padding:1px 6px;border-radius:5px;font-size:13px">.jpg</code>, <code style="background:#fff;padding:1px 6px;border-radius:5px;font-size:13px">.png</code>, and <code style="background:#fff;padding:1px 6px;border-radius:5px;font-size:13px">.webp</code> all work.</p>
+      </div>
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Faster loading (optional but recommended):</strong> install the manifest helper so pages never waste requests looking for photos. In your repo: <strong>Add file &rarr; Create new file</strong>, name it exactly <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">.github/workflows/photo-manifest.yml</code>, paste the contents of <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">github-action-photo-manifest.yml</code> (in this project), and commit. From then on the site keeps an index of your photos automatically each time you add one.</p>
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Photographer credits</strong> (for the Events photoshoot carousel): open <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">assets/photos/credits.json</code> and add a line like <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">"events-shoot-1": "Juan Cruz"</code>. The name shows on that photo.</p>
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Best sources:</strong> your existing Airbnb/Booking.com listing photos. Use landscape shots, ideally 1600px+ wide for the hero. Compress them first at <strong>squoosh.app</strong> (free, no signup) so pages load fast, big photos are the #1 thing that slows a resort site on mobile data.</p>
+    </div>
+  </section>
+
+  <section id="seo" style="display:flex;flex-direction:column;gap:14px">
+    <h2 style="margin:0;font:400 clamp(24px,3vw,32px)/1.15 'URW Classico',Georgia,serif;color:#0e3a2d">5 · Getting found on Google <span style="font:400 16px/1 Helvetica,Arial,sans-serif;color:#8a958e">(all free)</span></h2>
+    <div style="background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:16px;padding:24px 26px;display:flex;flex-direction:column;gap:14px">
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Already built into the site:</strong> every page has a keyword-rich title and description (“resort in Jala-jala, Rizal”, “A-frame cabin”, “Laguna de Bay”), proper heading structure, descriptive link text, mobile-first layout, and a <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">sitemap.xml</code> + <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">robots.txt</code>.</p>
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Do these once after launch:</strong></p>
+      <ol style="margin:0;padding:0 0 0 20px;font:14px/2 Helvetica,Arial,sans-serif;color:#33413a">
+        <li><strong>Google Search Console</strong> (search.google.com/search-console): add your site URL, verify, and submit <code style="background:#f2ecdd;padding:1px 6px;border-radius:5px;font-size:13px">sitemap.xml</code>. This is THE step that gets Google to index you.</li>
+        <li><strong>Google Business Profile</strong> (business.google.com): claim “Kabina sa Aplaya – RJFLn Resort” with your Jala-jala address, photos, and the site URL. This is what puts you on Google Maps and the local results when people search “resort in Rizal”, for a local resort it matters even more than the website ranking.</li>
+        <li><strong>Link the site everywhere:</strong> Facebook page (website field + pinned post), Instagram bio, Airbnb/Booking host profile. Links from real pages tell Google you're legit.</li>
+        <li><strong>Ask happy guests for Google reviews</strong>, reviews are the strongest free local-SEO signal there is.</li>
+      </ol>
+      <p style="margin:0;font:14px/1.8 Helvetica,Arial,sans-serif;color:#55625b">Expect Google to take 1–4 weeks to start showing the site. Search Console → “Performance” shows you which searches bring people in.</p>
+    </div>
+  </section>
+
+  <section id="edits" style="display:flex;flex-direction:column;gap:14px">
+    <h2 style="margin:0;font:400 clamp(24px,3vw,32px)/1.15 'URW Classico',Georgia,serif;color:#0e3a2d">6 · Changing prices, rules, or text later</h2>
+    <div style="background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:16px;padding:24px 26px;display:flex;flex-direction:column;gap:14px">
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a">Every page is a plain <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">.html</code> file you can open in the GitHub editor (pencil icon). Prices appear on: The Kabinas page, each cabin page, and inside <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">Book Now.dc.html</code> (search for “5500”). Rules live on the About and Amenities pages. Use the browser's find (Ctrl+F) inside the editor to jump to the exact text, change it, commit, live in a minute.</p>
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a">Bigger changes (new page, new section, redesign)? Come back to this workspace and ask Claude, then re-download and re-upload the changed files.</p>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+</body>
+</html>

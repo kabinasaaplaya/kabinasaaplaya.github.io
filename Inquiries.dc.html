@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Inquiries &amp; Contact – Kabina sa Aplaya, Jala-jala Rizal</title>
+  <meta name="description" content="Contact Kabina sa Aplaya – RJFLn Resort in Jala-jala, Rizal: +63 927 329 1529, kabinasaaplaya@gmail.com, or Facebook. Ask about cabins, day tours, events, and exclusive resort bookings." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&amp;display=swap" rel="stylesheet" />
+  <style>
+    image-slot { transition: transform .35s ease; }
+    image-slot:not([id$="-hero"]):not([id^="home-cabin"]):hover { transform: scale(1.03); }
+    .liftcard { transition: transform .35s ease, box-shadow .35s ease; }
+    .liftcard:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(14,58,45,.15); }
+    .liftcard image-slot:hover { transform: scale(1.05); }
+    .hbg:hover { background: var(--hbg) !important; }
+    .hfg:hover { color: var(--hfg) !important; }
+    .hbc:hover { border-color: var(--hbc) !important; }
+    .hbg, .hfg, .hbc { transition: background .35s ease, color .35s ease, border-color .35s ease, transform .35s ease, box-shadow .35s ease; }
+    .lnk { border-bottom: none !important; padding-bottom: 4px !important; background-image: linear-gradient(#fdb449,#fdb449), linear-gradient(rgba(253,180,73,.4),rgba(253,180,73,.4)); background-repeat: no-repeat; background-size: 0% 2px, 100% 2px; background-position: 0 100%, 0 100%; transition: background-size .35s ease, color .35s ease; }
+    .lnk:hover { background-size: 100% 2px, 100% 2px; }
+    .lnk .arr { display: inline-block; transition: transform .35s ease; }
+    .lnk:hover .arr { transform: translateX(5px); }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
+    @font-face { font-family: 'URW Classico'; src: url('assets/fonts/URWClassico-BoldItalic.ttf') format('truetype'); font-weight: 700; font-style: italic; font-display: swap; }
+    .ilo, .ilb { transition: color .35s ease; }
+    .ilo:hover { color: #2b3499 !important; }
+    .ilb:hover { color: #fe5c36 !important; }
+    body { animation: pageIn 1s ease both; }
+    @keyframes pageIn { from { opacity: 0 } }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #faf7f0; -webkit-font-smoothing: antialiased; }
+  </style>
+</helmet>
+
+<dc-import name="SiteNav" active="inquiries" hint-size="100%,68px"></dc-import>
+
+<header style="max-width:860px;margin:0 auto;padding:clamp(44px,6vw,72px) 24px 8px;text-align:center">
+  <p style="margin:0 0 8px;font:italic 400 23px/1.25 'URW Classico',Georgia,serif;color:#6c7d37">Kamusta? Usap tayo</p>
+  <h1 style="margin:0 0 14px;font:400 clamp(32px,5vw,50px)/1.1 'URW Classico',Georgia,serif;color:#2b3499"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em">I</span>nquiries</h1>
+  <p style="margin:0;font:16px/1.7 Helvetica,Arial,sans-serif;color:#33413a">Questions about cabins, day tours, events, or exclusive bookings, send a message any way you like. We reply within the day.</p>
+</header>
+
+<section style="max-width:1100px;margin:0 auto;padding:32px 24px clamp(56px,8vw,90px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,44px);align-items:start">
+
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <a href="tel:+639273291529" class="liftcard hbc" style="text-decoration:none;background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:4px;--hbc:#2b3499" style-hover="border-color:#2b3499">
+      <span style="font:700 12px/1 Helvetica,Arial,sans-serif;letter-spacing:.07em;color:#8a958e">CALL OR TEXT</span>
+      <span style="font:400 22px/1.3 'URW Classico',Georgia,serif;color:#2b3499">+63 927 329 1529</span>
+      <span style="font:400 18px/1.3 'URW Classico',Georgia,serif;color:#2b3499">+63 915 984 7090</span>
+    </a>
+    <div style="background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:4px">
+      <span style="font:700 12px/1 Helvetica,Arial,sans-serif;letter-spacing:.07em;color:#8a958e">LANDLINES</span>
+      <span style="font:15px/1.6 Helvetica,Arial,sans-serif;color:#33413a">Laguna: <a class="ilb" href="tel:+63495300974" style="color:#2b3499;font-weight:700;text-decoration:none">+63 49 530 0974</a><br />Rizal: <a class="ilb" href="tel:+63282435802" style="color:#2b3499;font-weight:700;text-decoration:none">+63 2 8243 5802</a></span>
+    </div>
+    <a href="mailto:kabinasaaplaya@gmail.com" class="liftcard hbc" style="text-decoration:none;background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:4px;--hbc:#2b3499" style-hover="border-color:#2b3499">
+      <span style="font:700 12px/1 Helvetica,Arial,sans-serif;letter-spacing:.07em;color:#8a958e">EMAIL</span>
+      <span style="font:400 19px/1.3 'URW Classico',Georgia,serif;color:#2b3499;word-break:break-all">kabinasaaplaya@gmail.com</span>
+    </a>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <a href="https://facebook.com/kabinasaaplaya" target="_blank" rel="noopener" class="liftcard hbg" style="text-decoration:none;background:#2b3499;border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:4px;--hbg:#1f2775" style-hover="background:#1f2775">
+        <span style="font:700 12px/1 Helvetica,Arial,sans-serif;letter-spacing:.07em;color:rgba(255,255,255,.7)">FACEBOOK</span>
+        <span style="font:700 16px/1.3 Helvetica,Arial,sans-serif;color:#fff">/kabinasaaplaya</span>
+      </a>
+      <a href="https://instagram.com/kabinasaaplaya" target="_blank" rel="noopener" class="liftcard hbg" style="text-decoration:none;background:#fe5c36;border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:4px;--hbg:#e34a27" style-hover="background:#e34a27">
+        <span style="font:700 12px/1 Helvetica,Arial,sans-serif;letter-spacing:.07em;color:rgba(255,255,255,.75)">INSTAGRAM</span>
+        <span style="font:700 16px/1.3 Helvetica,Arial,sans-serif;color:#fff">@kabinasaaplaya</span>
+      </a>
+    </div>
+    <div style="background:#f2ecdd;border:1px solid rgba(14,58,45,.1);border-radius:16px;padding:20px 22px">
+      <span style="font:700 12px/1 Helvetica,Arial,sans-serif;letter-spacing:.07em;color:#8a958e">VISIT US</span>
+      <p style="margin:6px 0 0;font:15px/1.7 Helvetica,Arial,sans-serif;color:#33413a">Mabini St., Brgy. Lubo,<br />Jala-jala, Rizal 1990, Philippines</p>
+      <a class="lnk hfg" href="https://maps.google.com/?q=Kabina+sa+Aplaya+RJFLn+Resort+Jala-jala+Rizal" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;font:700 14px/1 Helvetica,Arial,sans-serif;color:#2b3499;text-decoration:none;border-bottom:2px solid #fdb449;padding-bottom:3px;--hfg:#fe5c36" style-hover="color:#fe5c36">Open in Google Maps <span class="arr">→</span></a>
+    </div>
+  </div>
+
+  <div style="background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:20px;padding:clamp(22px,3.5vw,32px);box-shadow:0 4px 18px rgba(14,58,45,.07)">
+    <h2 style="margin:0 0 6px;font:400 26px/1.2 'URW Classico',Georgia,serif;color:#0e3a2d">Send us a message</h2>
+    <p style="margin:0 0 20px;font:14px/1.6 Helvetica,Arial,sans-serif;color:#55625b">Your message goes straight to our inbox, we reply within the day.</p>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <label style="display:flex;flex-direction:column;gap:6px;font:700 13px/1 Helvetica,Arial,sans-serif;color:#2b3499">Your name
+        <input value="{{ name }}" onChange="{{ setName }}" placeholder="Juan dela Cruz" style="font:15px/1.4 Helvetica,Arial,sans-serif;color:#0e3a2d;padding:13px 14px;border:1px solid rgba(14,58,45,.2);border-radius:10px;background:#faf7f0" />
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font:700 13px/1 Helvetica,Arial,sans-serif;color:#2b3499">Mobile number (11 digits, optional)
+        <input type="tel" inputMode="numeric" maxLength="{{ 11 }}" value="{{ phone }}" onChange="{{ setPhone }}" placeholder="09XXXXXXXXX" style="font:15px/1.4 Helvetica,Arial,sans-serif;color:#0e3a2d;padding:13px 14px;border:1px solid rgba(14,58,45,.2);border-radius:10px;background:#faf7f0" />
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font:700 13px/1 Helvetica,Arial,sans-serif;color:#2b3499">Email address
+        <input type="email" value="{{ email }}" onChange="{{ setEmail }}" placeholder="you@email.com" style="font:15px/1.4 Helvetica,Arial,sans-serif;color:#0e3a2d;padding:13px 14px;border:1px solid rgba(14,58,45,.2);border-radius:10px;background:#faf7f0" />
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font:700 13px/1 Helvetica,Arial,sans-serif;color:#2b3499">What's this about?
+        <select value="{{ topic }}" onChange="{{ setTopic }}" style="font:15px/1.4 Helvetica,Arial,sans-serif;color:#0e3a2d;padding:13px 10px;border:1px solid rgba(14,58,45,.2);border-radius:10px;background:#faf7f0">
+          <option>Cabin booking</option>
+          <option>Day tour</option>
+          <option>Exclusive resort booking</option>
+          <option>Event / pavilion quotation</option>
+          <option>Rates &amp; fees</option>
+          <option>Directions</option>
+          <option>Something else</option>
+        </select>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font:700 13px/1 Helvetica,Arial,sans-serif;color:#2b3499">Your message
+        <textarea value="{{ msg }}" onChange="{{ setMsg }}" rows="5" placeholder="Hi! We're planning a trip on…" style="font:15px/1.5 Helvetica,Arial,sans-serif;color:#0e3a2d;padding:13px 14px;border:1px solid rgba(14,58,45,.2);border-radius:10px;background:#faf7f0;resize:vertical"></textarea>
+      </label>
+      <button class="hbg" onClick="{{ submit }}" style="cursor:pointer;border:none;text-align:center;background:{{ sendBg }};color:#fff;font:700 16px/1 Helvetica,Arial,sans-serif;letter-spacing:.04em;padding:17px 20px;border-radius:999px;transition:transform .35s ease,box-shadow .35s ease,background .35s ease,color .35s ease;--hbg:#e34a27" style-hover="transform:translateY(-3px);box-shadow:0 12px 24px rgba(14,58,45,.22);background:#e34a27">{{ sendLabel }}</button>
+      <sc-if value="{{ showSent }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;font:700 13px/1.6 Helvetica,Arial,sans-serif;color:#1f6b3a;background:rgba(108,125,55,.1);border:1px solid rgba(108,125,55,.35);border-radius:10px;padding:12px 14px">✓ Salamat! Your message is in our inbox, we'll reply to your email within the day.</p>
+      </sc-if>
+      <sc-if value="{{ showSendError }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;font:700 13px/1.6 Helvetica,Arial,sans-serif;color:#c23a1b;background:rgba(254,92,54,.1);border:1px solid rgba(254,92,54,.35);border-radius:10px;padding:12px 14px">{{ sendErrorMsg }} <a href="{{ mailtoHref }}" style="color:#2b3499;text-decoration:underline">Send via your email app instead</a>.</p>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,380px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { name: '', phone: '', email: '', topic: 'Cabin booking', msg: '', sendState: 'idle', sendErrorMsg: '' };
+
+  componentDidMount() {
+    import('./reveal.js').then(m => m.initReveal());
+  }
+
+  renderVals() {
+    const s = this.state;
+    const subject = 'Inquiry: ' + s.topic + '. Kabina sa Aplaya';
+    const body = [
+      'Hello Kabina sa Aplaya!',
+      '',
+      'Topic: ' + s.topic,
+      'Name: ' + (s.name || '-'),
+      'Mobile: ' + (s.phone || '-'),
+      '',
+      (s.msg || ''),
+      '',
+      'Thank you!'
+    ].join('\n');
+    const submit = async () => {
+      if (this.state.sendState === 'sending' || this.state.sendState === 'sent') return;
+      const missing = [];
+      if (!s.name.trim()) missing.push('your name');
+      if (!/^\S+@\S+\.\S+$/.test(s.email)) missing.push('a valid email address');
+      if (!s.msg.trim()) missing.push('your message');
+      if (s.phone && !/^\d{11}$/.test(s.phone)) missing.push('the full 11-digit mobile number');
+      if (missing.length) {
+        this.setState({ sendState: 'error', sendErrorMsg: 'Please fill in ' + missing.join(', ') + ' first.' });
+        return;
+      }
+      this.setState({ sendState: 'sending', sendErrorMsg: '' });
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/kabinasaaplaya@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            _subject: subject,
+            _template: 'table',
+            _captcha: 'false',
+            _replyto: s.email,
+            'Topic': s.topic,
+            'Name': s.name,
+            'Mobile': s.phone || '-',
+            'Email': s.email,
+            'Message': s.msg
+          })
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && String(data.success) !== 'false') this.setState({ sendState: 'sent' });
+        else throw new Error(data.message || 'Send failed');
+      } catch (e) {
+        this.setState({ sendState: 'error', sendErrorMsg: 'Hmm, the message didn\u2019t go through.' });
+      }
+    };
+    return {
+      ...s,
+      submit,
+      sendLabel: s.sendState === 'sending' ? 'Sending…' : (s.sendState === 'sent' ? 'Message sent ✓' : 'Send message'),
+      sendBg: s.sendState === 'sent' ? '#1f6b3a' : '#fe5c36',
+      showSent: s.sendState === 'sent',
+      showSendError: s.sendState === 'error',
+      setName: e => this.setState({ name: e.target.value }),
+      setPhone: e => this.setState({ phone: e.target.value.replace(/\D/g, '').slice(0, 11) }),
+      setEmail: e => this.setState({ email: e.target.value }),
+      setTopic: e => this.setState({ topic: e.target.value }),
+      setMsg: e => this.setState({ msg: e.target.value }),
+      mailtoHref: 'mailto:kabinasaaplaya@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body)
+    };
+  }
+}
+</script>
+</body>
+</html>
