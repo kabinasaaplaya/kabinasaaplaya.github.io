@@ -1,0 +1,191 @@
+# GitHub Action: sync availability.json from your Google Sheets bookings file.
+#
+# HOW IT WORKS
+# Your Google Sheet stays the single source of truth. Every 6 hours this
+# action downloads a published CSV copy of ONE tab (see setup below), reads
+# the Cabin / Check-in / Check-out columns, and regenerates availability.json
+# — which is what all the calendars on the website read. Only cabin names and
+# dates ever reach the website; guest names and fees are never published.
+#
+# SETUP (one time, ~10 min):
+# 1. In your bookings spreadsheet, add a new tab called "Website Availability"
+#    with exactly three columns. Put this in cell A1:
+#
+#      ={"Cabin/s","Check-in","Check-out"; FILTER({Bookings!G2:G, Bookings!I2:I, Bookings!J2:J}, Bookings!I2:I<>"")}
+#
+#    (Replace "Bookings" with your actual tab name, and G/I/J with the
+#    columns holding Cabin/s, Check-in, and Check-out. The tab fills itself —
+#    you never edit it by hand.)
+# 2. File -> Share -> Publish to web. In the dialog, pick ONLY the
+#    "Website Availability" tab (not the whole document!) and choose
+#    "Comma-separated values (.csv)". Click Publish and copy the link.
+#    Publishing only this tab keeps guest names and payments private.
+# 3. In your GitHub repo, create the file: .github/workflows/sheets-sync.yml
+#    and paste this entire file's contents into it.
+# 4. Replace PASTE_PUBLISHED_CSV_URL below with the link from step 2. Commit.
+# 5. Test it: repo -> Actions tab -> "Sync availability from Google Sheets"
+#    -> Run workflow. availability.json should update within a minute.
+#
+# NOTES
+# - Dates should look like 25-Jan-2025 (how your sheet already formats them),
+#   2025-01-25, or 25/01/2025. Cabin cells may list several cabins separated
+#   by | or commas (e.g. "Sembrano | Makiling") — each one gets blocked.
+# - Day tours / same-day rows (check-out same as or before check-in) block
+#   just that one day.
+# - Rows containing the word "cancelled" anywhere are skipped.
+# - Use EITHER this sync OR the Airbnb/Booking.com iCal sync, not both —
+#   they both write availability.json and would overwrite each other.
+
+name: Sync availability from Google Sheets
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'   # every 6 hours
+  workflow_dispatch:         # manual "Run workflow" button
+
+permissions:
+  contents: write
+
+env:
+  SHEET_CSV_URL: 'PASTE_PUBLISHED_CSV_URL'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build availability.json from Google Sheets CSV
+        run: |
+          node - <<'EOF'
+          const https = require('https');
+          const fs = require('fs');
+
+          function fetchText(url, redirects = 5) {
+            return new Promise((resolve, reject) => {
+              https.get(url, (res) => {
+                if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location && redirects > 0) {
+                  return resolve(fetchText(res.headers.location, redirects - 1));
+                }
+                let data = '';
+                res.on('data', (c) => (data += c));
+                res.on('end', () => resolve(data));
+              }).on('error', reject);
+            });
+          }
+
+          // Minimal CSV parser that handles quoted fields with commas/newlines.
+          function parseCSV(text) {
+            const rows = [];
+            let row = [], field = '', inQ = false;
+            for (let i = 0; i < text.length; i++) {
+              const c = text[i];
+              if (inQ) {
+                if (c === '"') {
+                  if (text[i + 1] === '"') { field += '"'; i++; }
+                  else inQ = false;
+                } else field += c;
+              } else if (c === '"') inQ = true;
+              else if (c === ',') { row.push(field); field = ''; }
+              else if (c === '\n' || c === '\r') {
+                if (c === '\r' && text[i + 1] === '\n') i++;
+                row.push(field); field = '';
+                rows.push(row); row = [];
+              } else field += c;
+            }
+            if (field !== '' || row.length) { row.push(field); rows.push(row); }
+            return rows;
+          }
+
+          const MONTHS = { jan:1, feb:2, mar:3, apr:4, may:5, jun:6, jul:7, aug:8, sep:9, oct:10, nov:11, dec:12 };
+
+          // Accepts "25-Jan-2025", "25 Jan 2025", "Jan 25, 2025", "2025-01-25",
+          // "25/01/2025" (day-first, PH convention; falls back to month-first
+          // when the first number can't be a month is not needed — day>12 disambiguates).
+          function parseDate(s) {
+            s = String(s || '').trim();
+            if (!s) return null;
+            let m;
+            if ((m = s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/)))
+              return mk(+m[1], +m[2], +m[3]);
+            if ((m = s.match(/^(\d{1,2})[\s\-\/]([A-Za-z]{3,})[\s\-\/,]+(\d{4})$/)))
+              return mk(+m[3], MONTHS[m[2].slice(0, 3).toLowerCase()], +m[1]);
+            if ((m = s.match(/^([A-Za-z]{3,})[\s\-\/]+(\d{1,2})[\s,\-\/]+(\d{4})$/)))
+              return mk(+m[3], MONTHS[m[1].slice(0, 3).toLowerCase()], +m[2]);
+            if ((m = s.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/))) {
+              let d = +m[1], mo = +m[2];
+              if (mo > 12 && d <= 12) { const t = d; d = mo; mo = t; } // clearly month-first
+              return mk(+m[3], mo, d);
+            }
+            return null;
+          }
+          function mk(y, mo, d) {
+            if (!y || !mo || !d || mo < 1 || mo > 12 || d < 1 || d > 31) return null;
+            const p = (n) => String(n).padStart(2, '0');
+            return y + '-' + p(mo) + '-' + p(d);
+          }
+          function addDay(iso) {
+            const [y, m, d] = iso.split('-').map(Number);
+            const t = new Date(Date.UTC(y, m - 1, d + 1));
+            const p = (n) => String(n).padStart(2, '0');
+            return t.getUTCFullYear() + '-' + p(t.getUTCMonth() + 1) + '-' + p(t.getUTCDate());
+          }
+
+          (async () => {
+            const url = process.env.SHEET_CSV_URL || '';
+            if (!url.startsWith('http')) throw new Error('SHEET_CSV_URL is not set — paste your published CSV link at the top of the workflow file.');
+            const rows = parseCSV(await fetchText(url));
+
+            // Find the header row and the three columns we need.
+            let hi = -1, ci = -1, ini = -1, outi = -1;
+            for (let r = 0; r < Math.min(rows.length, 10); r++) {
+              const cells = rows[r].map((c) => c.toLowerCase());
+              const cab = cells.findIndex((c) => /cabin/.test(c));
+              const cin = cells.findIndex((c) => /check[\s\-]*in/.test(c) && !/time/.test(c));
+              const cout = cells.findIndex((c) => /check[\s\-]*o/.test(c) && !/time/.test(c) && c !== cells[cin]);
+              if (cab >= 0 && cin >= 0 && cout >= 0) { hi = r; ci = cab; ini = cin; outi = cout; break; }
+            }
+            if (hi < 0) throw new Error('Could not find a header row with Cabin / Check-in / Check-out columns.');
+
+            const cabins = { makiling: [], sembrano: [], banahaw: [] };
+            // Keep bookings from the recent past onward so the file stays small.
+            const cutoff = new Date(Date.now() - 30 * 86400000).toISOString().slice(0, 10);
+            let used = 0, skipped = 0;
+
+            for (let r = hi + 1; r < rows.length; r++) {
+              const row = rows[r];
+              if (!row || row.every((c) => !String(c).trim())) continue;
+              if (row.some((c) => /cancell?ed/i.test(c))) { skipped++; continue; }
+              const start = parseDate(row[ini]);
+              if (!start) { skipped++; continue; }
+              let end = parseDate(row[outi]);
+              if (!end || end <= start) end = addDay(start); // day tour / same-day row
+              if (end < cutoff) continue; // long past — not needed by the calendars
+              const names = String(row[ci] || '').toLowerCase().match(/makiling|sembrano|banahaw/g) || [];
+              for (const key of new Set(names)) {
+                cabins[key].push({ start, end, note: 'from sheet' });
+                used++;
+              }
+            }
+
+            for (const k of Object.keys(cabins)) cabins[k].sort((a, b) => a.start.localeCompare(b.start));
+
+            const out = {
+              _comment: 'AUTO-GENERATED from the Google Sheets bookings file by the sheets-sync action. Manual edits here will be overwritten on the next run — update the Google Sheet instead.',
+              updated: new Date().toISOString().slice(0, 10),
+              cabins
+            };
+            fs.writeFileSync('availability.json', JSON.stringify(out, null, 2) + '\n');
+            console.log('Wrote availability.json:',
+              cabins.makiling.length, '/', cabins.sembrano.length, '/', cabins.banahaw.length,
+              'bookings (rows used:', used + ', skipped:', skipped + ')');
+          })();
+          EOF
+
+      - name: Commit if changed
+        run: |
+          git config user.name 'availability-bot'
+          git config user.email 'actions@github.com'
+          git add availability.json
+          git diff --cached --quiet || git commit -m 'Sync availability from Google Sheets'
+          git push

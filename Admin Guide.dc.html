@@ -3,12 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin &amp; Launch Guide. Kabina sa Aplaya (internal)</title>
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Kabina sa Aplaya – RJFLn Resort" />
+<meta property="og:title" content="Admin &amp; Launch Guide. Kabina sa Aplaya (internal)" />
+<meta property="og:url" content="https://kabinasaaplaya.com/Admin%20Guide.dc.html" />
+<meta property="og:image" content="https://kabinasaaplaya.com/assets/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://kabinasaaplaya.com/assets/og-image.jpg" />
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
   <title>Admin &amp; Launch Guide. Kabina sa Aplaya (internal)</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Kabina sa Aplaya – RJFLn Resort" />
+  <meta property="og:title" content="Admin &amp; Launch Guide. Kabina sa Aplaya (internal)" />
+  <meta property="og:url" content="https://kabinasaaplaya.com/Admin%20Guide.dc.html" />
+  <meta property="og:image" content="https://kabinasaaplaya.com/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://kabinasaaplaya.com/assets/og-image.jpg" />
   <link rel="icon" type="image/png" href="assets/icon-colorway1.png" />
   <meta name="robots" content="noindex" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -55,7 +74,8 @@
       <li><a class="hfg" href="#launch" style="color:#2b3499;text-decoration:none;--hfg:#fe5c36" style-hover="color:#fe5c36">Launch the site on GitHub Pages (one-time, ~20 min)</a></li>
       <li><a class="hfg" href="#domain" style="color:#2b3499;text-decoration:none;--hfg:#fe5c36" style-hover="color:#fe5c36">Connect kabinasaaplaya.com from Namecheap (one-time, ~15 min)</a></li>
       <li><a class="hfg" href="#avail" style="color:#2b3499;text-decoration:none;--hfg:#fe5c36" style-hover="color:#fe5c36">Update availability by hand (2 minutes)</a></li>
-      <li><a class="hfg" href="#ical" style="color:#2b3499;text-decoration:none;--hfg:#fe5c36" style-hover="color:#fe5c36">Automatic sync from Airbnb &amp; Booking.com (optional, one-time)</a></li>
+      <li><a class="hfg" href="#sheets" style="color:#2b3499;text-decoration:none;--hfg:#fe5c36" style-hover="color:#fe5c36">Automatic sync from your Google Sheets bookings file (recommended)</a></li>
+      <li><a class="hfg" href="#ical" style="color:#2b3499;text-decoration:none;--hfg:#fe5c36" style-hover="color:#fe5c36">Alternative: sync from Airbnb &amp; Booking.com iCal</a></li>
       <li><a class="hfg" href="#photos" style="color:#2b3499;text-decoration:none;--hfg:#fe5c36" style-hover="color:#fe5c36">Adding your photos</a></li>
       <li><a class="hfg" href="#seo" style="color:#2b3499;text-decoration:none;--hfg:#fe5c36" style-hover="color:#fe5c36">Getting found on Google (free SEO)</a></li>
       <li><a class="hfg" href="#edits" style="color:#2b3499;text-decoration:none;--hfg:#fe5c36" style-hover="color:#fe5c36">Changing prices, rules, or text later</a></li>
@@ -126,8 +146,34 @@
     </div>
   </section>
 
+  <section id="sheets" style="display:flex;flex-direction:column;gap:14px">
+    <h2 style="margin:0;font:400 clamp(24px,3vw,32px)/1.15 'URW Classico',Georgia,serif;color:#0e3a2d">4 · Automatic sync from your Google Sheets bookings file <span style="font:400 16px/1 Helvetica,Arial,sans-serif;color:#8a958e">(recommended, one-time setup)</span></h2>
+    <div style="background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:16px;padding:24px 26px;display:flex;flex-direction:column;gap:14px">
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a">Your bookings spreadsheet stays the master copy — the site reads it automatically every 6 hours using a free <strong>GitHub Action</strong> and rebuilds <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">availability.json</code> from the <strong>Cabin/s</strong>, <strong>Check-in</strong>, and <strong>Check-out</strong> columns. You keep filing bookings exactly as you do now; the website calendars follow along by themselves.</p>
+      <div style="background:rgba(108,125,55,.08);border:1px solid rgba(108,125,55,.25);border-radius:12px;padding:14px 18px">
+        <p style="margin:0;font:14px/1.7 Helvetica,Arial,sans-serif;color:#33413a"><strong>Privacy is built in:</strong> you publish only a small helper tab containing cabin + dates. Guest names, addresses, and fees never leave the spreadsheet and never reach the website.</p>
+      </div>
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Step 1 — Make the helper tab.</strong> In your spreadsheet, add a new tab named <strong>Website Availability</strong>. In cell <strong>A1</strong> paste (replace <code style="background:#f2ecdd;padding:1px 6px;border-radius:5px;font-size:13px">Bookings</code> with your real tab name, and G / I / J with the columns holding Cabin/s, Check-in, Check-out):</p>
+      <pre style="margin:0;background:#0e3a2d;color:#f2ecdd;border-radius:12px;padding:18px 20px;font:13px/1.7 Menlo,Consolas,monospace;overflow-x:auto">={"Cabin/s","Check-in","Check-out";
+  FILTER({Bookings!G2:G, Bookings!I2:I, Bookings!J2:J}, Bookings!I2:I&lt;&gt;"")}</pre>
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a">The tab fills itself from your bookings and stays up to date — you never edit it by hand.</p>
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Step 2 — Publish just that tab.</strong> <strong>File → Share → Publish to web</strong>. In the first dropdown pick <strong>Website Availability</strong> (not &ldquo;Entire Document&rdquo;!), in the second pick <strong>Comma-separated values (.csv)</strong>, click <strong>Publish</strong>, and copy the link.</p>
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Step 3 — Install the sync.</strong> The file <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">github-action-sheets-sync.yml</code> is already in this project. In your repo: <strong>Add file → Create new file</strong>, name it exactly <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">.github/workflows/sheets-sync.yml</code>, paste that file&rsquo;s contents, replace <code style="background:#f2ecdd;padding:1px 6px;border-radius:5px;font-size:13px">PASTE_PUBLISHED_CSV_URL</code> near the top with the link from Step 2, and commit.</p>
+      <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Step 4 — Test it.</strong> Repo → <strong>Actions</strong> tab → <strong>Sync availability from Google Sheets</strong> → <strong>Run workflow</strong>. Within a minute <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">availability.json</code> updates and the site calendars show your real bookings.</p>
+      <ul style="margin:0;padding:0 0 0 20px;font:14px/1.9 Helvetica,Arial,sans-serif;color:#33413a">
+        <li>Cabin cells can list several cabins (<code style="background:#f2ecdd;padding:1px 6px;border-radius:5px;font-size:13px">Sembrano | Makiling</code>) — each one gets blocked.</li>
+        <li>Dates like <code style="background:#f2ecdd;padding:1px 6px;border-radius:5px;font-size:13px">25-Jan-2025</code> (your current format) work as-is; day tours and same-day rows block just that day.</li>
+        <li>Write <strong>cancelled</strong> anywhere in a row and the sync skips it.</li>
+        <li>New bookings appear on the site within 6 hours — or instantly if you press <strong>Run workflow</strong>.</li>
+      </ul>
+      <div style="background:rgba(253,180,73,.14);border:1px solid rgba(253,180,73,.4);border-radius:12px;padding:14px 18px">
+        <p style="margin:0;font:14px/1.7 Helvetica,Arial,sans-serif;color:#33413a"><strong>Use one sync only:</strong> this Google Sheets sync and the iCal sync below both write <code style="background:#fff;padding:1px 6px;border-radius:5px;font-size:13px">availability.json</code> and would overwrite each other. Since your sheet is the source of truth, use this one — and log any Airbnb/Booking.com bookings in the sheet like you already do.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="ical" style="display:flex;flex-direction:column;gap:14px">
-    <h2 style="margin:0;font:400 clamp(24px,3vw,32px)/1.15 'URW Classico',Georgia,serif;color:#0e3a2d">4 · Automatic sync from Airbnb &amp; Booking.com <span style="font:400 16px/1 Helvetica,Arial,sans-serif;color:#8a958e">(optional, one-time setup)</span></h2>
+    <h2 style="margin:0;font:400 clamp(24px,3vw,32px)/1.15 'URW Classico',Georgia,serif;color:#0e3a2d">4b · Alternative: sync from Airbnb &amp; Booking.com iCal <span style="font:400 16px/1 Helvetica,Arial,sans-serif;color:#8a958e">(only if you stop using the sheet)</span></h2>
     <div style="background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:16px;padding:24px 26px;display:flex;flex-direction:column;gap:14px">
       <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a">Since you keep Airbnb/Booking.com accurate, the site can copy them automatically every 6 hours using a free <strong>GitHub Action</strong>. Once set up, you never touch <code style="background:#f2ecdd;padding:2px 8px;border-radius:6px;font-size:14px">availability.json</code> again.</p>
       <p style="margin:0;font:15px/1.8 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#2b3499">Get your iCal links (each cabin has one):</strong></p>
