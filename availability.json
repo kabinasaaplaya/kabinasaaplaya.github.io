@@ -1,19 +1,272 @@
 {
-  "_comment": "ADMIN: This file controls the availability calendars on the website. Each cabin has a list of bookings. 'start' = check-in date, 'end' = check-out date (the check-out date itself shows as FREE, same as Airbnb iCal). Dates are YYYY-MM-DD. Add, edit, or delete entries then save — the site updates instantly. When the GitHub Action sync is set up (see Admin & Launch Guide), this file is regenerated automatically from your Airbnb/Booking.com calendars every 6 hours.",
-  "updated": "2026-07-03",
+  "_comment": "AUTO-GENERATED from the Google Sheets bookings file by the sheets-sync action. Manual edits here will be overwritten on the next run — update the Google Sheet instead.",
+  "updated": "2026-07-07",
   "cabins": {
     "makiling": [
-      { "start": "2026-07-04", "end": "2026-07-05", "note": "sample booking" },
-      { "start": "2026-07-11", "end": "2026-07-13", "note": "sample booking" },
-      { "start": "2026-07-25", "end": "2026-07-26", "note": "sample booking" }
+      {
+        "start": "2026-06-06",
+        "end": "2026-06-07",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-09",
+        "end": "2026-06-10",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-09",
+        "end": "2026-06-10",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-11",
+        "end": "2026-06-12",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-12",
+        "end": "2026-06-14",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-12",
+        "end": "2026-06-13",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-16",
+        "end": "2026-06-17",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-18",
+        "end": "2026-06-19",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-20",
+        "end": "2026-06-21",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-26",
+        "end": "2026-06-28",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-26",
+        "end": "2026-06-28",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-07-04",
+        "end": "2026-07-05",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-07-10",
+        "end": "2026-07-11",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-07-18",
+        "end": "2026-07-19",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-08-15",
+        "end": "2026-08-16",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-11-19",
+        "end": "2026-11-21",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-12-17",
+        "end": "2026-12-19",
+        "note": "from sheet"
+      }
     ],
     "sembrano": [
-      { "start": "2026-07-04", "end": "2026-07-06", "note": "sample booking" },
-      { "start": "2026-07-18", "end": "2026-07-19", "note": "sample booking" }
+      {
+        "start": "2026-06-06",
+        "end": "2026-06-07",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-11",
+        "end": "2026-06-12",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-12",
+        "end": "2026-06-13",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-13",
+        "end": "2026-06-14",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-16",
+        "end": "2026-06-17",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-26",
+        "end": "2026-06-27",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-27",
+        "end": "2026-06-28",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-07-04",
+        "end": "2026-07-05",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-07-10",
+        "end": "2026-07-11",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-07-11",
+        "end": "2026-07-12",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-07-18",
+        "end": "2026-07-19",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-07-25",
+        "end": "2026-07-26",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-08-05",
+        "end": "2026-08-06",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-08-15",
+        "end": "2026-08-16",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-09-01",
+        "end": "2026-10-01",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-11-19",
+        "end": "2026-11-21",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-12-17",
+        "end": "2026-12-19",
+        "note": "from sheet"
+      }
     ],
     "banahaw": [
-      { "start": "2026-07-11", "end": "2026-07-12", "note": "sample booking" },
-      { "start": "2026-08-01", "end": "2026-08-03", "note": "sample booking" }
+      {
+        "start": "2026-06-06",
+        "end": "2026-06-07",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-07",
+        "end": "2026-06-08",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-07",
+        "end": "2026-06-08",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-12",
+        "end": "2026-06-13",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-13",
+        "end": "2026-06-14",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-16",
+        "end": "2026-06-17",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-20",
+        "end": "2026-06-21",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-26",
+        "end": "2026-06-27",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-06-27",
+        "end": "2026-06-28",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-07-04",
+        "end": "2026-07-05",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-07-10",
+        "end": "2026-07-11",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-07-13",
+        "end": "2026-07-14",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-07-18",
+        "end": "2026-07-19",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-08-15",
+        "end": "2026-08-16",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-09-01",
+        "end": "2026-10-01",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-09-12",
+        "end": "2026-09-13",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-11-19",
+        "end": "2026-11-21",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-12-17",
+        "end": "2026-12-19",
+        "note": "from sheet"
+      }
     ]
   }
 }
