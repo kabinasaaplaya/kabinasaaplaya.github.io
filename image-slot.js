@@ -375,7 +375,10 @@
       });
       // naturalWidth/Height aren't known until load — re-apply so the cover
       // baseline is computed from real dimensions, not the 100%×100% fallback.
-      this._img.addEventListener('load', () => this._applyView());
+      // Clamp FIRST: a crop panned on a desktop-shaped frame can exceed the
+      // legal pan range on a narrower frame; applying unclamped offsets
+      // leaves the image not covering the frame (grey background shows).
+      this._img.addEventListener('load', () => { this._clampView(); this._applyView(); });
       // Gated on editable + fit=cover so share links and contain/fill slots
       // stay static.
       this.addEventListener('dblclick', (e) => {
@@ -748,14 +751,14 @@
         this.removeAttribute('data-filled');
       }
 
-      // Credit resolution: a dropped photo carries its own captured credit
-      // (stored.c); a baked file's credit comes from credits.json; an author
-      // src uses the credit attribute. Exposed as data-credit-text so the
-      // lightbox can show it too.
-      const dropCredit = this._userUrl && stored && stored.c ? stored.c : '';
+      // Credit resolution: a photo's captured credit (stored.c) travels in
+      // the sidecar and applies whether the pixels come from the unbaked
+      // drop OR the baked production file; credits.json can override for
+      // baked files; an author src uses the credit attribute.
+      const storedCredit = (stored && stored.c) || '';
       const fileCredit = (!this._userUrl && typeof fileUrl === 'string' && this.id && creditsMap[this.id]) ? creditsMap[this.id] : '';
       const attrCredit = (!this._userUrl && !fileCredit && this.getAttribute('credit')) || '';
-      const credit = dropCredit || fileCredit || attrCredit;
+      const credit = storedCredit || fileCredit || attrCredit;
       const showCredit = !!(url && credit);
       if (credit) this.setAttribute('data-credit-text', credit);
       else this.removeAttribute('data-credit-text');
