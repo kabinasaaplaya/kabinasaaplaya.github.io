@@ -1,13 +1,8 @@
 {
   "_comment": "AUTO-GENERATED from the Google Sheets bookings file by the sheets-sync action. Manual edits here will be overwritten on the next run — update the Google Sheet instead.",
-  "updated": "2026-07-17",
+  "updated": "2026-07-18",
   "cabins": {
     "makiling": [
-      {
-        "start": "2026-06-16",
-        "end": "2026-06-17",
-        "note": "from sheet"
-      },
       {
         "start": "2026-06-18",
         "end": "2026-06-19",
@@ -81,11 +76,6 @@
     ],
     "sembrano": [
       {
-        "start": "2026-06-16",
-        "end": "2026-06-17",
-        "note": "from sheet"
-      },
-      {
         "start": "2026-06-26",
         "end": "2026-06-27",
         "note": "from sheet"
@@ -152,11 +142,6 @@
       }
     ],
     "banahaw": [
-      {
-        "start": "2026-06-16",
-        "end": "2026-06-17",
-        "note": "from sheet"
-      },
       {
         "start": "2026-06-20",
         "end": "2026-06-21",
