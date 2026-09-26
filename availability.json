@@ -19,16 +19,6 @@
         "note": "from sheet"
       },
       {
-        "start": "2026-10-03",
-        "end": "2026-10-04",
-        "note": "from sheet"
-      },
-      {
-        "start": "2026-10-21",
-        "end": "2026-10-22",
-        "note": "from sheet"
-      },
-      {
         "start": "2026-10-31",
         "end": "2026-11-02",
         "note": "from sheet"
@@ -51,11 +41,6 @@
       {
         "start": "2026-12-26",
         "end": "2026-12-27",
-        "note": "from sheet"
-      },
-      {
-        "start": "2026-12-30",
-        "end": "2027-01-01",
         "note": "from sheet"
       }
     ],
@@ -88,11 +73,6 @@
       {
         "start": "2026-12-17",
         "end": "2026-12-19",
-        "note": "from sheet"
-      },
-      {
-        "start": "2026-12-30",
-        "end": "2027-01-01",
         "note": "from sheet"
       }
     ],
@@ -140,11 +120,6 @@
       {
         "start": "2026-12-17",
         "end": "2026-12-19",
-        "note": "from sheet"
-      },
-      {
-        "start": "2026-12-30",
-        "end": "2027-01-01",
         "note": "from sheet"
       }
     ]
