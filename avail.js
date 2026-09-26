@@ -22,6 +22,8 @@ export function bookedSet(ranges) {
   for (const r of ranges || []) {
     let d = parseISO(r.start);
     const end = parseISO(r.end);
+    // Day tours use the same check-in and check-out date.
+    if (d.getTime() === end.getTime()) set.add(toISO(d));
     while (d < end) {
       set.add(toISO(d));
       d = addDays(d, 1);
