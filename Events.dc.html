@@ -190,7 +190,13 @@ class Component extends DCLogic {
       }
       this.setState({ sendState: 'sending', sendErrorMsg: '' });
       try {
-        const res = await fetch('https://formsubmit.co/ajax/kabinasaaplaya@gmail.com', {
+          const staffRequest = fetch('https://ksa-staff-database.reineaissance.workers.dev/api/public-inquiries', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ submission_id: crypto.randomUUID(), form_type: 'event',
+              guest_name: s.name, guest_email: s.email, guest_phone: s.phone,
+              details: { event_type: s.etype || '', target_date: s.date || 'flexible', guests: s.guests || '', notes: s.notes || '' } })
+          }).then(response => response.ok).catch(() => false);
+          const backupRequest = fetch('https://formsubmit.co/ajax/kabinasaaplaya@gmail.com', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
@@ -206,10 +212,10 @@ class Component extends DCLogic {
             'Estimated guests': s.guests || '-',
             'Details': s.notes || '-'
           })
-        });
-        const data = await res.json().catch(() => ({}));
-        if (res.ok && String(data.success) !== 'false') this.setState({ sendState: 'sent' });
-        else throw new Error(data.message || 'Send failed');
+          }).then(async response => ({ ok: response.ok, data: await response.json().catch(() => ({})) })).catch(() => ({ ok: false, data: {} }));
+          const [staffOk, backup] = await Promise.all([staffRequest, backupRequest]);
+          if (staffOk || (backup.ok && String(backup.data.success) !== 'false')) this.setState({ sendState: 'sent' });
+          else throw new Error('Send failed');
       } catch (e) {
         this.setState({ sendState: 'error', sendErrorMsg: 'Hmm, the inquiry didn\u2019t go through.' });
       }

@@ -375,7 +375,17 @@ class Component extends DCLogic {
       }
       this.setState({ sendState: 'sending', sendErrorMsg: '' });
       try {
-        const res = await fetch('https://formsubmit.co/ajax/kabinasaaplaya@gmail.com', {
+        const staffRequest = fetch('https://ksa-staff-database.reineaissance.workers.dev/api/public-inquiries', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            submission_id: crypto.randomUUID(), form_type: 'booking',
+            guest_name: s.name, guest_email: s.email, guest_phone: s.phone,
+            website_estimate: base + extras,
+            details: { cabins: namesLabel, stay_type: stayLabel, check_in: s.checkIn,
+              check_out: isOvernight ? s.checkOut : '', guests: String(pax), notes: s.notes || '' }
+          })
+        }).then(response => response.ok).catch(() => false);
+        const backupRequest = fetch('https://formsubmit.co/ajax/kabinasaaplaya@gmail.com', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
@@ -394,12 +404,12 @@ class Component extends DCLogic {
             'Estimated total': peso(base + extras),
             'Notes': s.notes || '-'
           })
-        });
-        const data = await res.json().catch(() => ({}));
-        if (res.ok && String(data.success) !== 'false') {
+        }).then(async response => ({ ok: response.ok, data: await response.json().catch(() => ({})) })).catch(() => ({ ok: false, data: {} }));
+        const [staffOk, backup] = await Promise.all([staffRequest, backupRequest]);
+        if (staffOk || (backup.ok && String(backup.data.success) !== 'false')) {
           this.setState({ sendState: 'sent', sentName: s.name.split(' ')[0] });
         } else {
-          throw new Error(data.message || 'Send failed');
+          throw new Error('Send failed');
         }
       } catch (e) {
         this.setState({ sendState: 'error', sendErrorMsg: 'Hmm, the request didn\u2019t go through.' });
