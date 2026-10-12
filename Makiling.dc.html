@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Makiling Cabin – Poolside A-Frame for 6 pax | Kabina sa Aplaya, Jala-jala Rizal</title>
-<meta name="description" content="Makiling is a poolside A-frame cabin for up to 6 guests at Kabina sa Aplaya, Jala-jala, Rizal, with a deck view of Mt. Banahaw. ₱5,500 per 21-hour stay, ₱4,500 day tour. Check availability." />
+<meta name="description" content="Makiling is a poolside A-frame cabin for up to 6 guests at Kabina sa Aplaya, Jala-jala, Rizal, with a deck view of Mt. Banahaw. 21-hour stays start at ₱4,500; day tours start at ₱3,500. Rates depend on booked dates. Check availability." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Kabina sa Aplaya – RJFLn Resort" />
 <meta property="og:title" content="Makiling Cabin – Poolside A-Frame for 6 pax | Kabina sa Aplaya, Jala-jala Rizal" />
-<meta property="og:description" content="Makiling is a poolside A-frame cabin for up to 6 guests at Kabina sa Aplaya, Jala-jala, Rizal, with a deck view of Mt. Banahaw. ₱5,500 per 21-hour stay, ₱4,500 day tour. Check availability." />
+<meta property="og:description" content="Makiling is a poolside A-frame cabin for up to 6 guests at Kabina sa Aplaya, Jala-jala, Rizal, with a deck view of Mt. Banahaw. 21-hour stays start at ₱4,500; day tours start at ₱3,500. Rates depend on booked dates. Check availability." />
 <meta property="og:url" content="https://www.kabinasaaplaya.com/Makiling.dc.html" />
 <meta property="og:image" content="https://www.kabinasaaplaya.com/assets/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
@@ -22,11 +22,11 @@
 <helmet>
   <title>Makiling Cabin – Poolside A-Frame for 6 pax | Kabina sa Aplaya, Jala-jala Rizal</title>
   <link rel="icon" type="image/png" href="assets/icon-colorway1.png" />
-  <meta name="description" content="Makiling is a poolside A-frame cabin for up to 6 guests at Kabina sa Aplaya, Jala-jala, Rizal, with a deck view of Mt. Banahaw. ₱5,500 per 21-hour stay, ₱4,500 day tour. Check availability." />
+  <meta name="description" content="Makiling is a poolside A-frame cabin for up to 6 guests at Kabina sa Aplaya, Jala-jala, Rizal, with a deck view of Mt. Banahaw. 21-hour stays start at ₱4,500; day tours start at ₱3,500. Rates depend on booked dates. Check availability." />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Kabina sa Aplaya – RJFLn Resort" />
   <meta property="og:title" content="Makiling Cabin – Poolside A-Frame for 6 pax | Kabina sa Aplaya, Jala-jala Rizal" />
-  <meta property="og:description" content="Makiling is a poolside A-frame cabin for up to 6 guests at Kabina sa Aplaya, Jala-jala, Rizal, with a deck view of Mt. Banahaw. ₱5,500 per 21-hour stay, ₱4,500 day tour. Check availability." />
+  <meta property="og:description" content="Makiling is a poolside A-frame cabin for up to 6 guests at Kabina sa Aplaya, Jala-jala, Rizal, with a deck view of Mt. Banahaw. 21-hour stays start at ₱4,500; day tours start at ₱3,500. Rates depend on booked dates. Check availability." />
   <meta property="og:url" content="https://www.kabinasaaplaya.com/Makiling.dc.html" />
   <meta property="og:image" content="https://www.kabinasaaplaya.com/assets/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
@@ -37,6 +37,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&amp;display=swap" rel="stylesheet" />
   <script src="image-slot.js"></script>
   <style>
+    .cabin-features > summary { display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none;font:400 20px/1.2 'URW Classico',Georgia,serif;color:#2b3499;pointer-events:none; }
+    .cabin-features > summary::-webkit-details-marker { display:none; }
+    .cabin-features ul { margin-top:12px !important; }
+    .cabin-features .features-chevron { display:none;width:18px;height:18px;flex:none;transition:transform .2s ease; }
+    @media (max-width:767px) {
+      .cabin-features > summary { cursor:pointer;pointer-events:auto;padding:14px;background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:10px; }
+      .cabin-features > summary:focus-visible { outline:2px solid #2b3499;outline-offset:3px; }
+      .cabin-features .features-chevron { display:block; }
+      .cabin-features[open] .features-chevron { transform:rotate(180deg); }
+    }
     image-slot { transition: transform .35s ease; }
     image-slot[data-filled] { cursor: zoom-in; }
     image-slot[data-filled]:hover { transform: scale(1.015); }
@@ -119,8 +129,8 @@
       <p style="margin:0 0 12px;font:16px/1.75 Helvetica,Arial,sans-serif;color:#33413a">Makiling sits right by the pool, its private deck pointed straight at Mt. Banahaw across Laguna de Bay. It fits up to 6 guests, perfect for a barkada weekend or a small family stay.</p>
       <p style="margin:0;font:16px/1.75 Helvetica,Arial,sans-serif;color:#33413a">Every stay includes access to the pool, the fully equipped kitchen, nipa huts, and all resort amenities.</p>
     </div>
-    <div>
-      <h3 style="margin:0 0 12px;font:400 20px/1.2 'URW Classico',Georgia,serif;color:#2b3499">Cabin features</h3>
+    <details class="cabin-features" open="{{ featuresOpen }}" onToggle="{{ onFeaturesToggle }}">
+      <summary tabIndex="{{ featuresTabIndex }}">Cabin features<svg class="features-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></summary>
       <ul style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px">
         <li style="font:14px/1.6 Helvetica,Arial,sans-serif;color:#33413a;background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:10px;padding:12px 14px">Sleeps up to 6 guests</li>
         <li style="font:14px/1.6 Helvetica,Arial,sans-serif;color:#33413a;background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:10px;padding:12px 14px">Private deck facing Mt. Banahaw</li>
@@ -129,15 +139,14 @@
         <li style="font:14px/1.6 Helvetica,Arial,sans-serif;color:#33413a;background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:10px;padding:12px 14px">Hot &amp; cold shower</li>
         <li style="font:14px/1.6 Helvetica,Arial,sans-serif;color:#33413a;background:#fff;border:1px solid rgba(14,58,45,.1);border-radius:10px;padding:12px 14px">Reliable Wi-Fi</li>
       </ul>
-    </div>
+    </details>
 
   </div>
 
   <aside style="display:flex;flex-direction:column;gap:20px">
     <div style="background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:20px;padding:24px;box-shadow:0 4px 18px rgba(14,58,45,.07);display:flex;flex-direction:column;gap:18px">
-      <div style="display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;border-bottom:1px dashed rgba(14,58,45,.15);padding-bottom:14px">
-        <p style="margin:0;font:400 26px/1 'URW Classico',Georgia,serif;color:#fe5c36">₱5,500 <span style="font:400 13px/1 Helvetica,Arial,sans-serif;color:#8a958e">/ 21-hr stay</span></p>
-        <p style="margin:0;font:400 20px/1 'URW Classico',Georgia,serif;color:#0e3a2d">₱4,500 <span style="font:400 13px/1 Helvetica,Arial,sans-serif;color:#8a958e">/ day tour</span></p>
+      <div style="border-bottom:1px dashed rgba(14,58,45,.15);padding-bottom:14px">
+        <div style="display:flex;flex-wrap:wrap;gap:10px 20px;align-items:baseline"><p style="margin:0;white-space:nowrap;font:400 26px/1.3 'URW Classico',Georgia,serif;color:#fe5c36"><span style="font:400 11px/1.4 Helvetica,Arial,sans-serif;color:#8a958e">starts at</span> ₱4,500 <span style="font:400 13px/1 Helvetica,Arial,sans-serif;color:#8a958e">/ 21-hr stay</span></p><p style="margin:0;white-space:nowrap;font:400 20px/1.3 'URW Classico',Georgia,serif;color:#0e3a2d"><span style="font:400 11px/1.4 Helvetica,Arial,sans-serif;color:#8a958e">starts at</span> ₱3,500 <span style="font:400 13px/1 Helvetica,Arial,sans-serif;color:#8a958e">/ day tour</span></p></div>
       </div>
 
       <div>
@@ -224,6 +233,7 @@
           <p style="margin:0;font:700 11px/1 Helvetica,Arial,sans-serif;letter-spacing:.06em;color:#8a958e">ESTIMATED TOTAL</p>
           <p style="margin:0;font:400 26px/1 'URW Classico',Georgia,serif;color:#0e3a2d">{{ totalLabel }}</p>
         </div>
+        <p style="margin:0;font:13px/1.6 Helvetica,Arial,sans-serif;color:#55625b">{{ totalNote }}</p>
         <a class="hbg" href="Book Now.dc.html" onClick="{{ saveDraft }}" style="text-decoration:none;text-align:center;background:#fe5c36;color:#fff;font:700 15px/1 Helvetica,Arial,sans-serif;letter-spacing:.04em;padding:16px 18px;border-radius:999px;--hbg:#e34a27" style-hover="background:#e34a27;transform:translateY(-3px);box-shadow:0 12px 24px rgba(14,58,45,.22)">Book now</a>
         <p style="margin:0;text-align:center;font:11px/1.6 Helvetica,Arial,sans-serif;color:#8a958e">Your choices carry over, you'll only add your contact details on the next page.</p>
       </div>
@@ -231,7 +241,7 @@
 
     <div style="background:#fff;border:1px solid rgba(14,58,45,.12);border-radius:16px;padding:16px 18px">
       <ul style="margin:0;padding:0 0 0 16px;font:12px/1.8 Helvetica,Arial,sans-serif;color:#55625b">
-        <li>Extra guest: ₱500/head</li>
+        <li>Extra guest: ₱300/head</li>
         <li>Corkage: ₱100/bottle (alcoholic drinks)</li>
         <li>1 small pet allowed: ₱300 (diaper required)</li>
       </ul>
@@ -243,9 +253,10 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  CABIN = { key: 'makiling', name: 'Makiling', pax: 6, overnight: 5500, daytour: 4500 };
+  CABIN = { key: 'makiling', name: 'Makiling', pax: 6 };
 
   state = {
+    featuresOpen: typeof window.matchMedia === 'function' ? !window.matchMedia('(max-width:767px)').matches : true,
     calY: new Date().getFullYear(),
     calM: new Date().getMonth(),
     booked: null,
@@ -261,6 +272,9 @@ class Component extends DCLogic {
   };
 
   async componentDidMount() {
+    this._featuresMedia = window.matchMedia('(max-width:767px)');
+    this._featuresResize = event => this.setState({ featuresOpen: !event.matches });
+    this._featuresMedia.addEventListener('change', this._featuresResize);
     import('./reveal.js').then(m => m.initReveal());
     import('./lightbox.js').then(m => m.initLightbox());
     this._heroPoll = setInterval(() => this._scanHero(), 1200);
@@ -270,7 +284,10 @@ class Component extends DCLogic {
     this.setState({ booked, updated: updated || '-' });
   }
 
-  componentWillUnmount() { clearInterval(this._heroPoll); }
+  componentWillUnmount() {
+    clearInterval(this._heroPoll);
+    if (this._featuresMedia) this._featuresMedia.removeEventListener('change', this._featuresResize);
+  }
 
   _heroIds() { return ['makiling-hero', 'makiling-hero-2', 'makiling-hero-3', 'makiling-hero-4']; }
 
@@ -325,9 +342,9 @@ class Component extends DCLogic {
 
   renderVals() {
     const ALL = [
-      { key: 'makiling', name: 'Makiling', pax: 6, sub: 'Poolside · up to 6 pax · Banahaw view', overnight: 5500, daytour: 4500 },
-      { key: 'sembrano', name: 'Sembrano', pax: 6, sub: 'Poolside · up to 6 pax · pool view', overnight: 5500, daytour: 4500 },
-      { key: 'banahaw', name: 'Banahaw', pax: 12, sub: 'Up to 12 pax · balcony + billiards', overnight: 11500, daytour: 9500 }
+      { key: 'makiling', name: 'Makiling', pax: 6, sub: 'Poolside · up to 6 pax · Banahaw view' },
+      { key: 'sembrano', name: 'Sembrano', pax: 6, sub: 'Poolside · up to 6 pax · pool view' },
+      { key: 'banahaw', name: 'Banahaw', pax: 12, sub: 'Up to 12 pax · balcony + billiards' }
     ];
     const ME = this.CABIN;
     const peso = n => '\u20B1' + n.toLocaleString('en-PH');
@@ -382,10 +399,11 @@ class Component extends DCLogic {
         : '✕ Already booked: ' + problems.join(' · ') + '. Try other dates.';
     }
 
-    const perStay = selected.reduce((t, c) => t + (isOvernight ? c.overnight : c.daytour), 0);
-    const base = isOvernight ? perStay * nights : perStay;
-    const extras = Math.max(0, pax - capacity) * 500 * (isOvernight ? nights : 1);
-    const paxNote = 'Your group is bigger than ' + ME.name + '\u2019s max of ' + ME.pax + '. Add another kabina, or extra guests are \u20B1500/head' + (isOvernight && nights > 1 ? ' per night' : '') + '.';
+    const quote = av ? av.stayQuote(selKeys, s.stay, s.checkIn, nights) : { total: 0, note: '' };
+    const base = quote.total;
+    const hasDates = !!(s.checkIn && (!isOvernight || s.checkOut));
+    const extras = Math.max(0, pax - capacity) * 300 * (isOvernight ? nights : 1);
+    const paxNote = 'Your group is bigger than ' + ME.name + '\u2019s max of ' + ME.pax + '. Add another kabina, or extra guests are \u20B1300/head' + (isOvernight && nights > 1 ? ' per night' : '') + '.';
 
     // date-picker calendar
     const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -441,6 +459,13 @@ class Component extends DCLogic {
     };
 
     return {
+      featuresOpen: s.featuresOpen,
+      featuresTabIndex: this._featuresMedia && this._featuresMedia.matches ? 0 : -1,
+      onFeaturesToggle: event => {
+        if (this._featuresMedia && this._featuresMedia.matches && this.state.featuresOpen !== event.currentTarget.open) {
+          this.setState({ featuresOpen: event.currentTarget.open });
+        }
+      },
       isOvernight,
       pickOvernight: () => this.setState({ stay: 'overnight' }),
       pickDaytour: () => this.setState({ stay: 'daytour', checkOut: '', calOpen: this.state.calOpen === 'out' ? '' : this.state.calOpen }),
@@ -456,7 +481,8 @@ class Component extends DCLogic {
       availColor: availOk ? '#1f6b3a' : '#c23a1b',
       availBg: availOk ? 'rgba(108,125,55,.1)' : 'rgba(254,92,54,.1)',
       availBd: availOk ? 'rgba(108,125,55,.35)' : 'rgba(254,92,54,.35)',
-      totalLabel: peso(base + extras),
+      totalLabel: !av ? 'Loading rates…' : (!hasDates ? 'Pick dates' : peso(base + extras)),
+      totalNote: hasDates ? quote.note + (extras ? ' + ' + peso(extras) + ' extra guests' : '') + ' · excludes corkage/pet fees' : 'Choose dates to calculate weekday and weekend rates.',
       saveDraft: () => {
         try {
           localStorage.setItem('ksaBookingDraft', JSON.stringify({

@@ -130,6 +130,8 @@
       </div>
     </div>
 
+    <p style="margin:0;font:13px/1.6 Helvetica,Arial,sans-serif;color:#55625b">Weekday 21-hour package: <strong>₱18,000 for all three cabins</strong> (Sun–Thurs). Rates follow each occupied date; Friday and Saturday use weekend rates.</p>
+
     <div>
       <p style="margin:0 0 10px;font:700 14px/1 Helvetica,Arial,sans-serif;letter-spacing:.05em;color:#2b3499">3 · CHOOSE YOUR KABINA(S)</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
@@ -188,7 +190,7 @@
     <p style="margin:-8px 0 0;font:12px/1.7 Helvetica,Arial,sans-serif;color:#8a958e">Your request is sent straight to us, no email app needed. Prefer to chat? Message us on <a class="ilb" href="https://facebook.com/kabinasaaplaya" target="_blank" rel="noopener" style="color:#2b3499;font-weight:700;text-decoration:none">Facebook</a> or call <a class="ilb" href="tel:+639273291529" style="color:#2b3499;font-weight:700;text-decoration:none">+63 927 329 1529</a>. A booking is confirmed only once we reply.</p>
   </div>
 
-  <div style="margin-top:22px;background:rgba(108,125,55,.08);border:1px solid rgba(108,125,55,.25);border-radius:14px;padding:16px 18px"><p style="margin:0;font:13px/1.7 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#6c7d37">Fees to expect:</strong> extra guest ₱500/head · corkage ₱100/bottle (alcohol) · pet ₱300 (1 small pet per cabin, diaper required)</p></div>
+  <div style="margin-top:22px;background:rgba(108,125,55,.08);border:1px solid rgba(108,125,55,.25);border-radius:14px;padding:16px 18px"><p style="margin:0;font:13px/1.7 Helvetica,Arial,sans-serif;color:#33413a"><strong style="color:#6c7d37">Fees to expect:</strong> extra guest ₱300/head · corkage ₱100/bottle (alcohol) · pet ₱300 (1 small pet per cabin, diaper required)</p></div>
 </section>
 
 <dc-import name="SiteFooter" hint-size="100%,380px"></dc-import>
@@ -228,9 +230,9 @@ class Component extends DCLogic {
 
   renderVals() {
     const CABINS = [
-      { key: 'makiling', name: 'Makiling', pax: 6, sub: 'Poolside · up to 6 pax · Banahaw view', overnight: 5500, daytour: 4500 },
-      { key: 'sembrano', name: 'Sembrano', pax: 6, sub: 'Poolside · up to 6 pax · pool view', overnight: 5500, daytour: 4500 },
-      { key: 'banahaw', name: 'Banahaw', pax: 12, sub: 'Up to 12 pax · balcony + billiards', overnight: 11500, daytour: 9500 }
+      { key: 'makiling', name: 'Makiling', pax: 6, sub: 'Poolside · up to 6 pax · Banahaw view' },
+      { key: 'sembrano', name: 'Sembrano', pax: 6, sub: 'Poolside · up to 6 pax · pool view' },
+      { key: 'banahaw', name: 'Banahaw', pax: 12, sub: 'Up to 12 pax · balcony + billiards' }
     ];
     const peso = n => '\u20B1' + n.toLocaleString('en-PH');
     const s = this.state;
@@ -247,7 +249,7 @@ class Component extends DCLogic {
       const on = s.cabins.includes(c.key);
       return {
         key: c.key, name: c.name, sub: c.sub,
-        price: peso(isOvernight ? c.overnight : c.daytour) + (isOvernight ? ' / 21-hr stay' : ' / day tour'),
+        price: this.avail ? peso(this.avail.cabinRate(c.key, s.stay, s.checkIn)) + (isOvernight ? ' / 21-hr stay' : ' / day tour') + (s.checkIn ? ' · ' + this.avail.ratePeriod(s.checkIn) : ' · Sun–Thurs') : 'Loading rates…',
         bg: on ? 'rgba(43,52,153,.06)' : '#faf7f0',
         bd: on ? '#2b3499' : 'rgba(14,58,45,.14)',
         tick: on ? 'ADDED ✓' : '+ ADD',
@@ -283,11 +285,12 @@ class Component extends DCLogic {
     }
 
     // pricing
-    const perStay = selected.reduce((t, c) => t + (isOvernight ? c.overnight : c.daytour), 0);
-    const base = isOvernight ? perStay * nights : perStay;
-    const extras = Math.max(0, pax - capacity) * 500 * (isOvernight ? nights : 1);
+    const quote = this.avail ? this.avail.stayQuote(s.cabins, s.stay, s.checkIn, nights) : { total: 0, note: '' };
+    const base = quote.total;
+    const hasDates = !!(s.checkIn && (!isOvernight || s.checkOut));
+    const extras = Math.max(0, pax - capacity) * 300 * (isOvernight ? nights : 1);
     const showPaxNote = !noneSelected && pax > capacity;
-    const paxNote = namesLabel + (selected.length > 1 ? ' fit' : ' fits') + ' up to ' + capacity + ' pax total. Extra guests are \u20B1500/head' + (isOvernight && nights > 1 ? ' per night' : '') + ', or add another kabina above.';
+    const paxNote = namesLabel + (selected.length > 1 ? ' fit' : ' fits') + ' up to ' + capacity + ' pax total. Extra guests are \u20B1300/head' + (isOvernight && nights > 1 ? ' per night' : '') + ', or add another kabina above.';
 
     const stayLabel = isOvernight
       ? '21-Hour Stay (2:00 PM – 11:00 AM), ' + nights + (nights > 1 ? ' nights' : ' night')
@@ -306,6 +309,7 @@ class Component extends DCLogic {
       'Name: ' + (s.name || '-'),
       'Mobile: ' + (s.phone || '-'),
       'Email: ' + (s.email || '-'),
+      'Rate breakdown: ' + quote.note,
       'Estimated total: ' + peso(base + extras),
       '',
       'Notes: ' + (s.notes || '-'),
@@ -363,6 +367,7 @@ class Component extends DCLogic {
     const submit = async () => {
       if (this.state.sendState === 'sending' || this.state.sendState === 'sent') return;
       const missing = [];
+      if (!this.avail) missing.push('the rates to finish loading');
       if (noneSelected) missing.push('a kabina');
       if (!s.checkIn) missing.push('your date');
       if (isOvernight && !s.checkOut) missing.push('your check-out date');
@@ -382,7 +387,7 @@ class Component extends DCLogic {
             guest_name: s.name, guest_email: s.email, guest_phone: s.phone,
             website_estimate: base + extras,
             details: { cabins: namesLabel, stay_type: stayLabel, check_in: s.checkIn,
-              check_out: isOvernight ? s.checkOut : '', guests: String(pax), notes: s.notes || '' }
+              check_out: isOvernight ? s.checkOut : '', guests: String(pax), rate_breakdown: quote.note, notes: s.notes || '' }
           })
         }).then(response => response.ok).catch(() => false);
         const backupRequest = fetch('https://formsubmit.co/ajax/kabinasaaplaya@gmail.com', {
@@ -401,6 +406,7 @@ class Component extends DCLogic {
             'Name': s.name,
             'Mobile': s.phone,
             'Email': s.email,
+            'Rate breakdown': quote.note,
             'Estimated total': peso(base + extras),
             'Notes': s.notes || '-'
           })
@@ -464,10 +470,10 @@ class Component extends DCLogic {
       availColor: availOk ? '#1f6b3a' : '#c23a1b',
       availBg: availOk ? 'rgba(108,125,55,.1)' : 'rgba(254,92,54,.1)',
       availBd: availOk ? 'rgba(108,125,55,.35)' : 'rgba(254,92,54,.35)',
-      totalLabel: noneSelected ? '-' : peso(base + extras),
+      totalLabel: noneSelected ? '-' : (!this.avail ? 'Loading rates…' : (!hasDates ? 'Pick dates' : peso(base + extras))),
       totalNote: noneSelected
         ? 'Pick at least one kabina above'
-        : (isOvernight ? nights + (nights > 1 ? ' nights' : ' night') + ' × ' + peso(perStay) : 'Day tour ' + peso(perStay)) + ' (' + namesLabel + ')' + (extras ? ' + ' + peso(extras) + ' extra guests' : '') + ' · excludes corkage/pet fees',
+        : !hasDates ? 'Choose dates to calculate weekday and weekend rates.' : quote.note + ' (' + namesLabel + ')' + (extras ? ' + ' + peso(extras) + ' extra guests' : '') + ' · excludes corkage/pet fees',
       mailtoHref: 'mailto:kabinasaaplaya@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body)
     };
   }

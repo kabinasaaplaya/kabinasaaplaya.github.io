@@ -95,8 +95,6 @@ export const CABINS = [
     pax: 6,
     view: 'Deck view of Mt. Banahaw',
     tag: 'Poolside cabin',
-    overnight: 5500,
-    daytour: 4500,
     page: 'Makiling.dc.html',
     blurb: 'Poolside A-frame for up to 6 guests, with a private deck that looks straight out to Mt. Banahaw across Laguna de Bay.'
   },
@@ -106,8 +104,6 @@ export const CABINS = [
     pax: 6,
     view: 'Deck view of the pool',
     tag: 'Poolside cabin',
-    overnight: 5500,
-    daytour: 4500,
     page: 'Sembrano.dc.html',
     blurb: 'Poolside A-frame for up to 6 guests — step off your deck and straight into the water.'
   },
@@ -117,8 +113,6 @@ export const CABINS = [
     pax: 12,
     view: 'Balcony view of Mt. Banahaw',
     tag: 'Family cabin · billiards access',
-    overnight: 11500,
-    daytour: 9500,
     page: 'Banahaw.dc.html',
     blurb: 'Our biggest cabin — sleeps up to 12, with a balcony facing Mt. Banahaw and direct access to the billiards table.'
   }
@@ -126,4 +120,44 @@ export const CABINS = [
 
 export function peso(n) {
   return '\u20B1' + n.toLocaleString('en-PH');
+}
+
+// The existing "overnight" booking key means the 21-hour stay.
+// Charge each occupied date; check-out is exclusive. Friday/Saturday are weekends.
+export const RATES = {
+  makiling: { weekday: { overnight: 4500, daytour: 3500 }, weekend: { overnight: 5500, daytour: 4500 } },
+  sembrano: { weekday: { overnight: 4500, daytour: 3500 }, weekend: { overnight: 5500, daytour: 4500 } },
+  banahaw: { weekday: { overnight: 9500, daytour: 8500 }, weekend: { overnight: 11500, daytour: 9500 } }
+};
+
+export function ratePeriod(iso) {
+  const day = iso ? parseISO(iso).getDay() : 0;
+  return day === 5 || day === 6 ? 'weekend' : 'weekday';
+}
+
+export function cabinRate(key, stay, iso) {
+  return RATES[key][ratePeriod(iso)][stay];
+}
+
+export function stayQuote(keys, stay, checkIn, nights = 1) {
+  const selected = [...new Set(keys)].filter(key => RATES[key]);
+  const count = stay === 'overnight' ? Math.max(1, nights) : 1;
+  const allThree = stay === 'overnight' && selected.length === 3;
+  const groups = { weekday: { count: 0, rate: 0 }, weekend: { count: 0, rate: 0 } };
+  let total = 0;
+  for (let i = 0; i < count; i++) {
+    const iso = checkIn ? toISO(addDays(parseISO(checkIn), i)) : '';
+    const period = ratePeriod(iso);
+    const rate = allThree && period === 'weekday' ? 18000
+      : selected.reduce((sum, key) => sum + cabinRate(key, stay, iso), 0);
+    groups[period].count++;
+    groups[period].rate = rate;
+    total += rate;
+  }
+  const note = Object.entries(groups).filter(([, group]) => group.count).map(([period, group]) =>
+    group.count + ' ' + (period === 'weekday' ? 'weekday' : 'weekend') + (stay === 'overnight' ? ' night' : ' day tour') +
+    (group.count > 1 ? 's' : '') + ' × ' + peso(group.rate) +
+    (allThree && period === 'weekday' ? ' (all-three-cabin package)' : '')
+  ).join(' + ');
+  return { total, note };
 }
