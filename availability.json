@@ -76,6 +76,11 @@
         "note": "from sheet"
       },
       {
+        "start": "2026-10-19",
+        "end": "2026-10-21",
+        "note": "from sheet"
+      },
+      {
         "start": "2026-10-31",
         "end": "2026-11-02",
         "note": "from sheet"
@@ -103,6 +108,11 @@
       {
         "start": "2026-12-24",
         "end": "2026-12-25",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-12-25",
+        "end": "2026-12-27",
         "note": "from sheet"
       }
     ],
@@ -135,6 +145,11 @@
       {
         "start": "2026-12-24",
         "end": "2026-12-25",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-12-25",
+        "end": "2026-12-27",
         "note": "from sheet"
       }
     ]
