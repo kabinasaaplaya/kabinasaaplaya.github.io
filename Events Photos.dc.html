@@ -83,10 +83,10 @@
 <dc-import name="SiteNav" active="events" hint-size="100%,68px"></dc-import>
 
 <div style="max-width:1200px;margin:0 auto;padding:clamp(32px,4.5vw,52px) 24px clamp(56px,8vw,90px)">
-  <a class="lnk" href="Events.dc.html" style="font:700 14px/1 Helvetica,Arial,sans-serif;color:#2b3499;text-decoration:none"><span class="arr">←</span> Back to Events</a>
+  <a class="lnk" href="Events.dc.html" style="font:700 14px/1 Helvetica,Arial,sans-serif;color:#2b3499;text-decoration:none" data-cms-link="events-photos-link-1"><span class="arr">←</span> <span data-cms-text="events-photos-1">Back to Events</span></a>
 
-  <h1 style="margin:18px 0 8px;font:400 clamp(30px,4.5vw,46px)/1.1 'URW Classico',Georgia,serif;color:#2b3499"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em">E</span>vents photo gallery</h1>
-  <p style="margin:0 0 28px;font:15px/1.7 Helvetica,Arial,sans-serif;color:#55625b">Celebrations at the pavilion and around the resort. Tap any photo to view it full size.</p>
+  <h1 style="margin:18px 0 8px;font:400 clamp(30px,4.5vw,46px)/1.1 'URW Classico',Georgia,serif;color:#2b3499" data-cms-text="events-photos-2"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em" data-cms-initial="">E</span><span data-cms-rest="">vents photo gallery</span></h1>
+  <p style="margin:0 0 28px;font:15px/1.7 Helvetica,Arial,sans-serif;color:#55625b"><span data-cms-text="events-photos-3">Celebrations at the pavilion and around the resort. Tap any photo to view it full size.</span></p>
 
   <div class="gal16" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
     <image-slot id="events-gal-1" data-gallery="events-gallery" radius="12" recommend="Best: 1200px+ wide" placeholder="Event photo 1" style="width:100%;aspect-ratio:1"></image-slot>
@@ -119,11 +119,11 @@
 
   </div>
 
-<section style="background:#f2ecdd;border-top:1px solid rgba(14,58,45,.08);border-bottom:1px solid rgba(14,58,45,.08);display:{{ shootSection }}">
+<section style="background:#f2ecdd;border-top:1px solid rgba(14,58,45,.08);border-bottom:1px solid rgba(14,58,45,.08);display:{{ shootSection }}" data-cms-section="events-photos-section-1" data-cms-section-template="events-photos-section-1" data-cms-page="Events Photos.dc.html" data-cms-group="0"><span id="ksa-section-events-photos-section-1" style="position:absolute;pointer-events:none"></span>
   <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,7vw,80px) 24px">
-    <p style="margin:0 0 6px;font:italic 400 23px/1.25 'URW Classico',Georgia,serif;color:#6c7d37">Picture-perfect sa aplaya</p>
-    <h2 style="margin:0 0 8px;font:400 clamp(26px,3.4vw,38px)/1.15 'URW Classico',Georgia,serif;color:#0e3a2d"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em">P</span>hotoshoots</h2>
-    <p style="margin:0 0 24px;font:15px/1.7 Helvetica,Arial,sans-serif;color:#55625b;max-width:620px">Prenups, debuts, and portraits with the lake and Mt. Banahaw behind you.&nbsp;</p>
+    <p style="margin:0 0 6px;font:italic 400 23px/1.25 'URW Classico',Georgia,serif;color:#6c7d37"><span data-cms-text="events-photos-4">Picture-perfect sa aplaya</span></p>
+    <h2 style="margin:0 0 8px;font:400 clamp(26px,3.4vw,38px)/1.15 'URW Classico',Georgia,serif;color:#0e3a2d" data-cms-text="events-photos-5"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em" data-cms-initial="">P</span><span data-cms-rest="">hotoshoots</span></h2>
+    <p style="margin:0 0 24px;font:15px/1.7 Helvetica,Arial,sans-serif;color:#55625b;max-width:620px"><span data-cms-text="events-photos-6">Prenups, debuts, and portraits with the lake and Mt. Banahaw behind you.&nbsp;</span></p>
 
     <sc-if value="{{ hasShots }}" hint-placeholder-val="{{ false }}">
       <div class="shootbox" style="display:flex;align-items:center;gap:clamp(6px,1.5vw,16px);justify-content:center">
@@ -142,11 +142,11 @@
       </div>
     </sc-if>
     <sc-if value="{{ noShots }}" hint-placeholder-val="{{ false }}">
-      <p style="margin:0;font:14px/1.6 Helvetica,Arial,sans-serif;color:#8a958e">Photoshoot photos are coming soon.</p>
+      <p style="margin:0;font:14px/1.6 Helvetica,Arial,sans-serif;color:#8a958e"><span data-cms-text="events-photos-7">Photoshoot photos are coming soon.</span></p>
     </sc-if>
 
     <div class="shoottray" style="margin-top:28px">
-      <p style="margin:0 0 8px;font:700 11px/1 Helvetica,Arial,sans-serif;letter-spacing:.1em;color:#8a958e">ADMIN · PHOTOSHOOT UPLOADS (UP TO 25). You'll be asked for the photographer's name for the credit.</p>
+      <p style="margin:0 0 8px;font:700 11px/1 Helvetica,Arial,sans-serif;letter-spacing:.1em;color:#8a958e"><span data-cms-text="events-photos-8">ADMIN · PHOTOSHOOT UPLOADS (UP TO 25). You'll be asked for the photographer's name for the credit.</span></p>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px">
         <sc-for list="{{ traySlots }}" as="t" hint-placeholder-count="25">
           <image-slot id="{{ t.id }}" ask-credit="" radius="8" placeholder="{{ t.n }}" style="width:100%;height:70px"></image-slot>
@@ -157,9 +157,9 @@
 </section>
 
 <div style="max-width:1200px;margin:0 auto;padding:0 24px clamp(56px,8vw,90px)">
-  <section style="text-align:center;padding-top:clamp(40px,6vw,64px)">
-    <h2 style="margin:0 0 16px;font:400 clamp(24px,3vw,32px)/1.2 'URW Classico',Georgia,serif;color:#2b3499">Planning a celebration or a shoot?</h2>
-    <a class="hbg" href="Events.dc.html" style="display:inline-block;text-decoration:none;background:#fe5c36;color:#fff;font:700 16px/1 Helvetica,Arial,sans-serif;letter-spacing:.04em;padding:17px 34px;border-radius:999px;--hbg:#e34a27" style-hover="background:#e34a27;transform:translateY(-3px);box-shadow:0 12px 24px rgba(14,58,45,.22)">Request a quotation</a>
+  <section style="text-align:center;padding-top:clamp(40px,6vw,64px)" data-cms-section="events-photos-section-2" data-cms-section-template="events-photos-section-2" data-cms-page="Events Photos.dc.html" data-cms-group="1"><span id="ksa-section-events-photos-section-2" style="position:absolute;pointer-events:none"></span>
+    <h2 style="margin:0 0 16px;font:400 clamp(24px,3vw,32px)/1.2 'URW Classico',Georgia,serif;color:#2b3499"><span data-cms-text="events-photos-9">Planning a celebration or a shoot?</span></h2>
+    <a class="hbg" href="Events.dc.html" style="display:inline-block;text-decoration:none;background:#fe5c36;color:#fff;font:700 16px/1 Helvetica,Arial,sans-serif;letter-spacing:.04em;padding:17px 34px;border-radius:999px;--hbg:#e34a27" style-hover="background:#e34a27;transform:translateY(-3px);box-shadow:0 12px 24px rgba(14,58,45,.22)" data-cms-link="events-photos-link-2"><span data-cms-text="events-photos-a">Request a quotation</span></a>
   </section>
 </div>
 

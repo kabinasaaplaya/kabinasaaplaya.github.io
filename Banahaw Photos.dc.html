@@ -101,24 +101,24 @@
 <dc-import name="SiteNav" active="kabinas" hint-size="100%,68px"></dc-import>
 
 <div style="max-width:1200px;margin:0 auto;padding:clamp(32px,4.5vw,52px) 24px clamp(56px,8vw,90px)">
-  <a class="lnk" href="Banahaw.dc.html" style="font:700 14px/1 Helvetica,Arial,sans-serif;color:#2b3499;text-decoration:none"><span class="arr">←</span> Back to Banahaw</a>
+  <a class="lnk" href="Banahaw.dc.html" style="font:700 14px/1 Helvetica,Arial,sans-serif;color:#2b3499;text-decoration:none" data-cms-link="banahaw-photos-link-1"><span class="arr">←</span> <span data-cms-text="banahaw-photos-1">Back to Banahaw</span></a>
 
   <div class="tourpage" style="display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:clamp(28px,4vw,56px);margin-top:18px">
 
     <div style="display:flex;flex-direction:column;gap:clamp(40px,5vw,64px);min-width:0">
       <div>
-        <h1 style="margin:0 0 8px;font:400 clamp(30px,4.5vw,46px)/1.1 'URW Classico',Georgia,serif;color:#2b3499"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em">B</span>anahaw photo tour</h1>
-        <p style="margin:0;font:15px/1.7 Helvetica,Arial,sans-serif;color:#55625b">Tap any photo to view it full size.</p>
+        <h1 style="margin:0 0 8px;font:400 clamp(30px,4.5vw,46px)/1.1 'URW Classico',Georgia,serif;color:#2b3499" data-cms-text="banahaw-photos-2"><span style="font:400 1.5em/1 'Pinyon Script',cursive;vertical-align:-0.08em" data-cms-initial="">B</span><span data-cms-rest="">anahaw photo tour</span></h1>
+        <p style="margin:0;font:15px/1.7 Helvetica,Arial,sans-serif;color:#55625b"><span data-cms-text="banahaw-photos-3">Tap any photo to view it full size.</span></p>
       </div>
 
       <div class="mchips">
         <sc-for list="{{ sections }}" as="sec" hint-placeholder-count="6">
-          <a href="{{ sec.anchor }}" class="{{ sec.hideCls }}" style="flex:none;text-decoration:none;font:700 12px/1 Helvetica,Arial,sans-serif;color:#0e3a2d;background:#fff;border:1px solid rgba(14,58,45,.18);border-radius:999px;padding:9px 14px">{{ sec.title }}</a>
+          <a href="{{ sec.anchor }}" class="{{ sec.hideCls }}" style="flex:none;text-decoration:none;font:700 12px/1 Helvetica,Arial,sans-serif;color:#0e3a2d;background:#fff;border:1px solid rgba(14,58,45,.18);border-radius:999px;padding:9px 14px" data-cms-link="banahaw-photos-link-2">{{ sec.title }}</a>
         </sc-for>
       </div>
 
-      <sc-for list="{{ sections }}" as="sec" hint-placeholder-count="6">
-        <section id="{{ sec.id }}" class="{{ sec.hideCls }}" style="scroll-margin-top:100px;display:flex;flex-direction:column;gap:16px">
+      <sc-for list="{{ sections }}" as="sec" hint-placeholder-count="6" data-cms-section-template="banahaw-photos-section-1" data-cms-page="Banahaw Photos.dc.html" data-cms-group="0">
+        <section id="{{ sec.id }}" class="{{ sec.hideCls }}" style="scroll-margin-top:100px;display:flex;flex-direction:column;gap:16px" data-cms-section="banahaw-photos-section-1"><span id="ksa-section-banahaw-photos-section-1" style="position:absolute;pointer-events:none"></span>
           <div>
             <h2 style="margin:0 0 6px;font:400 clamp(24px,3vw,32px)/1.15 'URW Classico',Georgia,serif;color:#0e3a2d">{{ sec.title }}</h2>
             <p style="margin:0;font:14px/1.7 Helvetica,Arial,sans-serif;color:#55625b">{{ sec.blurb }}</p>
@@ -156,18 +156,18 @@
         </section>
       </sc-for>
 
-      <section style="text-align:center;border-top:1px dashed rgba(14,58,45,.2);padding-top:clamp(32px,5vw,48px)">
-        <h2 style="margin:0 0 16px;font:400 clamp(24px,3vw,32px)/1.2 'URW Classico',Georgia,serif;color:#2b3499">Like what you see?</h2>
-        <a class="hbg" href="Book Now.dc.html?cabin=banahaw" style="display:inline-block;text-decoration:none;background:#fe5c36;color:#fff;font:700 16px/1 Helvetica,Arial,sans-serif;letter-spacing:.04em;padding:17px 34px;border-radius:999px;--hbg:#e34a27" style-hover="background:#e34a27;transform:translateY(-3px);box-shadow:0 12px 24px rgba(14,58,45,.22)">Book Banahaw</a>
+      <section style="text-align:center;border-top:1px dashed rgba(14,58,45,.2);padding-top:clamp(32px,5vw,48px)" data-cms-section="banahaw-photos-section-2" data-cms-section-template="banahaw-photos-section-2" data-cms-page="Banahaw Photos.dc.html" data-cms-group="0"><span id="ksa-section-banahaw-photos-section-2" style="position:absolute;pointer-events:none"></span>
+        <h2 style="margin:0 0 16px;font:400 clamp(24px,3vw,32px)/1.2 'URW Classico',Georgia,serif;color:#2b3499"><span data-cms-text="banahaw-photos-4">Like what you see?</span></h2>
+        <a class="hbg" href="Book Now.dc.html?cabin=banahaw" style="display:inline-block;text-decoration:none;background:#fe5c36;color:#fff;font:700 16px/1 Helvetica,Arial,sans-serif;letter-spacing:.04em;padding:17px 34px;border-radius:999px;--hbg:#e34a27" style-hover="background:#e34a27;transform:translateY(-3px);box-shadow:0 12px 24px rgba(14,58,45,.22)" data-cms-link="banahaw-photos-link-3"><span data-cms-text="banahaw-photos-5">Book Banahaw</span></a>
       </section>
     </div>
 
     <aside class="toccol" aria-label="Photo sections">
       <div class="tocwrap">
-        <p style="margin:0 0 10px;font:700 11px/1 Helvetica,Arial,sans-serif;letter-spacing:.12em;color:#8a958e">ON THIS PAGE</p>
-        <nav style="display:flex;flex-direction:column">
+        <p style="margin:0 0 10px;font:700 11px/1 Helvetica,Arial,sans-serif;letter-spacing:.12em;color:#8a958e"><span data-cms-text="banahaw-photos-6">ON THIS PAGE</span></p>
+        <nav style="display:flex;flex-direction:column" data-cms-section="banahaw-photos-section-3" data-cms-section-template="banahaw-photos-section-3" data-cms-page="Banahaw Photos.dc.html" data-cms-group="1"><span id="ksa-section-banahaw-photos-section-3" style="position:absolute;pointer-events:none"></span>
           <sc-for list="{{ sections }}" as="sec" hint-placeholder-count="6">
-            <a class="toci {{ sec.onCls }} {{ sec.hideCls }}" href="{{ sec.anchor }}"><span class="rail"></span><span class="lb">{{ sec.title }}</span></a>
+            <a class="toci {{ sec.onCls }} {{ sec.hideCls }}" href="{{ sec.anchor }}" data-cms-link="banahaw-photos-link-4"><span class="rail"></span><span class="lb">{{ sec.title }}</span></a>
           </sc-for>
         </nav>
       </div>

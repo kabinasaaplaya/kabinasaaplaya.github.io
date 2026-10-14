@@ -86,8 +86,10 @@
   function resolveFile(id) {
     if (!id || (id in fileUrls)) return;
     fileUrls[id] = undefined;
-    loadManifest().then((m) => {
-      if (m && m[id]) { fileUrls[id] = PHOTO_DIR + m[id]; notify(); return; }
+    loadManifest().then(async (m) => {
+      const cms = await (window.__ksaContentReady || Promise.resolve(null));
+      if (cms && cms.photos && cms.photos[id] && cms.photos[id].asset) { fileUrls[id] = window.__ksaContentEndpoint + '?photo=' + encodeURIComponent(cms.photos[id].asset); notify(); return; }
+      const originalId = id.split("--copy-")[0]; if (m && m[originalId]) { fileUrls[id] = PHOTO_DIR + m[originalId]; notify(); return; }
       let i = 0;
       const next = () => {
         if (i >= PHOTO_EXTS.length) { fileUrls[id] = null; notify(); return; }
@@ -129,7 +131,7 @@
 
   function loadLegacy() {
     if (!legacyP) {
-      legacyP = fetch(STATE_FILE).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+      legacyP = Promise.all([fetch(STATE_FILE).then((r) => (r.ok ? r.json() : null)).catch(() => null), window.__ksaContentReady || Promise.resolve(null)]).then(([base,cms]) => { const values = { ...(base || {}) }; for (const [id,photo] of Object.entries(cms?.photos || {})) { const crop = { ...photo }; delete crop.asset; values[id] = crop; } return values; });
     }
     return legacyP;
   }
@@ -146,7 +148,7 @@
       .then(async (v) => {
         if (v === undefined || v === null) {
           const legacy = await loadLegacy();
-          v = legacy && legacy[id] != null ? legacy[id] : false;
+          v = legacy && legacy[id] != null ? legacy[id] : legacy && legacy[id.split("--copy-")[0]] != null ? legacy[id.split("--copy-")[0]] : false;
         }
         // In-memory change (drop/clear) that raced ahead of the fetch wins.
         if (!localIds.has(id) && v) slots[id] = v;
@@ -761,7 +763,7 @@
       // drop OR the baked production file; credits.json can override for
       // baked files; an author src uses the credit attribute.
       const storedCredit = (stored && stored.c) || '';
-      const fileCredit = (!this._userUrl && typeof fileUrl === 'string' && this.id && creditsMap[this.id]) ? creditsMap[this.id] : '';
+      const fileCredit = (!this._userUrl && typeof fileUrl === 'string' && this.id && creditsMap[this.id.split("--copy-")[0]]) ? creditsMap[this.id.split("--copy-")[0]] : '';
       const attrCredit = (!this._userUrl && !fileCredit && this.getAttribute('credit')) || '';
       const credit = storedCredit || fileCredit || attrCredit;
       const showCredit = !!(url && credit);
