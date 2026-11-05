@@ -1,6 +1,6 @@
 {
   "_comment": "AUTO-GENERATED from the Google Sheets bookings file by the sheets-sync action. Manual edits here will be overwritten on the next run — update the Google Sheet instead.",
-  "updated": "2026-11-04",
+  "updated": "2026-11-05",
   "cabins": {
     "makiling": [
       {
@@ -61,6 +61,11 @@
       {
         "start": "2026-11-26",
         "end": "2026-11-27",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-11-28",
+        "end": "2026-11-29",
         "note": "from sheet"
       },
       {
@@ -136,6 +141,11 @@
         "note": "from sheet"
       },
       {
+        "start": "2026-11-28",
+        "end": "2026-11-29",
+        "note": "from sheet"
+      },
+      {
         "start": "2026-12-12",
         "end": "2026-12-13",
         "note": "from sheet"
@@ -180,6 +190,11 @@
       {
         "start": "2026-11-15",
         "end": "2026-11-17",
+        "note": "from sheet"
+      },
+      {
+        "start": "2026-11-28",
+        "end": "2026-11-29",
         "note": "from sheet"
       },
       {
