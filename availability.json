@@ -64,6 +64,11 @@
         "note": "from sheet"
       },
       {
+        "start": "2026-11-21",
+        "end": "2026-11-22",
+        "note": "from sheet"
+      },
+      {
         "start": "2026-11-26",
         "end": "2026-11-27",
         "note": "from sheet"
@@ -71,11 +76,6 @@
       {
         "start": "2026-11-28",
         "end": "2026-11-29",
-        "note": "from sheet"
-      },
-      {
-        "start": "2026-12-05",
-        "end": "2026-12-06",
         "note": "from sheet"
       },
       {
@@ -121,6 +121,11 @@
       {
         "start": "2027-06-04",
         "end": "2027-06-06",
+        "note": "from sheet"
+      },
+      {
+        "start": "2027-06-18",
+        "end": "2027-06-19",
         "note": "from sheet"
       }
     ],
