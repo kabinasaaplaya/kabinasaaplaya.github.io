@@ -41,8 +41,15 @@
   };
   const endpoint='https://ksa-staff-database.reineaissance.workers.dev/api/site-content';
   window.__ksaContentEndpoint=endpoint;
+  window.__ksaApplyHeroGradient=doc=>{
+    const raw=doc?.texts?.['home-hero-gradient-color'];
+    const hex=typeof raw==='string'&&/^#[0-9a-f]{6}$/i.test(raw)?raw:'#0e3a2d';
+    document.documentElement.style.setProperty('--ksa-hero-gradient-rgb',[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)).join(','));
+    document.documentElement.dataset.heroGradientHidden=doc?.texts?.['home-hero-gradient-visible']==='false'?'true':'false';
+  };
   window.__ksaContentReady=(window.__ksaPreviewContent?Promise.resolve(window.__ksaPreviewContent):fetch(endpoint,{cache:'no-store',credentials:'omit',signal:AbortSignal.timeout(3500)}).then(r=>r.ok?r.json():null).catch(()=>null)).then(doc=>{
     window.__ksaActiveContent=doc;
+    window.__ksaApplyHeroGradient(doc);
     if(Object.values(doc?.sections||{}).some(items=>items.some(item=>item.id.includes('--copy-')))){
       // Existing carousel handlers address their original IDs. Resolve those IDs in
       // the clicked copy, or in a surviving copy when the original was removed.
