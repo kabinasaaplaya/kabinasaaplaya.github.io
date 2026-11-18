@@ -80,6 +80,34 @@
     html { scroll-behavior: smooth; }
     body { margin: 0; background: #faf7f0; -webkit-font-smoothing: antialiased; }
   </style>
+<style>
+/* A compact, single-row collection of selected public guest reviews. */
+.guest-reviews{background:#faf7f0;scroll-margin-top:84px}
+.guest-reviews,.guest-reviews *{box-sizing:border-box}
+.guest-reviews-inner{max-width:1200px;margin:0 auto;padding:30px 24px 28px;min-width:0}
+.guest-reviews-heading{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:19px}
+.guest-reviews h2{margin:0;font:400 clamp(24px,3vw,32px)/1.2 'URW Classico',Georgia,serif;color:#0e3a2d}
+.guest-reviews h2 [data-cms-initial]{font:400 1.45em/.8 'Pinyon Script',cursive;vertical-align:-.05em}
+.guest-reviews-controls{display:flex;gap:7px;flex:none;padding-bottom:2px}
+.guest-reviews-controls button{width:36px;height:36px;padding:0;border:1px solid #ccd5c8;border-radius:50%;background:transparent;color:#0e3a2d;font:22px/1 Georgia,serif;cursor:pointer;transition:background .2s,border-color .2s}
+.guest-reviews-controls button:hover:not(:disabled){background:#e9eddf;border-color:#6c7d37}
+.guest-reviews-controls button:disabled{opacity:.3;cursor:default}
+.guest-reviews-row{display:flex;flex-wrap:nowrap;gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding:1px;padding:2px 1px 4px;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch}
+.guest-reviews-row::-webkit-scrollbar{display:none;width:0;height:0}
+.guest-review-card{flex:0 0 280px;min-width:0;display:flex;flex-direction:column;scroll-snap-align:start;padding:19px 20px 17px;border:1px solid #dce1d2;border-radius:13px;background:#fffdf8;text-decoration:none;color:#173f33;box-shadow:0 2px 6px rgba(14,58,45,.025);transition:border-color .2s,background .2s}
+.guest-review-card:hover{border-color:#9dad88;background:#fff}
+.guest-review-card:focus-visible,.guest-reviews-controls button:focus-visible{outline:2px solid #6c7d37;outline-offset:3px}
+.guest-review-top{display:flex;align-items:center;justify-content:center;min-height:30px;margin-bottom:17px;text-align:center}
+.guest-review-stars{color:#aa741e;font:24px/1.2 Helvetica,Arial,sans-serif;letter-spacing:2px}
+.guest-review-recommends{font:600 17px/1.4 Helvetica,Arial,sans-serif;color:#657746}
+.guest-review-card blockquote{margin:0 0 20px;font:400 19px/1.4 'URW Classico',Georgia,serif;min-height:80px;flex:1;text-wrap:pretty}
+.guest-review-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;font:12px/1.4 Helvetica,Arial,sans-serif}
+.guest-review-name{display:block;min-width:0;font-size:14px;font-weight:600;color:#33483b}
+.guest-review-read{display:block;flex:none;margin-left:auto;color:#6c7d37;font-size:12px;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:600px){.guest-reviews-inner{padding:23px 20px 20px}.guest-reviews-heading{gap:12px;margin-bottom:15px}.guest-reviews h2{font-size:25px}.guest-reviews-controls button{width:31px;height:31px;font-size:20px}.guest-reviews-controls{gap:5px}.guest-review-card{flex-basis:calc(100% - 65px);min-width:232px;max-width:280px;padding:17px 18px 16px}.guest-review-card blockquote{font-size:18px;min-height:77px}.guest-reviews-row{gap:11px}}
+@media(prefers-reduced-motion:reduce){.guest-review-card,.guest-reviews-controls button{transition:none}}
+
+</style>
 </helmet>
 
 <dc-import name="SiteNav" active="home" hint-size="100%,68px"></dc-import>
@@ -97,6 +125,14 @@
     </div>
   </div>
 </section>
+
+<section class="guest-reviews" aria-labelledby="guest-reviews-title" data-cms-section="index-section-reviews" data-cms-section-template="index-section-reviews" data-cms-page="index.html" data-cms-group="0"><span id="ksa-section-index-section-reviews" style="position:absolute;pointer-events:none"></span><div class="guest-reviews-inner"><div class="guest-reviews-heading"><h2 id="guest-reviews-title" data-cms-text="index-reviews-title"><span data-cms-initial="">W</span><span data-cms-rest="">hat guests are saying</span></h2><div class="guest-reviews-controls" aria-label="Review navigation"><button type="button" data-reviews-previous aria-label="Previous reviews" disabled>‹</button><button type="button" data-reviews-next aria-label="Next reviews">›</button></div></div><div class="guest-reviews-row" role="list" tabindex="0" aria-label="Selected guest reviews. Swipe or use the arrow buttons to browse."><a class="guest-review-card" role="listitem" href="https://share.google/Hi8OXb9Wenck7VE7W" target="_blank" rel="noopener noreferrer" data-cms-link="index-review-ann-l-link" aria-label="Read Ann L’s review on Google (opens in a new tab)"><div class="guest-review-top"><span class="guest-review-stars" aria-label="5 out of 5 stars on Google">★★★★★</span></div><blockquote>“<span data-cms-text="index-review-ann-l-excerpt">All areas are super clean, looked new and well maintained.</span>”</blockquote><div class="guest-review-footer"><span class="guest-review-name"><span data-cms-text="index-review-ann-l-name">Ann L</span></span><span class="guest-review-read">Read More</span></div></a>
+<a class="guest-review-card" role="listitem" href="https://www.facebook.com/kabinasaaplaya/reviews" target="_blank" rel="noopener noreferrer" data-cms-link="index-review-janesiber-valdez-link" aria-label="Read Janesiber Valdez’s review on Facebook (opens in a new tab)"><div class="guest-review-top"><span class="guest-review-recommends" aria-label="Recommends on Facebook">✓ Recommends</span></div><blockquote>“<span data-cms-text="index-review-janesiber-valdez-excerpt">Rooms were spacious, clean, and very comfortable</span>”</blockquote><div class="guest-review-footer"><span class="guest-review-name"><span data-cms-text="index-review-janesiber-valdez-name">Janesiber Valdez</span></span><span class="guest-review-read">Read More</span></div></a>
+<a class="guest-review-card" role="listitem" href="https://share.google/Hi8OXb9Wenck7VE7W" target="_blank" rel="noopener noreferrer" data-cms-link="index-review-princess-elisa-urbina-link" aria-label="Read Princess Elisa Urbina’s review on Google (opens in a new tab)"><div class="guest-review-top"><span class="guest-review-stars" aria-label="5 out of 5 stars on Google">★★★★★</span></div><blockquote>“<span data-cms-text="index-review-princess-elisa-urbina-excerpt">We were amazed by the breathtaking view</span>”</blockquote><div class="guest-review-footer"><span class="guest-review-name"><span data-cms-text="index-review-princess-elisa-urbina-name">Princess Elisa Urbina</span></span><span class="guest-review-read">Read More</span></div></a>
+<a class="guest-review-card" role="listitem" href="https://www.facebook.com/kabinasaaplaya/reviews" target="_blank" rel="noopener noreferrer" data-cms-link="index-review-april-kate-link" aria-label="Read April Kate’s review on Facebook (opens in a new tab)"><div class="guest-review-top"><span class="guest-review-recommends" aria-label="Recommends on Facebook">✓ Recommends</span></div><blockquote>“<span data-cms-text="index-review-april-kate-excerpt">Great view, great amenities and for me best pool experience.</span>”</blockquote><div class="guest-review-footer"><span class="guest-review-name"><span data-cms-text="index-review-april-kate-name">April Kate</span></span><span class="guest-review-read">Read More</span></div></a>
+<a class="guest-review-card" role="listitem" href="https://share.google/Hi8OXb9Wenck7VE7W" target="_blank" rel="noopener noreferrer" data-cms-link="index-review-rosh-bautista-link" aria-label="Read Rosh M R Bautista’s review on Google (opens in a new tab)"><div class="guest-review-top"><span class="guest-review-stars" aria-label="5 out of 5 stars on Google">★★★★★</span></div><blockquote>“<span data-cms-text="index-review-rosh-bautista-excerpt">Very accommodating staff with superb customer service.</span>”</blockquote><div class="guest-review-footer"><span class="guest-review-name"><span data-cms-text="index-review-rosh-bautista-name">Rosh M R Bautista</span></span><span class="guest-review-read">Read More</span></div></a>
+<a class="guest-review-card" role="listitem" href="https://www.facebook.com/kabinasaaplaya/reviews" target="_blank" rel="noopener noreferrer" data-cms-link="index-review-jung-dy-link" aria-label="Read Jung Dy’s review on Facebook (opens in a new tab)"><div class="guest-review-top"><span class="guest-review-recommends" aria-label="Recommends on Facebook">✓ Recommends</span></div><blockquote>“<span data-cms-text="index-review-jung-dy-excerpt">Surreal place. Peaceful. Quiet. Cozy room.</span>”</blockquote><div class="guest-review-footer"><span class="guest-review-name"><span data-cms-text="index-review-jung-dy-name">Jung Dy</span></span><span class="guest-review-read">Read More</span></div></a></div></div></section>
+
 
 <section style="max-width:1200px;margin:0 auto;padding:clamp(56px,8vw,96px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,5vw,64px);align-items:center" data-cms-section="index-section-2" data-cms-section-template="index-section-2" data-cms-page="index.html" data-cms-group="0"><span id="ksa-section-index-section-2" style="position:absolute;pointer-events:none"></span>
   <div>
@@ -247,6 +283,7 @@ class Component extends DCLogic {
 
   componentDidMount() {
     import('./reveal.js').then(m => m.initReveal());
+    import('./reviews.js').then(m => m.initReviews());
     import('./lightbox.js').then(m => m.initLightbox());
     // carousel: auto-advance through filled pavilion slides every 5s
     this._startPavTimer();
