@@ -1,13 +1,8 @@
 {
   "_comment": "AUTO-GENERATED from the Google Sheets bookings file by the sheets-sync action. Manual edits here will be overwritten on the next run — update the Google Sheet instead.",
-  "updated": "2026-11-21",
+  "updated": "2026-11-22",
   "cabins": {
     "makiling": [
-      {
-        "start": "2026-10-21",
-        "end": "2026-10-22",
-        "note": "from sheet"
-      },
       {
         "start": "2026-10-24",
         "end": "2026-10-25",
